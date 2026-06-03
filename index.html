@@ -3,298 +3,1426 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="FLORA: hub per energie rinnovabili, fotovoltaico chiavi in mano, fornitura componenti, installazione, collaudo e servizi tecnici." />
-  <title>FLORA | Hub Energie Rinnovabili e Fotovoltaico</title>
+  <title>FLORA | Hub Energie Rinnovabili</title>
+
+  <meta name="description" content="FLORA è il punto di incontro per fotovoltaico, energia rinnovabile, impianti elettrici, edilizia, colonnine di ricarica e soluzioni energetiche integrate." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="noise"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <header class="site-header" id="top">
-    <nav class="navbar">
-      <a href="#top" class="brand" aria-label="FLORA home">
-        <span class="brand-mark"></span>
-        <span>FLORA</span>
+  <style>
+    :root {
+      --bg: #050805;
+      --bg-soft: #0b120d;
+      --bg-card: rgba(255, 255, 255, 0.06);
+      --bg-card-strong: rgba(255, 255, 255, 0.1);
+      --green: #7CFF4D;
+      --green-strong: #4CFF00;
+      --green-dark: #1d6f13;
+      --white: #ffffff;
+      --text: #d7ded4;
+      --muted: #94a391;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(124, 255, 77, 0.18), transparent 32%),
+        radial-gradient(circle at 85% 20%, rgba(76, 255, 0, 0.12), transparent 28%),
+        linear-gradient(180deg, #050805 0%, #071008 42%, #040604 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .nav {
+      pointer-events: all;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 8, 5, 0.72);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 35% 35%, #ffffff 0 4%, transparent 5%),
+        linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 0 30px rgba(124, 255, 77, 0.55);
+      position: relative;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(0,0,0,0.35);
+      border-radius: 50% 50% 50% 8px;
+      transform: rotate(-35deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #071007;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 0 32px rgba(124, 255, 77, 0.35);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 150px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid rgba(124, 255, 77, 0.25);
+      border-radius: 999px;
+      background: rgba(124, 255, 77, 0.08);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--white);
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.92;
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, var(--green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: #cdd7ca;
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #061006;
+      box-shadow: 0 0 42px rgba(124, 255, 77, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 52px rgba(124, 255, 77, 0.5);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+      border-color: var(--line);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.11);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 640px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--white);
+      font-size: 24px;
+      font-family: "Space Grotesk", sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 620px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 46px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #111;
+    }
+
+    .visual-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.78)),
+        url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1300&q=85") center/cover;
+    }
+
+    .visual-overlay {
+      position: absolute;
+      inset: auto 22px 22px 22px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 28px;
+      background: rgba(6, 10, 6, 0.7);
+      backdrop-filter: blur(20px);
+    }
+
+    .energy-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .energy-row span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .energy-row strong {
+      color: var(--green);
+      font-size: 34px;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .energy-bars {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 6px;
+      height: 90px;
+      align-items: end;
+    }
+
+    .energy-bars i {
+      display: block;
+      border-radius: 999px 999px 6px 6px;
+      background: linear-gradient(180deg, var(--green), rgba(124,255,77,0.18));
+      box-shadow: 0 0 20px rgba(124,255,77,0.25);
+    }
+
+    .b1 { height: 25%; }
+    .b2 { height: 40%; }
+    .b3 { height: 65%; }
+    .b4 { height: 78%; }
+    .b5 { height: 48%; }
+    .b6 { height: 88%; }
+    .b7 { height: 72%; }
+    .b8 { height: 92%; }
+    .b9 { height: 67%; }
+    .b10 { height: 55%; }
+    .b11 { height: 42%; }
+    .b12 { height: 70%; }
+
+    section {
+      padding: 105px 0;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 44px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--green);
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .solar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .solar-card {
+      min-height: 310px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035));
+      position: relative;
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .solar-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,255,77,0.45);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.35);
+    }
+
+    .solar-card.featured {
+      grid-column: span 2;
+      background:
+        linear-gradient(180deg, rgba(124,255,77,0.14), rgba(255,255,255,0.035)),
+        url("https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=85") center/cover;
+      min-height: 360px;
+    }
+
+    .solar-card.featured::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.72));
+    }
+
+    .solar-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(124,255,77,0.12);
+      border: 1px solid rgba(124,255,77,0.22);
+      color: var(--green);
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+
+    .solar-card h3 {
+      font-size: 25px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .solar-card p {
+      color: #c8d1c5;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.045);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #061006;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 24px;
+      box-shadow: 0 0 28px rgba(124,255,77,0.38);
+    }
+
+    .step h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .quote-section {
+      padding-top: 60px;
+    }
+
+    .quote-box {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+      border: 1px solid rgba(124,255,77,0.24);
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(124,255,77,0.2), transparent 35%),
+        rgba(255,255,255,0.045);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .quote-info {
+      padding: 42px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.65)),
+        url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1100&q=85") center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 620px;
+    }
+
+    .quote-info h2 {
+      font-size: clamp(34px, 4vw, 58px);
+    }
+
+    .quote-info p {
+      color: #e3eadf;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .quote-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .quote-pills span {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    form {
+      padding: 42px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #eef5ea;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.28);
+      color: white;
+      padding: 0 15px;
+      font-family: inherit;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    textarea {
+      padding: 15px;
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(124,255,77,0.09);
+    }
+
+    select option {
+      background: #0b120d;
+      color: white;
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 18px 0;
+    }
+
+    .form-submit {
+      width: 100%;
+      min-height: 58px;
+      border: none;
+      border-radius: 18px;
+      background: var(--green);
+      color: #061006;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 0 35px rgba(124,255,77,0.35);
+    }
+
+    .form-submit:hover {
+      background: #99ff77;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.045);
+      min-height: 245px;
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(124,255,77,0.35);
+      transform: translateY(-4px);
+    }
+
+    .service-card .small-icon {
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14.5px;
+    }
+
+    .banner {
+      border-radius: 42px;
+      overflow: hidden;
+      min-height: 420px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.82), rgba(0,0,0,0.35)),
+        url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=85") center/cover;
+      display: flex;
+      align-items: center;
+      padding: 54px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .banner-content {
+      max-width: 650px;
+    }
+
+    .banner h2 {
+      font-size: clamp(36px, 5vw, 66px);
+    }
+
+    .banner p {
+      font-size: 18px;
+      color: #dce5d8;
+      line-height: 1.75;
+      margin: 18px 0 28px;
+    }
+
+    .contacts {
+      padding-bottom: 50px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 34px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .contact-card h3 {
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: #d7ded4;
+      line-height: 1.5;
+    }
+
+    .contact-item span:first-child {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(124,255,77,0.1);
+      border: 1px solid rgba(124,255,77,0.2);
+      color: var(--green);
+      flex: 0 0 auto;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #041004;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      box-shadow: 0 18px 45px rgba(37, 211, 102, 0.35);
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 72px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(5,8,5,0.96);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 18px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-grid,
+      .quote-box,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card {
+        min-height: 520px;
+      }
+
+      .solar-grid,
+      .services-grid,
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .solar-card.featured {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 26px, var(--max));
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .hero-stats,
+      .solar-grid,
+      .services-grid,
+      .process,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .solar-card.featured {
+        grid-column: span 1;
+      }
+
+      .quote-info,
+      form,
+      .banner,
+      .contact-card {
+        padding: 26px;
+      }
+
+      .quote-info {
+        min-height: 460px;
+      }
+
+      .banner {
+        min-height: 520px;
+      }
+
+      .visual-card {
+        min-height: 460px;
+        border-radius: 32px;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#" class="logo" aria-label="FLORA Home">
+        <span class="logo-mark"></span>
+        FLORA
       </a>
-      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
-      <div class="nav-links">
+
+      <div class="nav-links" id="navLinks">
         <a href="#fotovoltaico">Fotovoltaico</a>
         <a href="#preventivo">Preventivo</a>
         <a href="#servizi">Servizi</a>
         <a href="#contatti">Contatti</a>
+        <a class="nav-cta" href="#preventivo">Richiedi preventivo</a>
       </div>
-      <a class="nav-cta" href="https://wa.me/393249581949" target="_blank" rel="noopener">WhatsApp</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Apri menu">☰</button>
     </nav>
   </header>
 
   <main>
-    <section class="hero section-pad">
-      <div class="hero-bg-orb orb-one"></div>
-      <div class="hero-bg-orb orb-two"></div>
+
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span></span> Hub energie rinnovabili</p>
-          <h1>Il futuro dell'energia passa da <strong>FLORA</strong>.</h1>
-          <p class="hero-text">
-            Fotovoltaico, accumulo, colonnine, impianti elettrici e soluzioni energetiche integrate. Un unico punto di incontro per portare energia pulita in casa, in azienda e negli spazi urbani.
+
+        <div>
+          <div class="eyebrow"><span></span> Hub energie rinnovabili</div>
+
+          <h1>
+            Il futuro dell’energia passa da
+            <span class="gradient-text">FLORA.</span>
+          </h1>
+
+          <p>
+            Fotovoltaico, accumulo, colonnine, impianti elettrici e soluzioni integrate.
+            Un unico punto di riferimento per portare energia pulita in casa, in azienda
+            e negli spazi urbani.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#preventivo">Richiedi preventivo gratuito</a>
             <a class="btn btn-ghost" href="#fotovoltaico">Scopri il fotovoltaico</a>
           </div>
-          <div class="trust-row" aria-label="Punti di forza FLORA">
-            <div><strong>Chiavi in mano</strong><span>Studio, componenti e posa</span></div>
-            <div><strong>Supporto reale</strong><span>Prima, durante e dopo</span></div>
-            <div><strong>Energia smart</strong><span>Fotovoltaico e monitoraggio</span></div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Servizio chiavi in mano, dalla progettazione al collaudo.</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>Unico interlocutore per componenti, posa e assistenza.</span>
+            </div>
+            <div class="stat">
+              <strong>0€</strong>
+              <span>Richiesta preventivo veloce, gratuita e senza impegno.</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-visual reveal delay-1" aria-hidden="true">
-          <div class="solar-card main-solar-card">
-            <div class="card-topline">
-              <span>FLORA Energy OS</span>
-              <strong>98%</strong>
+        <div class="visual-card" aria-label="Impianto fotovoltaico">
+          <div class="visual-overlay">
+            <div class="energy-row">
+              <div>
+                <span>FLORA Energy System</span>
+                <strong>98%</strong>
+              </div>
+              <div style="text-align:right">
+                <span>Monitoraggio</span>
+                <strong style="font-size:22px;color:#fff;">Live</strong>
+              </div>
             </div>
-            <div class="panel-grid">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="energy-stats">
-              <div><span>Produzione oggi</span><strong>42.8 kWh</strong></div>
-              <div><span>CO₂ evitata</span><strong>18 kg</strong></div>
+
+            <div class="energy-bars">
+              <i class="b1"></i>
+              <i class="b2"></i>
+              <i class="b3"></i>
+              <i class="b4"></i>
+              <i class="b5"></i>
+              <i class="b6"></i>
+              <i class="b7"></i>
+              <i class="b8"></i>
+              <i class="b9"></i>
+              <i class="b10"></i>
+              <i class="b11"></i>
+              <i class="b12"></i>
             </div>
           </div>
-          <div class="floating-chip chip-a">Batterie di accumulo</div>
-          <div class="floating-chip chip-b">Colonnine EV</div>
-          <div class="floating-chip chip-c">Monitoraggio smart</div>
         </div>
+
       </div>
     </section>
 
-    <section class="logo-strip" aria-label="Servizi principali">
-      <div class="container strip-inner">
-        <span>Fotovoltaico</span>
-        <span>Accumulo</span>
-        <span>Inverter</span>
-        <span>Colonnine</span>
-        <span>Installazione</span>
-        <span>Collaudo</span>
-      </div>
-    </section>
-
-    <section id="fotovoltaico" class="section-pad">
+    <section id="fotovoltaico">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow"><span></span> Il cuore dell'offerta</p>
+
+        <div class="section-head">
+          <div class="section-label">Il cuore dell’offerta</div>
           <h2>Fotovoltaico evoluto, progettato per funzionare davvero.</h2>
           <p>
-            FLORA accompagna privati e aziende nella realizzazione di impianti fotovoltaici completi, efficienti e pronti all'uso. Dallo studio tecnico alla messa in funzione, fino al supporto nel tempo.
+            FLORA accompagna privati e aziende nella realizzazione di impianti fotovoltaici
+            completi, efficienti e pronti all’uso. Dallo studio tecnico alla messa in funzione,
+            fino al supporto nel tempo.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature-card large reveal">
+        <div class="solar-grid">
+
+          <article class="solar-card featured">
             <div class="icon">☀</div>
             <h3>Impianti fotovoltaici chiavi in mano</h3>
             <p>
-              Studio tecnico, componenti, installazione, collaudo e supporto. Un unico interlocutore per portare l'energia solare dentro casa o in azienda.
+              Studio tecnico, componenti, installazione, collaudo e supporto.
+              Un unico interlocutore per portare l’energia solare dentro casa o in azienda.
             </p>
           </article>
-          <article class="feature-card reveal delay-1">
+
+          <article class="solar-card">
             <div class="icon">▣</div>
             <h3>Solo fornitura</h3>
             <p>
-              Pannelli, inverter, batterie, colonnine, quadri elettrici, sistemi di monitoraggio, strutture e tutto il necessario per rendere l'impianto completo e funzionante.
+              Pannelli, inverter, batterie, colonnine, quadri elettrici, sistemi di monitoraggio,
+              strutture e tutto il necessario per rendere l’impianto completo e funzionante.
             </p>
           </article>
-          <article class="feature-card reveal delay-2">
+
+          <article class="solar-card">
             <div class="icon">⌁</div>
             <h3>Progettazione</h3>
             <p>
-              Analisi consumi, dimensionamento, valutazione tecnica e scelta della configurazione più efficiente per abitazioni e aziende.
+              Analisi consumi, dimensionamento, valutazione tecnica e scelta della configurazione
+              più efficiente per abitazioni e aziende.
             </p>
           </article>
-          <article class="feature-card reveal delay-3">
+
+          <article class="solar-card">
             <div class="icon">⚡</div>
             <h3>Installazione e collaudo</h3>
             <p>
-              Squadre operative, montaggio, collegamenti, configurazione dell'impianto, collaudo, messa in funzione e assistenza nella fase di avvio.
+              Squadre operative, montaggio, collegamenti, configurazione dell’impianto e assistenza
+              nella fase di avvio.
             </p>
           </article>
+
+          <article class="solar-card">
+            <div class="icon">🔋</div>
+            <h3>Accumulo e monitoraggio</h3>
+            <p>
+              Batterie di accumulo, sistemi intelligenti di controllo e lettura delle performance
+              dell’impianto nel tempo.
+            </p>
+          </article>
+
         </div>
+
       </div>
     </section>
 
-    <section class="split-section section-pad">
-      <div class="container split-grid">
-        <div class="image-panel reveal">
-          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="Pannelli fotovoltaici al tramonto" />
-          <div class="glass-badge">
-            <span>Energia pulita</span>
-            <strong>per casa e azienda</strong>
-          </div>
-        </div>
-        <div class="split-copy reveal delay-1">
-          <p class="eyebrow"><span></span> Metodo FLORA</p>
-          <h2>Dal sopralluogo alla produzione: ogni fase è coordinata.</h2>
-          <p>
-            Un impianto fotovoltaico non è solo un insieme di pannelli: è un sistema composto da progettazione, componenti, installazione, configurazione e controllo delle performance. FLORA mette insieme tutte queste parti in un percorso semplice e concreto.
-          </p>
-          <ul class="check-list">
-            <li>Analisi preliminare dei consumi e dell'edificio.</li>
-            <li>Scelta della soluzione più adatta: pannelli, inverter, accumulo e monitoraggio.</li>
-            <li>Installazione, collaudo e messa in funzione dell'impianto.</li>
-            <li>Assistenza e verifica delle performance nel tempo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="preventivo" class="quote-section section-pad">
-      <div class="container quote-grid">
-        <div class="quote-copy reveal">
-          <p class="eyebrow"><span></span> Preventivo rapido</p>
-          <h2>Richiedi una stima gratuita in meno di un minuto.</h2>
-          <p>
-            Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA. È veloce, senza impegno e totalmente gratuito.
-          </p>
-          <div class="quote-points">
-            <div><strong>01</strong><span>Inserisci i dati principali</span></div>
-            <div><strong>02</strong><span>Genera il messaggio automatico</span></div>
-            <div><strong>03</strong><span>Invia la richiesta su WhatsApp</span></div>
-          </div>
-        </div>
-
-        <form class="quote-form reveal delay-1" id="quoteForm">
-          <div class="form-row">
-            <label for="clientType">Tipo cliente</label>
-            <select id="clientType" required>
-              <option value="">Seleziona</option>
-              <option value="Privato">Privato</option>
-              <option value="Azienda">Azienda</option>
-            </select>
-          </div>
-
-          <div class="form-two">
-            <div class="form-row">
-              <label for="firstName">Nome</label>
-              <input id="firstName" type="text" placeholder="Mario" required />
-            </div>
-            <div class="form-row">
-              <label for="lastName">Cognome</label>
-              <input id="lastName" type="text" placeholder="Rossi" required />
-            </div>
-          </div>
-
-          <div class="form-two">
-            <div class="form-row">
-              <label for="phone">Telefono</label>
-              <input id="phone" type="tel" placeholder="333 000 0000" required />
-            </div>
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input id="email" type="email" placeholder="nome@email.it" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="buildingType">Tipologia edificio</label>
-            <select id="buildingType" required>
-              <option value="">Seleziona</option>
-              <option value="Casa indipendente">Casa indipendente</option>
-              <option value="Appartamento">Appartamento</option>
-              <option value="Pensilina parcheggio">Pensilina parcheggio</option>
-              <option value="Azienda / capannone">Azienda / capannone</option>
-              <option value="Altro">Altro</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="annualConsumption">Consumo energetico annuale medio <span>opzionale</span></label>
-            <input id="annualConsumption" type="text" placeholder="Es. 4.500 kWh/anno" />
-          </div>
-
-          <div class="form-row">
-            <label for="battery">Batterie di accumulo</label>
-            <select id="battery" required>
-              <option value="">Seleziona</option>
-              <option value="Sì, desidero valutarle">Sì, desidero valutarle</option>
-              <option value="No">No</option>
-              <option value="Non so, vorrei un consiglio">Non so, vorrei un consiglio</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="address">Indirizzo di installazione</label>
-            <input id="address" type="text" placeholder="Via, città, provincia" required />
-          </div>
-
-          <button type="submit" class="btn btn-primary form-submit">Apri WhatsApp e invia richiesta</button>
-          <p class="privacy-note">La richiesta viene preparata sul tuo dispositivo e inviata solo dopo conferma su WhatsApp.</p>
-        </form>
-      </div>
-    </section>
-
-    <section id="servizi" class="section-pad services-section">
+    <section>
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow"><span></span> Ecosistema FLORA</p>
-          <h2>Oltre il fotovoltaico: tutti i servizi per energia, casa e impresa.</h2>
+
+        <div class="section-head center">
+          <div class="section-label">Metodo operativo</div>
+          <h2>Dal primo contatto all’impianto attivo.</h2>
           <p>
-            FLORA integra competenze tecniche, operative e manutentive per offrire un servizio completo su immobili, impianti e spazi esterni.
+            Un processo chiaro, veloce e ordinato per trasformare una richiesta in una soluzione energetica concreta.
+          </p>
+        </div>
+
+        <div class="process">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Analisi iniziale</h3>
+            <p>Raccogliamo dati, consumi, tipologia di edificio e obiettivo energetico del cliente.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Studio tecnico</h3>
+            <p>Valutiamo configurazione, potenza, componenti, esposizione, accumulo e colonnine.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Realizzazione</h3>
+            <p>Organizziamo fornitura, montaggio, collegamenti, configurazione e messa in funzione.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Supporto</h3>
+            <p>Seguiamo il cliente anche dopo l’installazione con monitoraggio e assistenza.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="quote-section" id="preventivo">
+      <div class="container">
+
+        <div class="quote-box">
+
+          <div class="quote-info">
+            <div class="section-label">Preventivo gratuito</div>
+            <h2>Raccontaci il tuo progetto energetico.</h2>
+            <p>
+              Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA.
+              È veloce, senza impegno e totalmente gratuito.
+            </p>
+
+            <div class="quote-pills">
+              <span>Risposta rapida</span>
+              <span>Nessun impegno</span>
+              <span>Privati e aziende</span>
+              <span>Fotovoltaico e accumulo</span>
+            </div>
+          </div>
+
+          <form id="quoteForm">
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="tipoCliente">Sei un privato o un’azienda?</label>
+                <select id="tipoCliente" required>
+                  <option value="">Seleziona</option>
+                  <option value="Privato">Privato</option>
+                  <option value="Azienda">Azienda</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="nome">Nome e cognome</label>
+                <input type="text" id="nome" placeholder="Mario Rossi" required />
+              </div>
+
+              <div class="field">
+                <label for="telefono">Contatto telefonico</label>
+                <input type="tel" id="telefono" placeholder="+39 333 000 0000" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="nome@email.it" required />
+              </div>
+
+              <div class="field">
+                <label for="edificio">Tipologia edificio</label>
+                <select id="edificio" required>
+                  <option value="">Seleziona</option>
+                  <option value="Casa indipendente">Casa indipendente</option>
+                  <option value="Appartamento">Appartamento</option>
+                  <option value="Azienda / capannone">Azienda / capannone</option>
+                  <option value="Pensilina parcheggio">Pensilina parcheggio</option>
+                  <option value="Altro">Altro</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="consumo">Consumo energetico annuale medio</label>
+                <input type="text" id="consumo" placeholder="Es. 4.500 kWh, opzionale" />
+              </div>
+
+              <div class="field">
+                <label for="batterie">Batterie di accumulo</label>
+                <select id="batterie" required>
+                  <option value="">Seleziona</option>
+                  <option value="Sì, vorrei valutarle">Sì, vorrei valutarle</option>
+                  <option value="No">No</option>
+                  <option value="Non lo so, vorrei un consiglio">Non lo so, vorrei un consiglio</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="servizio">Servizio richiesto</label>
+                <select id="servizio" required>
+                  <option value="">Seleziona</option>
+                  <option value="Impianto fotovoltaico chiavi in mano">Impianto fotovoltaico chiavi in mano</option>
+                  <option value="Solo fornitura componenti">Solo fornitura componenti</option>
+                  <option value="Progettazione">Progettazione</option>
+                  <option value="Installazione, collaudo e messa in funzione">Installazione, collaudo e messa in funzione</option>
+                  <option value="Colonnine di ricarica">Colonnine di ricarica</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="indirizzo">Indirizzo di installazione</label>
+                <input type="text" id="indirizzo" placeholder="Comune, via, provincia" required />
+              </div>
+
+              <div class="field full">
+                <label for="note">Note aggiuntive</label>
+                <textarea id="note" placeholder="Es. tetto piano, tetto a falda, presenza contatore, richiesta accumulo, colonnina, ecc."></textarea>
+              </div>
+
+            </div>
+
+            <p class="form-note">
+              Cliccando sul pulsante verrà generato un messaggio WhatsApp con i dati inseriti.
+              Potrai controllarlo prima di inviarlo.
+            </p>
+
+            <button type="submit" class="form-submit">Invia richiesta su WhatsApp</button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="servizi">
+      <div class="container">
+
+        <div class="section-head center">
+          <div class="section-label">Oltre il fotovoltaico</div>
+          <h2>Un ecosistema di servizi per casa, impresa ed energia.</h2>
+          <p>
+            FLORA integra competenze tecniche, operative e impiantistiche per offrire soluzioni complete,
+            concrete e coordinate.
           </p>
         </div>
 
         <div class="services-grid">
-          <article class="service-card reveal"><span>01</span><h3>Edilizia e ristrutturazioni</h3><p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p></article>
-          <article class="service-card reveal"><span>02</span><h3>Elettrico domestico</h3><p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p></article>
-          <article class="service-card reveal"><span>03</span><h3>Riscaldamento e raffrescamento</h3><p>Condizionatori, caldaie, solare termico e sistemi di comfort.</p></article>
-          <article class="service-card reveal"><span>04</span><h3>Ripristino e verde</h3><p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p></article>
-          <article class="service-card reveal"><span>05</span><h3>Microeolico</h3><p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell'offerta.</p></article>
-          <article class="service-card reveal"><span>06</span><h3>Microcar elettriche</h3><p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p></article>
-          <article class="service-card reveal"><span>07</span><h3>Monitoraggio e assistenza</h3><p>Supporto, verifica performance e lettura dell'impianto nel tempo.</p></article>
-          <article class="service-card reveal"><span>08</span><h3>Colonnine di ricarica</h3><p>Integrazione con impianti fotovoltaici o installazione indipendente.</p></article>
+
+          <article class="service-card">
+            <div class="small-icon">🏗️</div>
+            <h3>Edilizia e ristrutturazioni</h3>
+            <p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">💡</div>
+            <h3>Elettrico domestico</h3>
+            <p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">🌡️</div>
+            <h3>Riscaldamento e raffrescamento</h3>
+            <p>Condizionatori, caldaie, solare termico e sistemi per il comfort abitativo.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">🌿</div>
+            <h3>Ripristino e verde</h3>
+            <p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">🌬️</div>
+            <h3>Microeolico</h3>
+            <p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell’offerta.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">🚗</div>
+            <h3>Microcar elettriche</h3>
+            <p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">📊</div>
+            <h3>Monitoraggio e assistenza</h3>
+            <p>Supporto, verifica performance e lettura dell’impianto nel tempo.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="small-icon">🔌</div>
+            <h3>Colonnine di ricarica</h3>
+            <p>Integrazione con impianti fotovoltaici o installazione indipendente.</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="banner">
+          <div class="banner-content">
+            <div class="section-label">Energia, tecnologia, territorio</div>
+            <h2>Un solo partner per costruire il tuo sistema energetico.</h2>
+            <p>
+              Dal fotovoltaico alle colonnine, dagli impianti elettrici alla manutenzione:
+              FLORA lavora per rendere più efficiente, moderna e sostenibile ogni abitazione o azienda.
+            </p>
+            <a class="btn btn-primary" href="#preventivo">Inizia con un preventivo gratuito</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="container cta-inner reveal">
-        <div>
-          <p class="eyebrow"><span></span> Energia su misura</p>
-          <h2>Parliamo del tuo prossimo impianto.</h2>
+    <section class="contacts" id="contatti">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label">Contatti</div>
+          <h2>Parla con FLORA.</h2>
+          <p>
+            Siamo a disposizione per valutare impianti fotovoltaici, forniture, installazioni,
+            colonnine di ricarica e servizi tecnici integrati.
+          </p>
         </div>
-        <a class="btn btn-dark" href="#preventivo">Calcola una prima richiesta</a>
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+            <h3>Informazioni</h3>
+
+            <div class="contact-list">
+              <a class="contact-item" href="https://wa.me/393249581949" target="_blank">
+                <span>💬</span>
+                <span>WhatsApp: 324 958 1949</span>
+              </a>
+
+              <a class="contact-item" href="mailto:costruzioni@florambiente.it">
+                <span>✉️</span>
+                <span>costruzioni@florambiente.it</span>
+              </a>
+
+              <div class="contact-item">
+                <span>📍</span>
+                <span>Viterbo, Strada Cassia Nord Km 87.700</span>
+              </div>
+
+              <div class="contact-item">
+                <span>🧾</span>
+                <span>Partita IVA 02513380564</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Richiesta rapida</h3>
+            <p style="color:var(--muted);line-height:1.75;margin-bottom:24px;">
+              Preferisci scriverci subito? Apri WhatsApp e inviaci una richiesta.
+              Ti risponderemo per raccogliere le informazioni principali e valutare la soluzione più adatta.
+            </p>
+
+            <a class="btn btn-primary" href="https://wa.me/393249581949?text=Ciao%20FLORA%2C%20vorrei%20ricevere%20informazioni%20per%20un%20impianto%20fotovoltaico." target="_blank">
+              Contattaci su WhatsApp
+            </a>
+          </div>
+
+        </div>
+
       </div>
     </section>
+
   </main>
 
-  <footer id="contatti" class="site-footer section-pad">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="brand"><span class="brand-mark"></span><span>FLORA</span></a>
-        <p>
-          Hub per energie rinnovabili, fotovoltaico, impianti, edilizia, assistenza e soluzioni integrate per privati e aziende.
-        </p>
-      </div>
-      <div class="footer-contact">
-        <h3>Contatti</h3>
-        <a class="contact-link whatsapp" href="https://wa.me/393249581949" target="_blank" rel="noopener">☘ WhatsApp: 324 958 1949</a>
-        <a class="contact-link" href="mailto:costruzioni@florambiente.it">costruzioni@florambiente.it</a>
-        <p>Viterbo, Strada Cassia Nord Km 87.700</p>
-        <p>Partita IVA 02513380564</p>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> FLORA. Tutti i diritti riservati.</span>
-      <a href="#top">Torna su ↑</a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> FLORA. Tutti i diritti riservati.</div>
+      <div>Hub energie rinnovabili | Fotovoltaico, edilizia, impianti e mobilità elettrica.</div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <a class="floating-whatsapp" href="https://wa.me/393249581949" target="_blank" aria-label="Contatta FLORA su WhatsApp">
+    ☎
+  </a>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const quoteForm = document.getElementById("quoteForm");
+
+    quoteForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const tipoCliente = document.getElementById("tipoCliente").value;
+      const nome = document.getElementById("nome").value.trim();
+      const telefono = document.getElementById("telefono").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const edificio = document.getElementById("edificio").value;
+      const consumo = document.getElementById("consumo").value.trim() || "Non indicato";
+      const batterie = document.getElementById("batterie").value;
+      const servizio = document.getElementById("servizio").value;
+      const indirizzo = document.getElementById("indirizzo").value.trim();
+      const note = document.getElementById("note").value.trim() || "Nessuna nota aggiuntiva";
+
+      const message =
+`Ciao FLORA, vorrei richiedere un preventivo gratuito e senza impegno.
+
+DATI CLIENTE
+- Tipologia cliente: ${tipoCliente}
+- Nome e cognome: ${nome}
+- Telefono: ${telefono}
+- Email: ${email}
+
+RICHIESTA
+- Servizio richiesto: ${servizio}
+- Tipologia edificio: ${edificio}
+- Consumo energetico annuale medio: ${consumo}
+- Batterie di accumulo: ${batterie}
+- Indirizzo di installazione: ${indirizzo}
+
+NOTE
+${note}
+
+Grazie.`;
+
+      const phoneNumber = "393249581949";
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank");
+    });
+  </script>
+
 </body>
 </html>
