@@ -1,40 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FLORA | Hub Energie Rinnovabili</title>
+  <title>FLORA | Fotovoltaico, Energia e Soluzioni Integrate</title>
 
-  <meta name="description" content="FLORA è il punto di incontro per fotovoltaico, energia rinnovabile, impianti elettrici, edilizia, colonnine di ricarica e soluzioni energetiche integrate." />
+  <meta name="description" content="FLORA realizza impianti fotovoltaici chiavi in mano, fornitura componenti, progettazione, installazione, collaudo, colonnine di ricarica e servizi integrati per casa e azienda." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #050706;
-      --bg-soft: #09110d;
-      --bg-deep: #020403;
-
-      --green: #8FEA5B;
-      --green-soft: #B9F27A;
-      --green-deep: #123D2A;
-
-      --petrol: #0E3028;
-      --cream: #F4F1E8;
-      --gold: #D8B46A;
-
+      --green: #5fd13d;
+      --green-dark: #1f7a3a;
+      --green-soft: #e9f8df;
+      --lime: #b7ef63;
+      --blue: #dff2ff;
+      --sky: #edf8ff;
+      --sand: #f7f0e3;
+      --cream: #fbfaf5;
       --white: #ffffff;
-      --text: #E6EBE2;
-      --muted: #A8B4A6;
-      --line: rgba(255, 255, 255, 0.13);
-
-      --shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
+      --text: #172117;
+      --muted: #61705f;
+      --line: rgba(25, 52, 30, 0.13);
+      --card: rgba(255, 255, 255, 0.76);
+      --shadow: 0 24px 70px rgba(30, 64, 38, 0.13);
+      --shadow-strong: 0 34px 95px rgba(31, 80, 42, 0.18);
+      --radius-xl: 38px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
       --max: 1180px;
     }
 
@@ -49,13 +47,12 @@
     }
 
     body {
-      font-family: "Plus Jakarta Sans", sans-serif;
-      background:
-        radial-gradient(circle at 12% 6%, rgba(143, 234, 91, 0.16), transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(216, 180, 106, 0.12), transparent 28%),
-        radial-gradient(circle at 50% 100%, rgba(14, 48, 40, 0.7), transparent 38%),
-        linear-gradient(180deg, #050706 0%, #07100c 48%, #030504 100%);
+      font-family: "Instrument Sans", sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(183, 239, 99, 0.32), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(157, 219, 255, 0.46), transparent 27%),
+        linear-gradient(180deg, #f8fbf2 0%, #f3f8ef 38%, #fbfaf5 100%);
       overflow-x: hidden;
     }
 
@@ -77,14 +74,33 @@
     h1,
     h2,
     h3 {
-      font-family: "Outfit", sans-serif;
-      color: var(--cream);
-      letter-spacing: -0.04em;
+      color: var(--text);
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7.4vw, 94px);
+      max-width: 850px;
+      margin-bottom: 26px;
+    }
+
+    h2 {
+      font-size: clamp(36px, 5.2vw, 66px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    p {
+      line-height: 1.75;
     }
 
     .site-header {
       position: fixed;
-      top: 16px;
+      top: 18px;
       left: 0;
       width: 100%;
       z-index: 1000;
@@ -98,41 +114,41 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 22px;
       padding: 12px 14px 12px 18px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(31, 122, 58, 0.12);
       border-radius: 999px;
-      background: rgba(5, 8, 5, 0.76);
+      background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(22px);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 55px rgba(25, 68, 35, 0.11);
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: "Outfit", sans-serif;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.08em;
-      color: var(--cream);
+      color: #17351d;
     }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
       background:
-        radial-gradient(circle at 35% 35%, #ffffff 0 4%, transparent 5%),
-        linear-gradient(135deg, var(--green-soft), var(--green-deep));
-      box-shadow: 0 0 28px rgba(143, 234, 91, 0.38);
+        radial-gradient(circle at 36% 32%, #ffffff 0 5%, transparent 6%),
+        linear-gradient(135deg, var(--lime), var(--green-dark));
+      box-shadow: 0 12px 26px rgba(95, 209, 61, 0.32);
       position: relative;
     }
 
     .logo-mark::after {
       content: "";
       position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.35);
+      inset: 9px;
+      border: 1px solid rgba(9, 54, 22, 0.35);
       border-radius: 50% 50% 50% 8px;
       transform: rotate(-35deg);
     }
@@ -141,23 +157,22 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      color: var(--muted);
+      color: #526251;
       font-size: 14px;
       font-weight: 700;
     }
 
     .nav-links a:hover {
-      color: var(--cream);
+      color: var(--green-dark);
     }
 
     .nav-cta {
       padding: 11px 18px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--green-soft), var(--green));
-      color: #071007;
+      background: var(--text);
+      color: white !important;
       font-weight: 800;
-      font-size: 14px;
-      box-shadow: 0 0 28px rgba(143, 234, 91, 0.24);
+      box-shadow: 0 14px 30px rgba(23, 33, 23, 0.16);
     }
 
     .menu-btn {
@@ -165,8 +180,8 @@
       width: 42px;
       height: 42px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.06);
-      color: white;
+      background: var(--white);
+      color: var(--text);
       border-radius: 50%;
       font-size: 22px;
       cursor: pointer;
@@ -174,221 +189,244 @@
 
     .hero {
       position: relative;
+      padding: 154px 0 88px;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 150px 0 80px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 48px;
-      align-items: center;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(248, 251, 242, 0.96) 0%, rgba(248, 251, 242, 0.78) 42%, rgba(248, 251, 242, 0.18) 100%),
+        url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1800&q=85") center right/cover;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 210px;
+      background: linear-gradient(180deg, transparent, #f3f8ef);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 780px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 13px;
-      border: 1px solid rgba(143, 234, 91, 0.28);
+      padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(143, 234, 91, 0.075);
-      color: var(--green-soft);
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(31, 122, 58, 0.15);
+      color: var(--green-dark);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.11em;
       margin-bottom: 24px;
+      box-shadow: 0 12px 30px rgba(31, 122, 58, 0.08);
     }
 
     .eyebrow span {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       background: var(--green);
       border-radius: 50%;
-      box-shadow: 0 0 18px var(--green);
+      box-shadow: 0 0 0 7px rgba(95, 209, 61, 0.15);
     }
 
-    h1 {
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: 0.92;
-      margin-bottom: 28px;
+    .hero h1 span {
+      color: var(--green-dark);
     }
 
-    .gradient-text {
-      background: linear-gradient(90deg, var(--cream), var(--green-soft), var(--gold));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      font-size: 19px;
-      line-height: 1.75;
-      color: #dfe6dc;
-      max-width: 650px;
+    .hero-text {
+      font-size: 20px;
+      color: #40503f;
+      max-width: 680px;
       margin-bottom: 34px;
     }
 
     .hero-actions {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
       gap: 14px;
+      margin-bottom: 34px;
     }
 
     .btn {
+      min-height: 54px;
+      padding: 0 24px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
       border-radius: 999px;
-      font-size: 15px;
-      font-weight: 800;
       border: 1px solid transparent;
+      font-weight: 900;
+      font-size: 15px;
       cursor: pointer;
       transition: 0.25s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--green-soft), var(--green));
-      color: #061006;
-      box-shadow: 0 0 34px rgba(143, 234, 91, 0.28);
+      background: linear-gradient(135deg, var(--green), var(--lime));
+      color: #0d220f;
+      box-shadow: 0 18px 36px rgba(95, 209, 61, 0.28);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 46px rgba(143, 234, 91, 0.42);
+      transform: translateY(-3px);
+      box-shadow: 0 24px 46px rgba(95, 209, 61, 0.36);
     }
 
-    .btn-ghost {
-      background: rgba(244, 241, 232, 0.06);
-      color: var(--cream);
-      border-color: rgba(244, 241, 232, 0.16);
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.74);
+      border-color: rgba(25, 52, 30, 0.13);
+      color: var(--text);
+      box-shadow: 0 14px 34px rgba(31, 80, 42, 0.08);
     }
 
-    .btn-ghost:hover {
-      background: rgba(244, 241, 232, 0.12);
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: white;
     }
 
-    .visual-card {
-      position: relative;
-      min-height: 620px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 46px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #111;
-    }
-
-    .visual-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.78)),
-        url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1300&q=85") center/cover;
-    }
-
-    .visual-overlay {
-      position: absolute;
-      inset: auto 22px 22px 22px;
-      padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 28px;
-      background: rgba(6, 10, 6, 0.72);
-      backdrop-filter: blur(20px);
-    }
-
-    .energy-row {
+    .trust-row {
       display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .energy-row span {
-      color: var(--muted);
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      color: #42523f;
       font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-weight: 750;
+      box-shadow: 0 12px 28px rgba(31, 80, 42, 0.06);
     }
 
-    .energy-row strong {
-      color: var(--green-soft);
-      font-size: 34px;
-      font-family: "Outfit", sans-serif;
+    .trust-pill i {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
     }
-
-    .energy-bars {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 6px;
-      height: 90px;
-      align-items: end;
-    }
-
-    .energy-bars i {
-      display: block;
-      border-radius: 999px 999px 6px 6px;
-      background: linear-gradient(180deg, var(--green-soft), rgba(143, 234, 91, 0.16));
-      box-shadow: 0 0 20px rgba(143, 234, 91, 0.22);
-    }
-
-    .b1 { height: 25%; }
-    .b2 { height: 40%; }
-    .b3 { height: 65%; }
-    .b4 { height: 78%; }
-    .b5 { height: 48%; }
-    .b6 { height: 88%; }
-    .b7 { height: 72%; }
-    .b8 { height: 92%; }
-    .b9 { height: 67%; }
-    .b10 { height: 55%; }
-    .b11 { height: 42%; }
-    .b12 { height: 70%; }
 
     section {
-      padding: 105px 0;
+      padding: 104px 0;
       position: relative;
     }
 
     .section-head {
-      max-width: 760px;
-      margin-bottom: 44px;
+      max-width: 780px;
+      margin-bottom: 46px;
     }
 
     .section-head.center {
+      text-align: center;
       margin-left: auto;
       margin-right: auto;
-      text-align: center;
     }
 
     .section-label {
-      color: var(--gold);
+      color: var(--green-dark);
       text-transform: uppercase;
-      font-weight: 900;
-      font-size: 13px;
+      font-weight: 950;
       letter-spacing: 0.12em;
+      font-size: 13px;
       margin-bottom: 14px;
-    }
-
-    h2 {
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1;
-      margin-bottom: 18px;
     }
 
     .section-head p {
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.75;
+    }
+
+    .intro-panel {
+      margin-top: -48px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .intro-card {
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .intro-card h2 {
+      font-size: clamp(34px, 4.5vw, 56px);
+    }
+
+    .intro-card p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 760px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .mini-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #40503f;
+      font-weight: 700;
+    }
+
+    .mini-item span {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      flex: 0 0 auto;
+    }
+
+    .intro-image {
+      min-height: 360px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.2)),
+        url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85") center/cover;
+    }
+
+    .solar-section {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(233,248,223,0.78)),
+        radial-gradient(circle at 10% 20%, rgba(183, 239, 99, 0.24), transparent 30%);
     }
 
     .solar-grid {
@@ -398,15 +436,20 @@
     }
 
     .solar-card {
-      min-height: 360px;
-      border: 1px solid rgba(244, 241, 232, 0.14);
-      border-radius: 30px;
       position: relative;
+      min-height: 360px;
+      border-radius: 34px;
       overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      background: white;
       isolation: isolate;
-      background: #111;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
       transition: 0.35s ease;
+    }
+
+    .solar-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-strong);
     }
 
     .solar-card::before {
@@ -417,44 +460,36 @@
       background-size: cover;
       transform: scale(1.02);
       transition: 0.45s ease;
-      z-index: -3;
-    }
-
-    .solar-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.76)),
-        radial-gradient(circle at 20% 10%, rgba(143, 234, 91, 0.22), transparent 35%);
       z-index: -2;
-    }
-
-    .solar-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(143, 234, 91, 0.42);
-      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.45);
     }
 
     .solar-card:hover::before {
       transform: scale(1.08);
     }
 
+    .solar-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5,20,8,0.02), rgba(5,20,8,0.72));
+      z-index: -1;
+    }
+
     .solar-main {
       grid-column: span 6;
-      min-height: 430px;
+      min-height: 460px;
     }
 
     .solar-supply,
     .solar-design {
       grid-column: span 3;
-      min-height: 430px;
+      min-height: 460px;
     }
 
     .solar-install,
     .solar-storage {
       grid-column: span 6;
-      min-height: 330px;
+      min-height: 340px;
     }
 
     .solar-main::before {
@@ -479,48 +514,54 @@
 
     .solar-content {
       position: absolute;
-      inset: auto 24px 24px 24px;
+      inset: auto 20px 20px 20px;
       padding: 24px;
       border-radius: 24px;
-      background: rgba(4, 8, 6, 0.68);
+      color: white;
+      background: rgba(255, 255, 255, 0.14);
       backdrop-filter: blur(18px);
-      border: 1px solid rgba(244, 241, 232, 0.14);
-    }
-
-    .card-kicker {
-      display: inline-block;
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .icon {
       width: 48px;
       height: 48px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--green-dark);
       display: grid;
       place-items: center;
-      border-radius: 16px;
-      background: rgba(143, 234, 91, 0.13);
-      border: 1px solid rgba(143, 234, 91, 0.26);
-      color: var(--green-soft);
       font-size: 24px;
       margin-bottom: 18px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+    }
+
+    .card-kicker {
+      display: inline-block;
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
     }
 
     .solar-card h3 {
+      color: white;
       font-size: 25px;
-      line-height: 1.1;
       margin-bottom: 12px;
-      color: var(--cream);
     }
 
     .solar-card p {
-      color: #d9e0d4;
-      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
       font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .process-section {
+      background:
+        linear-gradient(180deg, rgba(233,248,223,0.78), rgba(251,250,245,0.98)),
+        radial-gradient(circle at 82% 10%, rgba(157, 219, 255, 0.38), transparent 28%);
     }
 
     .process {
@@ -530,80 +571,83 @@
     }
 
     .step {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.045);
-      border-radius: var(--radius-lg);
-      padding: 26px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
       transition: 0.25s ease;
     }
 
     .step:hover {
       transform: translateY(-5px);
-      border-color: rgba(216, 180, 106, 0.35);
-      background: rgba(255, 255, 255, 0.07);
+      background: white;
+      box-shadow: var(--shadow);
     }
 
     .step-num {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--green-soft));
-      color: #061006;
+      background: linear-gradient(135deg, var(--green), var(--lime));
+      color: #0b250d;
       display: grid;
       place-items: center;
-      font-weight: 900;
+      font-weight: 950;
       margin-bottom: 24px;
-      box-shadow: 0 0 28px rgba(216, 180, 106, 0.26);
+      box-shadow: 0 14px 28px rgba(95, 209, 61, 0.24);
     }
 
     .step h3 {
-      font-size: 21px;
+      font-size: 22px;
       margin-bottom: 12px;
     }
 
     .step p {
       color: var(--muted);
-      line-height: 1.7;
       font-size: 15px;
     }
 
     .quote-section {
-      padding-top: 60px;
+      background:
+        linear-gradient(180deg, #fbfaf5, #eef8e8 100%);
     }
 
     .quote-box {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
-      gap: 28px;
-      align-items: stretch;
-      border: 1px solid rgba(216, 180, 106, 0.24);
-      border-radius: 42px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(143, 234, 91, 0.16), transparent 35%),
-        rgba(255, 255, 255, 0.045);
+      gap: 0;
       overflow: hidden;
-      box-shadow: var(--shadow);
+      border-radius: 42px;
+      border: 1px solid rgba(31, 122, 58, 0.13);
+      background: white;
+      box-shadow: var(--shadow-strong);
     }
 
     .quote-info {
-      padding: 42px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.72)),
-        url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1100&q=85") center/cover;
+      min-height: 650px;
+      padding: 44px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      min-height: 620px;
+      background:
+        linear-gradient(180deg, rgba(8,48,18,0.18), rgba(8,48,18,0.78)),
+        url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=85") center/cover;
+      color: white;
+    }
+
+    .quote-info .section-label {
+      color: var(--lime);
     }
 
     .quote-info h2 {
-      font-size: clamp(34px, 4vw, 58px);
+      color: white;
+      font-size: clamp(34px, 4.2vw, 58px);
     }
 
     .quote-info p {
-      color: #e8eee4;
+      color: rgba(255,255,255,0.86);
       font-size: 17px;
-      line-height: 1.7;
       margin-top: 12px;
     }
 
@@ -615,16 +659,21 @@
     }
 
     .quote-pills span {
-      padding: 9px 12px;
+      padding: 9px 13px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: white;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 750;
+      backdrop-filter: blur(12px);
     }
 
     form {
       padding: 42px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(183, 239, 99, 0.18), transparent 30%),
+        white;
     }
 
     .form-grid {
@@ -644,9 +693,9 @@
     }
 
     label {
-      color: #eef5ea;
+      color: #263326;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     input,
@@ -655,9 +704,9 @@
       width: 100%;
       min-height: 52px;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(0, 0, 0, 0.28);
-      color: white;
+      border: 1px solid rgba(31, 122, 58, 0.16);
+      background: #f8fbf5;
+      color: var(--text);
       padding: 0 15px;
       font-family: inherit;
       outline: none;
@@ -673,19 +722,14 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--green-soft);
-      box-shadow: 0 0 0 4px rgba(143, 234, 91, 0.09);
-    }
-
-    select option {
-      background: #0b120d;
-      color: white;
+      border-color: var(--green);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(95, 209, 61, 0.13);
     }
 
     .form-note {
-      font-size: 13px;
       color: var(--muted);
-      line-height: 1.6;
+      font-size: 13px;
       margin: 18px 0;
     }
 
@@ -694,16 +738,23 @@
       min-height: 58px;
       border: none;
       border-radius: 18px;
-      background: linear-gradient(135deg, var(--green-soft), var(--green));
-      color: #061006;
+      background: linear-gradient(135deg, var(--green), var(--lime));
+      color: #0b250d;
       font-size: 16px;
-      font-weight: 900;
+      font-weight: 950;
       cursor: pointer;
-      box-shadow: 0 0 35px rgba(143, 234, 91, 0.28);
+      box-shadow: 0 16px 34px rgba(95, 209, 61, 0.25);
+      transition: 0.25s ease;
     }
 
     .form-submit:hover {
-      background: linear-gradient(135deg, #d3ff9c, var(--green-soft));
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(95, 209, 61, 0.32);
+    }
+
+    .services-section {
+      background:
+        linear-gradient(180deg, #eef8e8 0%, #fbfaf5 100%);
     }
 
     .services-grid {
@@ -713,67 +764,75 @@
     }
 
     .service-card {
-      padding: 25px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.045);
-      min-height: 245px;
+      min-height: 255px;
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
       transition: 0.25s ease;
     }
 
     .service-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(216, 180, 106, 0.35);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      background: white;
+      box-shadow: var(--shadow);
     }
 
-    .service-card .small-icon {
-      font-size: 27px;
+    .small-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green-soft), var(--blue));
+      font-size: 25px;
       margin-bottom: 20px;
     }
 
     .service-card h3 {
-      font-size: 21px;
+      font-size: 22px;
       margin-bottom: 12px;
     }
 
     .service-card p {
       color: var(--muted);
-      line-height: 1.65;
       font-size: 14.5px;
     }
 
+    .banner-section {
+      background: var(--cream);
+      padding-top: 30px;
+    }
+
     .banner {
-      border-radius: 42px;
-      overflow: hidden;
-      min-height: 420px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.84), rgba(0,0,0,0.35)),
-        url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=85") center/cover;
+      border-radius: 44px;
+      min-height: 450px;
+      padding: 58px;
       display: flex;
       align-items: center;
-      padding: 54px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(31, 122, 58, 0.13);
+      box-shadow: var(--shadow-strong);
+      background:
+        linear-gradient(90deg, rgba(248,251,242,0.98), rgba(248,251,242,0.76), rgba(248,251,242,0.2)),
+        url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1700&q=85") center/cover;
     }
 
     .banner-content {
-      max-width: 650px;
-    }
-
-    .banner h2 {
-      font-size: clamp(36px, 5vw, 66px);
+      max-width: 680px;
     }
 
     .banner p {
+      color: var(--muted);
       font-size: 18px;
-      color: #dce5d8;
-      line-height: 1.75;
       margin: 18px 0 28px;
     }
 
     .contacts {
-      padding-bottom: 50px;
+      background:
+        linear-gradient(180deg, var(--cream), #edf7e8);
+      padding-bottom: 54px;
     }
 
     .contact-grid {
@@ -784,9 +843,10 @@
 
     .contact-card {
       padding: 34px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.045);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(31, 122, 58, 0.12);
+      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
     }
 
     .contact-card h3 {
@@ -803,24 +863,25 @@
       display: flex;
       align-items: center;
       gap: 13px;
-      color: #d7ded4;
+      color: #374735;
       line-height: 1.5;
+      font-weight: 650;
     }
 
     .contact-item span:first-child {
       width: 42px;
       height: 42px;
-      border-radius: 14px;
+      border-radius: 15px;
       display: grid;
       place-items: center;
-      background: rgba(143, 234, 91, 0.1);
-      border: 1px solid rgba(143, 234, 91, 0.2);
-      color: var(--green-soft);
+      background: var(--green-soft);
+      color: var(--green-dark);
       flex: 0 0 auto;
     }
 
     .footer {
-      border-top: 1px solid var(--line);
+      background: #edf7e8;
+      border-top: 1px solid rgba(31, 122, 58, 0.12);
       padding: 28px 0 40px;
       color: var(--muted);
       font-size: 14px;
@@ -846,7 +907,7 @@
       display: grid;
       place-items: center;
       box-shadow: 0 18px 45px rgba(37, 211, 102, 0.38);
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      border: 3px solid rgba(255, 255, 255, 0.82);
       transition: 0.25s ease;
     }
 
@@ -870,7 +931,7 @@
         top: 72px;
         flex-direction: column;
         align-items: stretch;
-        background: rgba(5, 8, 5, 0.96);
+        background: rgba(255,255,255,0.96);
         border: 1px solid var(--line);
         border-radius: 26px;
         padding: 18px;
@@ -884,14 +945,10 @@
         display: block;
       }
 
-      .hero-grid,
+      .intro-grid,
       .quote-box,
       .contact-grid {
         grid-template-columns: 1fr;
-      }
-
-      .visual-card {
-        min-height: 520px;
       }
 
       .solar-main,
@@ -902,9 +959,13 @@
         grid-column: span 6;
       }
 
-      .services-grid,
-      .process {
+      .process,
+      .services-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quote-info {
+        min-height: 460px;
       }
     }
 
@@ -914,20 +975,20 @@
       }
 
       .hero {
-        padding-top: 125px;
+        padding-top: 124px;
       }
 
       h1 {
         font-size: 48px;
       }
 
-      .hero p {
+      .hero-text {
         font-size: 17px;
       }
 
       .solar-grid,
-      .services-grid,
       .process,
+      .services-grid,
       .form-grid {
         grid-template-columns: 1fr;
       }
@@ -946,6 +1007,11 @@
         padding: 20px;
       }
 
+      section {
+        padding: 76px 0;
+      }
+
+      .intro-card,
       .quote-info,
       form,
       .banner,
@@ -953,21 +1019,12 @@
         padding: 26px;
       }
 
-      .quote-info {
-        min-height: 460px;
-      }
-
       .banner {
         min-height: 520px;
       }
 
-      .visual-card {
-        min-height: 460px;
-        border-radius: 32px;
-      }
-
-      section {
-        padding: 76px 0;
+      .footer-inner {
+        display: grid;
       }
     }
   </style>
@@ -997,71 +1054,67 @@
   <main>
 
     <section class="hero">
-      <div class="container hero-grid">
-
-        <div>
+      <div class="container">
+        <div class="hero-content">
           <div class="eyebrow"><span></span> Hub energie rinnovabili</div>
 
           <h1>
-            Il futuro dell’energia passa da
-            <span class="gradient-text">FLORA.</span>
+            Energia solare, impianti e tecnologia per costruire un futuro più efficiente con <span>FLORA.</span>
           </h1>
 
-          <p>
-            Fotovoltaico, accumulo, colonnine, impianti elettrici e soluzioni integrate.
-            Un unico punto di riferimento per portare energia pulita in casa, in azienda
-            e negli spazi urbani.
+          <p class="hero-text">
+            Progettiamo, forniamo e installiamo soluzioni fotovoltaiche per abitazioni e aziende:
+            impianti chiavi in mano, batterie di accumulo, colonnine di ricarica, monitoraggio e assistenza.
           </p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#preventivo">Richiedi preventivo gratuito</a>
-            <a class="btn btn-ghost" href="#fotovoltaico">Scopri il fotovoltaico</a>
+            <a class="btn btn-secondary" href="#fotovoltaico">Scopri le soluzioni</a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-pill"><i></i> Fotovoltaico chiavi in mano</div>
+            <div class="trust-pill"><i></i> Privati e aziende</div>
+            <div class="trust-pill"><i></i> Sopralluogo e analisi tecnica</div>
+            <div class="trust-pill"><i></i> Supporto nel tempo</div>
           </div>
         </div>
-
-        <div class="visual-card" aria-label="Impianto fotovoltaico">
-          <div class="visual-overlay">
-            <div class="energy-row">
-              <div>
-                <span>FLORA Energy System</span>
-                <strong>98%</strong>
-              </div>
-              <div style="text-align:right">
-                <span>Monitoraggio</span>
-                <strong style="font-size:22px;color:#fff;">Live</strong>
-              </div>
-            </div>
-
-            <div class="energy-bars">
-              <i class="b1"></i>
-              <i class="b2"></i>
-              <i class="b3"></i>
-              <i class="b4"></i>
-              <i class="b5"></i>
-              <i class="b6"></i>
-              <i class="b7"></i>
-              <i class="b8"></i>
-              <i class="b9"></i>
-              <i class="b10"></i>
-              <i class="b11"></i>
-              <i class="b12"></i>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <section id="fotovoltaico">
+    <section class="intro-panel">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-card">
+            <div class="section-label">Perché FLORA</div>
+            <h2>Un solo partner per energia, impianti e interventi tecnici.</h2>
+            <p>
+              FLORA nasce come punto di incontro tra energie rinnovabili, impiantistica e servizi tecnici.
+              Il fotovoltaico è il cuore dell’offerta: una soluzione concreta per ridurre i consumi,
+              aumentare l’autonomia energetica e rendere più moderno ogni edificio.
+            </p>
+
+            <div class="mini-list">
+              <div class="mini-item"><span>✓</span> Analisi dei consumi e configurazione dell’impianto più adatto.</div>
+              <div class="mini-item"><span>✓</span> Fornitura di componenti selezionati: pannelli, inverter, batterie, strutture e colonnine.</div>
+              <div class="mini-item"><span>✓</span> Installazione, collaudo, messa in funzione e assistenza post intervento.</div>
+            </div>
+          </div>
+
+          <div class="intro-image" aria-label="Pannelli fotovoltaici su tetto"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solar-section" id="fotovoltaico">
       <div class="container">
 
         <div class="section-head">
           <div class="section-label">Il cuore dell’offerta</div>
-          <h2>Fotovoltaico evoluto, progettato per funzionare davvero.</h2>
+          <h2>Fotovoltaico progettato per funzionare davvero.</h2>
           <p>
-            FLORA accompagna privati e aziende nella realizzazione di impianti fotovoltaici
-            completi, efficienti e pronti all’uso. Dallo studio tecnico alla messa in funzione,
-            fino al supporto nel tempo.
+            Ogni impianto viene pensato in base alle esigenze reali del cliente: consumi, edificio,
+            esposizione, obiettivi di risparmio, accumulo e possibilità di integrazione con mobilità elettrica.
           </p>
         </div>
 
@@ -1131,14 +1184,14 @@
       </div>
     </section>
 
-    <section>
+    <section class="process-section">
       <div class="container">
 
         <div class="section-head center">
           <div class="section-label">Metodo operativo</div>
           <h2>Dal primo contatto all’impianto attivo.</h2>
           <p>
-            Un processo chiaro, veloce e ordinato per trasformare una richiesta in una soluzione energetica concreta.
+            Un percorso semplice, ordinato e professionale per trasformare una richiesta in una soluzione energetica concreta.
           </p>
         </div>
 
@@ -1283,7 +1336,7 @@
       </div>
     </section>
 
-    <section id="servizi">
+    <section class="services-section" id="servizi">
       <div class="container">
 
         <div class="section-head center">
@@ -1350,12 +1403,12 @@
       </div>
     </section>
 
-    <section>
+    <section class="banner-section">
       <div class="container">
         <div class="banner">
           <div class="banner-content">
             <div class="section-label">Energia, tecnologia, territorio</div>
-            <h2>Un solo partner per costruire il tuo sistema energetico.</h2>
+            <h2>Un partner unico per costruire il tuo sistema energetico.</h2>
             <p>
               Dal fotovoltaico alle colonnine, dagli impianti elettrici alla manutenzione:
               FLORA lavora per rendere più efficiente, moderna e sostenibile ogni abitazione o azienda.
