@@ -1,21 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FLORA | Hub Energia e Rinnovabili</title>
+
+  <title>FLORA | Energia, Fotovoltaico e Rinnovabili</title>
 
   <style>
     :root {
-      --green: #44ff99;
-      --green-dark: #0f8f4f;
-      --blue: #3aa8ff;
-      --dark: #07110d;
-      --dark-soft: #0d1c16;
+      --bg: #050806;
+      --bg-soft: #08130d;
+      --green: #67ff9f;
+      --green-2: #1ed760;
+      --yellow: #ffd166;
+      --blue: #5cc8ff;
       --white: #ffffff;
-      --muted: #b8c7c0;
-      --glass: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.14);
+      --muted: #a7b7ad;
+      --glass: rgba(255, 255, 255, 0.075);
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: rgba(0, 0, 0, 0.45);
+      --progress: 0;
     }
 
     * {
@@ -30,7 +35,7 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--dark);
+      background: var(--bg);
       color: var(--white);
       overflow-x: hidden;
     }
@@ -40,11 +45,11 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 20%, rgba(68,255,153,0.18), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(58,168,255,0.18), transparent 28%),
-        radial-gradient(circle at 50% 90%, rgba(68,255,153,0.10), transparent 35%),
-        #07110d;
-      z-index: -3;
+        radial-gradient(circle at 50% -10%, rgba(255, 209, 102, 0.22), transparent 30%),
+        radial-gradient(circle at 15% 25%, rgba(103, 255, 159, 0.14), transparent 30%),
+        radial-gradient(circle at 85% 50%, rgba(92, 200, 255, 0.12), transparent 30%),
+        #050806;
+      z-index: -4;
     }
 
     body::after {
@@ -52,16 +57,16 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: linear-gradient(to bottom, black, transparent);
-      z-index: -2;
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 70px 70px;
+      z-index: -3;
+      pointer-events: none;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     .navbar {
@@ -69,34 +74,34 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
-      padding: 22px 7%;
+      padding: 22px 7vw;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      backdrop-filter: blur(18px);
-      background: rgba(7, 17, 13, 0.55);
+      justify-content: space-between;
+      z-index: 999;
+      backdrop-filter: blur(22px);
+      background: rgba(5, 8, 6, 0.55);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
+      font-size: 1.35rem;
     }
 
     .logo span {
       color: var(--green);
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       gap: 28px;
-      font-size: 0.9rem;
       color: var(--muted);
+      font-size: 0.9rem;
     }
 
-    .nav-links a:hover {
+    .nav a:hover {
       color: var(--green);
     }
 
@@ -104,199 +109,698 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 24px;
-      border-radius: 999px;
+      border: 1px solid transparent;
       background: linear-gradient(135deg, var(--green), var(--blue));
-      color: #06100c;
+      color: #061009;
+      padding: 14px 23px;
+      border-radius: 999px;
       font-weight: 800;
-      border: none;
       cursor: pointer;
       transition: 0.3s ease;
-      box-shadow: 0 0 30px rgba(68, 255, 153, 0.25);
+      box-shadow: 0 0 36px rgba(103, 255, 159, 0.25);
     }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 45px rgba(68, 255, 153, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(103, 255, 159, 0.4);
     }
 
     .btn.secondary {
-      background: transparent;
       color: var(--white);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border);
       box-shadow: none;
     }
 
     .hero {
       min-height: 100vh;
-      padding: 160px 7% 80px;
+      padding: 150px 7vw 80px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
       gap: 60px;
       position: relative;
     }
 
-    .badge {
+    .eyebrow {
       display: inline-flex;
-      padding: 10px 16px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
       color: var(--green);
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      font-size: 0.85rem;
-      margin-bottom: 24px;
+      border: 1px solid rgba(103, 255, 159, 0.28);
+      background: rgba(103, 255, 159, 0.08);
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 26px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 8vw, 7.8rem);
-      line-height: 0.92;
-      letter-spacing: -5px;
-      margin-bottom: 28px;
+      font-size: clamp(3.3rem, 8.5vw, 8.8rem);
+      line-height: 0.88;
+      letter-spacing: -6px;
+      margin-bottom: 30px;
     }
 
     .hero h1 span {
       color: var(--green);
-      text-shadow: 0 0 40px rgba(68,255,153,0.35);
+      text-shadow: 0 0 42px rgba(103, 255, 159, 0.35);
     }
 
     .hero p {
-      max-width: 650px;
-      font-size: 1.18rem;
-      line-height: 1.7;
+      max-width: 680px;
       color: var(--muted);
+      font-size: 1.16rem;
+      line-height: 1.75;
       margin-bottom: 34px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 14px;
     }
 
-    .energy-orb {
-      width: min(480px, 90vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
+    .hero-visual {
+      height: 620px;
       position: relative;
-      margin: auto;
-      background:
-        radial-gradient(circle, rgba(68,255,153,0.5), transparent 22%),
-        radial-gradient(circle, rgba(58,168,255,0.25), transparent 45%),
-        rgba(255,255,255,0.03);
-      box-shadow:
-        inset 0 0 70px rgba(255,255,255,0.08),
-        0 0 90px rgba(68,255,153,0.25);
-      animation: float 5s ease-in-out infinite;
+      display: grid;
+      place-items: center;
     }
 
-    .energy-orb::before,
-    .energy-orb::after {
+    .sun-hero {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #fff7c5 0%, #ffd166 24%, rgba(255, 209, 102, 0.3) 48%, transparent 70%);
+      box-shadow:
+        0 0 70px rgba(255, 209, 102, 0.45),
+        0 0 160px rgba(255, 209, 102, 0.28);
+      animation: sunPulse 4s ease-in-out infinite;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: rotate 18s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
       content: "";
       position: absolute;
-      inset: 8%;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      animation: rotate 12s linear infinite;
+      background: var(--green);
+      box-shadow: 0 0 26px var(--green);
     }
 
-    .energy-orb::after {
-      inset: 22%;
-      border-color: rgba(68,255,153,0.35);
-      animation-duration: 8s;
-      animation-direction: reverse;
+    .orbit::before {
+      top: 70px;
+      right: 70px;
     }
 
-    .solar-panel {
-      position: absolute;
-      width: 220px;
-      height: 130px;
+    .orbit::after {
+      bottom: 90px;
+      left: 55px;
+      background: var(--blue);
+      box-shadow: 0 0 26px var(--blue);
+    }
+
+    @keyframes sunPulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+
+      50% {
+        transform: scale(1.04);
+        filter: brightness(1.15);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .intro-strip {
+      padding: 80px 7vw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .metric {
+      padding: 28px;
+      border-radius: 26px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .story {
+      height: 620vh;
+      position: relative;
+    }
+
+    .story-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(58,168,255,0.8), rgba(9,41,56,0.95));
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 18px;
-      bottom: 35px;
-      right: -10px;
-      transform: rotate(-12deg);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+        radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.16), transparent 26%),
+        radial-gradient(circle at 50% 70%, rgba(103, 255, 159, 0.12), transparent 40%);
+    }
+
+    .story-bg-text {
+      position: absolute;
+      left: 7vw;
+      top: 110px;
+      z-index: 5;
+      width: min(520px, 86vw);
+      pointer-events: none;
+    }
+
+    .story-bg-text small {
+      color: var(--green);
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .story-bg-text h2 {
+      font-size: clamp(2.7rem, 5.5vw, 6.2rem);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      margin-top: 14px;
+    }
+
+    .story-bg-text p {
+      margin-top: 22px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.03rem;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sky-glow {
+      position: absolute;
+      width: 65vw;
+      height: 65vw;
+      left: 50%;
+      top: -38vw;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255, 241, 170, 0.95), rgba(255, 209, 102, 0.42) 22%, rgba(255, 209, 102, 0.12) 43%, transparent 67%);
+      filter: blur(2px);
+      transition: 0.1s linear;
+    }
+
+    .house-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 8vh;
+      width: min(920px, 90vw);
+      height: 520px;
+      transform: translateX(-50%);
+    }
+
+    .house {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 520px;
+      height: 310px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, #173322, #0d1c14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px 28px 16px 16px;
+      box-shadow: 0 45px 120px rgba(0, 0, 0, 0.6);
+    }
+
+    .roof {
+      position: absolute;
+      left: 50%;
+      top: 80px;
+      width: 590px;
+      height: 170px;
+      transform: translateX(-50%) skewX(-12deg) rotate(-4deg);
+      background: linear-gradient(135deg, #18251f, #07100b);
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
       overflow: hidden;
     }
 
-    .solar-panel::before {
+    .panels {
+      position: absolute;
+      left: 50%;
+      top: 96px;
+      width: 470px;
+      height: 118px;
+      transform: translateX(-50%) skewX(-12deg) rotate(-4deg);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .panel {
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(92, 200, 255, 0.85), rgba(8, 37, 55, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.08);
+    }
+
+    .panel::after {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px);
-      background-size: 44px 32px;
+        linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+      background-size: 28px 24px;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-22px); }
+    .inverter {
+      position: absolute;
+      right: 235px;
+      bottom: 145px;
+      width: 88px;
+      height: 120px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f2f5ef, #aeb9b1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      z-index: 4;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .inverter::before {
+      content: "INVERTER";
+      position: absolute;
+      left: 50%;
+      top: 18px;
+      transform: translateX(-50%);
+      color: #0b150f;
+      font-size: 0.58rem;
+      letter-spacing: 1px;
+      font-weight: 900;
     }
 
-    section {
-      padding: 120px 7%;
-      position: relative;
+    .inverter::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      width: 42px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--green-2);
+      box-shadow: 0 0 16px var(--green);
+    }
+
+    .battery {
+      position: absolute;
+      left: 210px;
+      bottom: 80px;
+      width: 96px;
+      height: 150px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #dce8de, #6f8175);
+      z-index: 4;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .battery::before {
+      content: "BATTERY";
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #08120c;
+      font-size: 0.58rem;
+      letter-spacing: 1px;
+      font-weight: 900;
+      z-index: 2;
+    }
+
+    .battery-fill {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      height: calc(10% + var(--progress) * 70%);
+      max-height: 122px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      box-shadow: 0 0 22px rgba(103, 255, 159, 0.65);
+      transition: 0.1s linear;
+    }
+
+    .window {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      width: 86px;
+      height: 86px;
+      transform: translateX(-50%);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .window::before,
+    .window::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .window::before {
+      left: 50%;
+      top: 0;
+      width: 1px;
+      height: 100%;
+    }
+
+    .window::after {
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+    }
+
+    .light-on {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255, 221, 127, 0.95), rgba(255, 209, 102, 0.35), transparent 68%);
+      opacity: calc((var(--progress) - 0.58) * 3);
+      transition: 0.1s linear;
+    }
+
+    .garage {
+      position: absolute;
+      right: 32px;
+      bottom: 0;
+      width: 170px;
+      height: 132px;
+      border-radius: 20px 20px 12px 12px;
+      background: #0b1710;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 3;
+    }
+
+    .charger {
+      position: absolute;
+      right: -64px;
+      bottom: 76px;
+      width: 52px;
+      height: 112px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f2f5ef, #88968d);
+      z-index: 4;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    .charger::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
+    }
+
+    .car {
+      position: absolute;
+      right: -210px;
+      bottom: 8px;
+      width: 220px;
+      height: 84px;
+      border-radius: 44px 60px 24px 24px;
+      background: linear-gradient(180deg, #5cc8ff, #155370);
+      z-index: 5;
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.5);
+    }
+
+    .car::before {
+      content: "";
+      position: absolute;
+      left: 52px;
+      top: -32px;
+      width: 92px;
+      height: 46px;
+      border-radius: 50px 50px 0 0;
+      background: rgba(92, 200, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #050806;
+      border: 7px solid #28372e;
+    }
+
+    .wheel.one {
+      left: 38px;
+    }
+
+    .wheel.two {
+      right: 34px;
+    }
+
+    .energy-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      z-index: 8;
+      pointer-events: none;
+    }
+
+    .energy-path {
+      fill: none;
+      stroke: rgba(103, 255, 159, 0.24);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 12 16;
+      filter: drop-shadow(0 0 10px rgba(103, 255, 159, 0.35));
+    }
+
+    .energy-path.active {
+      stroke: rgba(103, 255, 159, 0.9);
+      stroke-dasharray: 18 12;
+      animation: dashMove 1.2s linear infinite;
+    }
+
+    @keyframes dashMove {
+      from {
+        stroke-dashoffset: 0;
+      }
+
+      to {
+        stroke-dashoffset: -60;
+      }
+    }
+
+    .energy-dot {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow:
+        0 0 20px var(--green),
+        0 0 55px rgba(103, 255, 159, 0.65);
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .energy-dot::after {
+      content: "";
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px solid rgba(103, 255, 159, 0.38);
+      animation: ping 1.25s ease-out infinite;
+    }
+
+    @keyframes ping {
+      from {
+        transform: scale(0.5);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .caption {
+      position: absolute;
+      right: 7vw;
+      top: 130px;
+      width: min(420px, 86vw);
+      z-index: 20;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: rgba(5, 8, 6, 0.62);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    .caption .number {
+      color: var(--green);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .caption h3 {
+      font-size: 2rem;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .caption p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .caption-bar {
+      margin-top: 22px;
+      height: 4px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .caption-bar span {
+      display: block;
+      height: 100%;
+      width: calc(var(--progress) * 100%);
+      background: linear-gradient(90deg, var(--yellow), var(--green), var(--blue));
+    }
+
+    .section {
+      padding: 130px 7vw;
     }
 
     .section-title {
       max-width: 900px;
-      margin-bottom: 60px;
+      margin-bottom: 58px;
     }
 
     .section-title small {
       color: var(--green);
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .section-title h2 {
-      font-size: clamp(2.2rem, 5vw, 4.8rem);
-      line-height: 1;
-      letter-spacing: -2px;
       margin-top: 14px;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -3px;
     }
 
     .section-title p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.08rem;
       margin-top: 24px;
-      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.08rem;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .card {
+      min-height: 270px;
       padding: 34px;
-      border-radius: 28px;
-      background: var(--glass);
+      border-radius: 30px;
       border: 1px solid var(--border);
+      background: var(--glass);
       backdrop-filter: blur(18px);
-      transition: 0.35s ease;
-      min-height: 260px;
       position: relative;
       overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.11);
     }
 
     .card::before {
       content: "";
       position: absolute;
-      inset: auto 0 0 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       height: 4px;
       background: linear-gradient(90deg, var(--green), var(--blue));
       transform: scaleX(0);
@@ -304,13 +808,20 @@
       transition: 0.35s ease;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,255,255,0.12);
-    }
-
     .card:hover::before {
       transform: scaleX(1);
+    }
+
+    .card .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #061009;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-weight: 900;
+      margin-bottom: 24px;
     }
 
     .card h3 {
@@ -323,147 +834,10 @@
       line-height: 1.65;
     }
 
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 24px;
-      background: linear-gradient(135deg, rgba(68,255,153,0.2), rgba(58,168,255,0.2));
-      border: 1px solid var(--border);
-      font-size: 1.3rem;
-    }
-
-    .scroll-experience {
-      min-height: 250vh;
-      padding-top: 80px;
-    }
-
-    .sticky-stage {
-      position: sticky;
-      top: 100px;
-      min-height: 78vh;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .steps {
-      display: grid;
-      gap: 20px;
-    }
-
-    .step {
-      padding: 26px;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      opacity: 0.45;
-      transform: translateX(-20px);
-      transition: 0.5s ease;
-    }
-
-    .step.active {
-      opacity: 1;
-      transform: translateX(0);
-      background: rgba(68,255,153,0.11);
-      border-color: rgba(68,255,153,0.45);
-    }
-
-    .step strong {
-      color: var(--green);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .visual-system {
-      height: 540px;
-      border-radius: 34px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 50% 40%, rgba(68,255,153,0.24), transparent 28%),
-        rgba(255,255,255,0.06);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(18px);
-    }
-
-    .visual-system .line {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-      animation: pulseLine 3s linear infinite;
-    }
-
-    .line.one {
-      top: 35%;
-      left: 10%;
-      width: 80%;
-    }
-
-    .line.two {
-      top: 55%;
-      left: 20%;
-      width: 60%;
-      animation-delay: 0.8s;
-    }
-
-    .line.three {
-      top: 73%;
-      left: 8%;
-      width: 85%;
-      animation-delay: 1.4s;
-    }
-
-    @keyframes pulseLine {
-      0% { opacity: 0; transform: translateX(-20px); }
-      50% { opacity: 1; }
-      100% { opacity: 0; transform: translateX(20px); }
-    }
-
-    .node {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 16px;
-      font-weight: 800;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    .node.main {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, rgba(68,255,153,0.26), rgba(58,168,255,0.18));
-      color: var(--green);
-      font-size: 1.5rem;
-    }
-
-    .node.n1 { top: 45px; left: 50px; }
-    .node.n2 { top: 55px; right: 60px; }
-    .node.n3 { bottom: 60px; left: 90px; }
-    .node.n4 { bottom: 55px; right: 80px; }
-
     .calculator {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
-      gap: 28px;
+      gap: 24px;
       align-items: stretch;
     }
 
@@ -473,57 +847,60 @@
       border-radius: 32px;
       background: var(--glass);
       border: 1px solid var(--border);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
     }
 
     label {
       display: block;
       color: var(--muted);
+      font-size: 0.92rem;
       margin-bottom: 8px;
-      font-size: 0.9rem;
     }
 
     input,
     select {
       width: 100%;
       padding: 15px 16px;
-      border-radius: 14px;
+      border-radius: 15px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--white);
       outline: none;
       margin-bottom: 18px;
     }
 
     select option {
-      background: #07110d;
+      color: #07110d;
     }
 
     .estimate {
-      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1;
+      color: var(--green);
       font-weight: 900;
       letter-spacing: -3px;
-      color: var(--green);
       margin: 24px 0;
     }
 
     .result-box p {
       color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 20px;
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
 
     .offers {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .offer {
-      border-radius: 32px;
-      padding: 34px;
+      padding: 36px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(103, 255, 159, 0.12), rgba(255, 255, 255, 0.04));
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+      min-height: 330px;
       position: relative;
       overflow: hidden;
     }
@@ -531,43 +908,80 @@
     .offer::after {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 210px;
+      height: 210px;
       border-radius: 50%;
-      background: rgba(68,255,153,0.12);
-      top: -70px;
-      right: -70px;
+      background: rgba(103, 255, 159, 0.12);
+      right: -90px;
+      top: -90px;
+    }
+
+    .offer strong {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.8rem;
     }
 
     .offer h3 {
-      font-size: 1.7rem;
-      margin-bottom: 18px;
-    }
-
-    .offer .price {
-      font-size: 2.4rem;
-      font-weight: 900;
-      color: var(--green);
-      margin-bottom: 18px;
+      font-size: 2rem;
+      margin: 14px 0 16px;
+      letter-spacing: -1px;
     }
 
     .offer p {
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 24px;
+      line-height: 1.65;
+      margin-bottom: 26px;
     }
 
-    .group-grid {
+    .group {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .brand-panel {
+      border-radius: 36px;
+      padding: 48px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(103, 255, 159, 0.2), transparent 40%),
+        rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-panel h2 {
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      line-height: 0.85;
+      letter-spacing: -6px;
+    }
+
+    .brand-panel h2 span {
+      color: var(--green);
+    }
+
+    .brand-panel p {
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.75;
+      font-size: 1.08rem;
+    }
+
+    .companies {
+      display: grid;
+      gap: 16px;
     }
 
     .company {
-      padding: 28px;
+      padding: 26px;
       border-radius: 26px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
+      background: var(--glass);
     }
 
     .company strong {
@@ -580,45 +994,47 @@
     .company p {
       color: var(--muted);
       line-height: 1.55;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
     }
 
     .cta {
+      min-height: 80vh;
+      display: grid;
+      place-items: center;
       text-align: center;
-      padding: 150px 7%;
+      padding: 140px 7vw;
       background:
-        radial-gradient(circle at center, rgba(68,255,153,0.16), transparent 38%);
+        radial-gradient(circle at center, rgba(103, 255, 159, 0.18), transparent 38%);
     }
 
     .cta h2 {
-      font-size: clamp(2.4rem, 6vw, 5.8rem);
-      letter-spacing: -3px;
-      line-height: 1;
-      margin-bottom: 26px;
+      font-size: clamp(3rem, 7vw, 7.5rem);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
     }
 
     .cta p {
-      color: var(--muted);
-      max-width: 700px;
+      max-width: 760px;
       margin: 0 auto 34px;
-      line-height: 1.7;
-      font-size: 1.1rem;
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.75;
     }
 
     footer {
-      padding: 42px 7%;
+      padding: 42px 7vw;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(60px);
       transition: 0.8s ease;
     }
 
@@ -627,65 +1043,125 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1080px) {
       .hero,
-      .sticky-stage,
-      .calculator {
+      .calculator,
+      .group {
         grid-template-columns: 1fr;
       }
 
       .cards,
       .offers,
-      .group-grid {
-        grid-template-columns: 1fr 1fr;
+      .intro-strip {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .nav-links {
+      .caption {
+        top: auto;
+        bottom: 28px;
+        right: 5vw;
+        left: 5vw;
+        width: auto;
+      }
+
+      .story-bg-text {
+        top: 95px;
+      }
+
+      .story-bg-text p {
         display: none;
+      }
+
+      .house-wrap {
+        transform: translateX(-50%) scale(0.78);
+        transform-origin: bottom center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        display: none;
+      }
+
+      .navbar {
+        padding: 18px 5vw;
+      }
+
+      .navbar .btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 5vw 70px;
       }
 
       .hero h1 {
         letter-spacing: -3px;
       }
-    }
 
-    @media (max-width: 620px) {
+      .hero-visual {
+        height: 380px;
+      }
+
+      .sun-hero {
+        width: 230px;
+        height: 230px;
+      }
+
+      .orbit {
+        width: 330px;
+        height: 330px;
+      }
+
+      .intro-strip,
       .cards,
-      .offers,
-      .group-grid {
+      .offers {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 90px 6%;
+      .section {
+        padding: 95px 5vw;
       }
 
-      .hero {
-        padding: 130px 6% 70px;
+      .story {
+        height: 560vh;
       }
 
-      .energy-orb {
-        width: 300px;
+      .story-bg-text {
+        left: 5vw;
+        width: 90vw;
       }
 
-      .solar-panel {
-        width: 160px;
-        height: 95px;
+      .story-bg-text h2 {
+        font-size: 2.6rem;
+        letter-spacing: -2px;
       }
 
-      .visual-system {
-        height: 460px;
+      .caption {
+        padding: 22px;
       }
 
-      .node {
-        width: 95px;
-        height: 95px;
-        font-size: 0.78rem;
+      .caption h3 {
+        font-size: 1.55rem;
       }
 
-      .node.main {
-        width: 135px;
-        height: 135px;
+      .house-wrap {
+        transform: translateX(-50%) scale(0.55);
+        bottom: 5vh;
+      }
+
+      .sky-glow {
+        width: 120vw;
+        height: 120vw;
+        top: -60vw;
+      }
+
+      .brand-panel {
+        padding: 34px;
+      }
+
+      .brand-panel h2 {
+        letter-spacing: -3px;
       }
 
       footer {
@@ -700,9 +1176,9 @@
   <header class="navbar">
     <a href="#" class="logo">FLORA<span>.</span></a>
 
-    <nav class="nav-links">
+    <nav class="nav">
+      <a href="#esperienza">Energia</a>
       <a href="#fotovoltaico">Fotovoltaico</a>
-      <a href="#servizi">Servizi</a>
       <a href="#preventivo">Preventivo</a>
       <a href="#offerte">Offerte</a>
       <a href="#gruppo">Gruppo</a>
@@ -715,122 +1191,193 @@
 
     <section class="hero">
       <div>
-        <div class="badge">Hub energia, fotovoltaico e rinnovabili</div>
+        <div class="eyebrow">Hub energia e rinnovabili</div>
 
         <h1>
-          L’energia di domani.<br>
-          Firmata <span>FLORA</span>.
+          Dal sole alla tua casa.<br>
+          Con <span>FLORA</span>.
         </h1>
 
         <p>
-          Progettiamo, forniamo e installiamo impianti fotovoltaici con servizio chiavi in mano.
-          Dal primo sopralluogo alla messa in funzione, Flora accompagna famiglie, aziende e attività
-          verso una gestione più intelligente dell’energia.
+          Flora progetta, fornisce e installa impianti fotovoltaici chiavi in mano.
+          Un unico interlocutore per trasformare l’energia solare in risparmio, autonomia
+          e valore per abitazioni, aziende e attività.
         </p>
 
         <div class="hero-actions">
-          <a href="#preventivo" class="btn">Calcola una prima stima</a>
-          <a href="#fotovoltaico" class="btn secondary">Scopri il servizio</a>
+          <a href="#esperienza" class="btn">Segui il percorso dell’energia</a>
+          <a href="#preventivo" class="btn secondary">Calcola una stima</a>
         </div>
       </div>
 
-      <div class="energy-orb">
-        <div class="solar-panel"></div>
+      <div class="hero-visual">
+        <div class="sun-hero"></div>
+        <div class="orbit"></div>
       </div>
     </section>
 
-    <section id="fotovoltaico" class="reveal">
+    <section class="intro-strip">
+      <div class="metric">
+        <strong>01</strong>
+        <span>Progettazione tecnica dell’impianto.</span>
+      </div>
+
+      <div class="metric">
+        <strong>02</strong>
+        <span>Fornitura di pannelli, inverter e batterie.</span>
+      </div>
+
+      <div class="metric">
+        <strong>03</strong>
+        <span>Installazione e messa in funzione.</span>
+      </div>
+
+      <div class="metric">
+        <strong>04</strong>
+        <span>Energia per casa, accumulo e mobilità elettrica.</span>
+      </div>
+    </section>
+
+    <section id="esperienza" class="story">
+
+      <div class="story-sticky">
+
+        <div class="story-bg-text">
+          <small>Scroll experience</small>
+          <h2>Il viaggio dell’energia.</h2>
+          <p>
+            Scorri la pagina e segui il percorso dell’energia: dal sole ai pannelli,
+            dai pannelli all’inverter, dall’inverter alle batterie, fino alla casa
+            e alla ricarica dell’auto elettrica.
+          </p>
+        </div>
+
+        <div class="caption" id="caption">
+          <div class="number" id="captionNumber">01 / Sole</div>
+          <h3 id="captionTitle">L’energia nasce dal sole.</h3>
+          <p id="captionText">
+            Tutto parte dalla fonte più naturale: la luce solare. Il sito accompagna il visitatore
+            dentro un racconto visivo, mostrando in modo chiaro il percorso dell’energia.
+          </p>
+          <div class="caption-bar">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="scene">
+
+          <div class="sky-glow" id="sunGlow"></div>
+
+          <div class="house-wrap" id="houseWrap">
+
+            <div class="roof"></div>
+
+            <div class="panels">
+              <div class="panel"></div>
+              <div class="panel"></div>
+              <div class="panel"></div>
+              <div class="panel"></div>
+            </div>
+
+            <div class="house">
+              <div class="window">
+                <div class="light-on"></div>
+              </div>
+
+              <div class="garage"></div>
+            </div>
+
+            <div class="inverter"></div>
+
+            <div class="battery">
+              <div class="battery-fill"></div>
+            </div>
+
+            <div class="charger"></div>
+
+            <div class="car">
+              <div class="wheel one"></div>
+              <div class="wheel two"></div>
+            </div>
+
+          </div>
+
+          <svg class="energy-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+            <path id="pathSunPanels" class="energy-path active"
+              d="M720 25 C690 170, 650 250, 655 335" />
+
+            <path id="pathPanelsInverter" class="energy-path"
+              d="M655 335 C760 355, 870 390, 905 520" />
+
+            <path id="pathInverterBattery" class="energy-path"
+              d="M905 520 C760 585, 585 620, 470 665" />
+
+            <path id="pathBatteryHome" class="energy-path"
+              d="M470 665 C560 610, 650 600, 720 610" />
+
+            <path id="pathInverterCharger" class="energy-path"
+              d="M905 520 C1010 565, 1110 610, 1190 650" />
+
+            <path id="pathChargerCar" class="energy-path"
+              d="M1190 650 C1230 690, 1280 710, 1340 720" />
+          </svg>
+
+          <div class="energy-dot" id="energyDot"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="fotovoltaico" class="section reveal">
       <div class="section-title">
-        <small>Il servizio principale</small>
-        <h2>Fotovoltaico chiavi in mano, oppure solo ciò che ti serve.</h2>
+        <small>Fotovoltaico al centro</small>
+        <h2>Il servizio principale di Flora, raccontato in modo immediato.</h2>
         <p>
-          Il fotovoltaico è oggi il cuore operativo di Flora. Offriamo un servizio completo,
-          ma anche singole fasi separate: progettazione, fornitura dei materiali o sola installazione.
+          Il sito deve far capire subito che Flora si occupa principalmente di progettazione,
+          fornitura e installazione di impianti fotovoltaici. Il cliente può scegliere il servizio
+          completo chiavi in mano oppure una singola fase, in base alle proprie esigenze.
         </p>
       </div>
 
       <div class="cards">
         <div class="card">
-          <div class="icon">☀️</div>
+          <div class="icon">01</div>
           <h3>Progettazione</h3>
           <p>
-            Analisi dei consumi, studio tecnico, dimensionamento dell’impianto e scelta della soluzione
-            più adatta alle esigenze del cliente.
+            Analisi dei consumi, dimensionamento dell’impianto, valutazione tecnica,
+            studio della soluzione migliore e supporto nella scelta dei componenti.
           </p>
         </div>
 
         <div class="card">
-          <div class="icon">🔋</div>
+          <div class="icon">02</div>
           <h3>Fornitura</h3>
           <p>
-            Pannelli fotovoltaici, inverter, batterie di accumulo, quadri elettrici e componenti selezionati
-            per qualità, rendimento e affidabilità.
+            Pannelli fotovoltaici, inverter, batterie di accumulo, quadri elettrici,
+            sistemi di monitoraggio e componenti selezionati.
           </p>
         </div>
 
         <div class="card">
-          <div class="icon">⚡</div>
+          <div class="icon">03</div>
           <h3>Installazione</h3>
           <p>
-            Montaggio dell’impianto, collegamenti elettrici, configurazione e assistenza fino alla piena
-            operatività del sistema.
+            Montaggio, collegamenti elettrici, configurazione, collaudo e messa in funzione
+            dell’impianto fotovoltaico.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="scroll-experience">
-      <div class="sticky-stage">
-        <div>
-          <div class="section-title">
-            <small>Esperienza dinamica</small>
-            <h2>Un percorso che accompagna il cliente passo dopo passo.</h2>
-          </div>
-
-          <div class="steps">
-            <div class="step active">
-              <strong>01 — Analisi</strong>
-              <p>Il cliente inserisce i dati principali e riceve una prima indicazione.</p>
-            </div>
-
-            <div class="step">
-              <strong>02 — Soluzione</strong>
-              <p>Flora valuta consumi, superficie disponibile e obiettivi energetici.</p>
-            </div>
-
-            <div class="step">
-              <strong>03 — Installazione</strong>
-              <p>La squadra operativa realizza l’impianto e segue l’avvio del sistema.</p>
-            </div>
-
-            <div class="step">
-              <strong>04 — Energia</strong>
-              <p>Il cliente inizia a produrre, accumulare e gestire energia in modo efficiente.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="visual-system">
-          <div class="line one"></div>
-          <div class="line two"></div>
-          <div class="line three"></div>
-
-          <div class="node main">FLORA</div>
-          <div class="node n1">Casa</div>
-          <div class="node n2">Azienda</div>
-          <div class="node n3">Accumulo</div>
-          <div class="node n4">Ricarica EV</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="preventivo" class="reveal">
+    <section id="preventivo" class="section reveal">
       <div class="section-title">
         <small>Preventivatore online</small>
-        <h2>Una prima stima indicativa, direttamente dal sito.</h2>
+        <h2>Da semplice visita a richiesta concreta.</h2>
         <p>
-          Il cliente può inserire pochi dati e ottenere un valore orientativo. La stima non sostituisce
-          il sopralluogo tecnico, ma aiuta a trasformare l’interesse in una richiesta concreta.
+          Il preventivatore permette al cliente di ottenere una prima stima indicativa.
+          La valutazione reale verrà poi definita da Flora dopo il contatto e l’analisi tecnica.
         </p>
       </div>
 
@@ -838,13 +1385,13 @@
         <div class="form-box">
           <label for="tipo">Tipo di immobile</label>
           <select id="tipo">
-            <option value="residenziale">Abitazione privata</option>
+            <option value="casa">Abitazione privata</option>
             <option value="azienda">Azienda / capannone</option>
             <option value="condominio">Condominio</option>
           </select>
 
-          <label for="consumo">Spesa media bimestrale in bolletta</label>
-          <input type="number" id="consumo" placeholder="Esempio: 250" />
+          <label for="bolletta">Spesa media bimestrale in bolletta</label>
+          <input type="number" id="bolletta" placeholder="Esempio: 250" />
 
           <label for="accumulo">Batteria di accumulo</label>
           <select id="accumulo">
@@ -867,7 +1414,7 @@
           <h3>Stima indicativa</h3>
           <div class="estimate" id="stima">€ --</div>
           <p id="descrizione">
-            Compila i campi per ottenere una prima indicazione del possibile investimento.
+            Inserisci i dati principali per visualizzare una prima fascia di prezzo orientativa.
           </p>
           <a href="mailto:info@florambiente.it?subject=Richiesta preventivo fotovoltaico" class="btn">
             Richiedi contatto
@@ -876,201 +1423,286 @@
       </div>
     </section>
 
-    <section id="offerte" class="reveal">
+    <section id="offerte" class="section reveal">
       <div class="section-title">
         <small>Offerte del momento</small>
-        <h2>Pacchetti e soluzioni commerciali in evidenza.</h2>
+        <h2>Soluzioni commerciali aggiornabili nel tempo.</h2>
         <p>
-          Una sezione aggiornata periodicamente per promozioni, soluzioni stagionali e offerte dedicate
-          a chi vuole installare un impianto fotovoltaico o migliorare l’efficienza energetica.
+          Una sezione pensata per promozioni, pacchetti fotovoltaici, formule con accumulo,
+          offerte business e campagne stagionali.
         </p>
       </div>
 
       <div class="offers">
         <div class="offer">
-          <h3>Starter Solar</h3>
-          <div class="price">Promo</div>
+          <strong>Casa</strong>
+          <h3>Solar Starter</h3>
           <p>
-            Soluzione pensata per abitazioni private che vogliono iniziare a produrre energia da fonte solare.
+            Soluzione per abitazioni private che vogliono iniziare a produrre energia solare
+            con un impianto semplice, efficiente e dimensionato sui consumi.
           </p>
-          <a href="#preventivo" class="btn secondary">Scopri</a>
+          <a href="#preventivo" class="btn secondary">Calcola stima</a>
         </div>
 
         <div class="offer">
-          <h3>Solar + Accumulo</h3>
-          <div class="price">Top</div>
+          <strong>Accumulo</strong>
+          <h3>Solar Battery</h3>
           <p>
-            Impianto fotovoltaico con batteria di accumulo per aumentare l’autoconsumo e la gestione intelligente.
+            Pacchetto con batteria di accumulo per aumentare l’autoconsumo e utilizzare
+            l’energia anche quando il sole non produce.
           </p>
-          <a href="#preventivo" class="btn secondary">Scopri</a>
+          <a href="#preventivo" class="btn secondary">Calcola stima</a>
         </div>
 
         <div class="offer">
+          <strong>Aziende</strong>
           <h3>Business Energy</h3>
-          <div class="price">B2B</div>
           <p>
-            Soluzioni per aziende, attività produttive e capannoni con consumi elevati e superfici importanti.
+            Soluzioni per aziende, capannoni e attività con consumi elevati, pensate per ridurre
+            i costi energetici e aumentare l’indipendenza.
           </p>
-          <a href="#preventivo" class="btn secondary">Scopri</a>
+          <a href="#preventivo" class="btn secondary">Calcola stima</a>
         </div>
       </div>
     </section>
 
-    <section id="servizi" class="reveal">
+    <section class="section reveal">
       <div class="section-title">
-        <small>Oltre il fotovoltaico</small>
-        <h2>Un ecosistema di servizi per casa, impresa e territorio.</h2>
+        <small>Altri servizi</small>
+        <h2>Non solo fotovoltaico: un ecosistema di servizi Flora.</h2>
       </div>
 
       <div class="cards">
         <div class="card">
-          <div class="icon">🏗️</div>
+          <div class="icon">A</div>
           <h3>Ristrutturazioni edili</h3>
-          <p>Interventi di riqualificazione, opere edili e lavori su immobili residenziali e aziendali.</p>
+          <p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p>
         </div>
 
         <div class="card">
-          <div class="icon">💡</div>
+          <div class="icon">B</div>
           <h3>Impianti elettrici</h3>
-          <p>Realizzazione, adeguamento e manutenzione di impianti elettrici domestici e professionali.</p>
+          <p>Realizzazione, adeguamento e manutenzione di impianti elettrici domestici.</p>
         </div>
 
         <div class="card">
-          <div class="icon">🌡️</div>
+          <div class="icon">C</div>
           <h3>Clima e riscaldamento</h3>
-          <p>Condizionatori, caldaie, sistemi di raffrescamento, riscaldamento e solare termico.</p>
+          <p>Condizionatori, caldaie, raffrescamento, riscaldamento e solare termico.</p>
         </div>
 
         <div class="card">
-          <div class="icon">🚧</div>
+          <div class="icon">D</div>
           <h3>Ripristino post incidente</h3>
-          <p>Interventi su viabilità, sicurezza stradale e ripristino delle condizioni originarie dei luoghi.</p>
+          <p>Interventi su viabilità, sicurezza stradale e ripristino delle condizioni originarie.</p>
         </div>
 
         <div class="card">
-          <div class="icon">🌳</div>
+          <div class="icon">E</div>
           <h3>Sfalcio e potatura</h3>
-          <p>Sfalcio erba, cura del verde, manutenzione aree esterne e potatura alberi.</p>
+          <p>Manutenzione del verde, sfalcio erba, cura aree esterne e potatura alberi.</p>
         </div>
 
         <div class="card">
-          <div class="icon">🚗</div>
-          <h3>Prossimi servizi</h3>
-          <p>Microeolico domestico, microcar elettriche e nuove soluzioni per la mobilità e l’energia.</p>
+          <div class="icon">F</div>
+          <h3>Servizi futuri</h3>
+          <p>Microeolico domestico, microcar elettriche e nuove soluzioni per energia e mobilità.</p>
         </div>
       </div>
     </section>
 
-    <section id="gruppo" class="reveal">
-      <div class="section-title">
-        <small>Brand e gruppo</small>
-        <h2>FLORA come marchio principale di un sistema integrato.</h2>
-        <p>
-          Il sito valorizza il brand FLORA come identità centrale del gruppo, superando la comunicazione
-          limitata alla sola Flora Multiservice S.r.l. Ogni società contribuisce a una funzione specifica,
-          ma il cliente percepisce un unico interlocutore solido e organizzato.
-        </p>
-      </div>
+    <section id="gruppo" class="section reveal">
+      <div class="group">
+        <div class="brand-panel">
+          <div>
+            <small class="eyebrow">Brand principale</small>
+            <h2>FLORA<span>.</span></h2>
+          </div>
 
-      <div class="group-grid">
-        <div class="company">
-          <strong>Flora Esco S.r.l.</strong>
-          <p>Progettazione, sviluppo tecnico e soluzioni energetiche.</p>
+          <p>
+            Il sito valorizza FLORA come marchio centrale del gruppo: non solo Flora Multiservice S.r.l.,
+            ma un’identità più ampia, capace di rappresentare energia, installazioni, progettazione,
+            servizi tecnici, amministrazione e sviluppo.
+          </p>
         </div>
 
-        <div class="company">
-          <strong>Flora Multiservice S.r.l.</strong>
-          <p>Installazione, cantieri, interventi operativi e servizi sul territorio.</p>
-        </div>
+        <div class="companies">
+          <div class="company">
+            <strong>Flora Esco S.r.l.</strong>
+            <p>Progettazione, sviluppo tecnico e soluzioni energetiche.</p>
+          </div>
 
-        <div class="company">
-          <strong>Flora Holding S.r.l.</strong>
-          <p>Gestione contabile, amministrativa e coordinamento delle società del gruppo.</p>
-        </div>
+          <div class="company">
+            <strong>Flora Multiservice S.r.l.</strong>
+            <p>Installazione, cantieri, interventi operativi e servizi sul territorio.</p>
+          </div>
 
-        <div class="company">
-          <strong>FLORA</strong>
-          <p>Il marchio unico che rappresenta energia, innovazione, servizi e affidabilità.</p>
+          <div class="company">
+            <strong>Flora Holding S.r.l.</strong>
+            <p>Gestione amministrativa, contabile e coordinamento delle società del gruppo.</p>
+          </div>
+
+          <div class="company">
+            <strong>FLORA</strong>
+            <p>Il marchio unico che comunica solidità, innovazione e affidabilità.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="cta reveal">
-      <h2>Vuoi trasformare il sole in energia?</h2>
-      <p>
-        Raccontaci le tue esigenze. Flora può occuparsi dell’intero percorso oppure solo della fase
-        che ti serve: progettazione, fornitura, installazione o servizio completo chiavi in mano.
-      </p>
+      <div>
+        <h2>Porta l’energia solare nella tua casa.</h2>
+        <p>
+          Flora può seguire l’intero percorso: progettazione, fornitura, installazione,
+          accumulo, colonnina di ricarica e assistenza.
+        </p>
 
-      <a href="mailto:info@florambiente.it?subject=Richiesta informazioni FLORA" class="btn">
-        Contatta FLORA
-      </a>
+        <a href="mailto:info@florambiente.it?subject=Richiesta informazioni FLORA" class="btn">
+          Contatta FLORA
+        </a>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <div>
-      <strong>FLORA</strong> — Hub energia, fotovoltaico e rinnovabili
-    </div>
-    <div>
-      © 2026 FLORA. Tutti i diritti riservati.
-    </div>
+    <div><strong>FLORA</strong> — Hub energia, fotovoltaico e rinnovabili</div>
+    <div>© 2026 FLORA. Tutti i diritti riservati.</div>
   </footer>
 
   <script>
+    const story = document.querySelector(".story");
+    const dot = document.getElementById("energyDot");
+    const paths = [
+      document.getElementById("pathSunPanels"),
+      document.getElementById("pathPanelsInverter"),
+      document.getElementById("pathInverterBattery"),
+      document.getElementById("pathBatteryHome"),
+      document.getElementById("pathInverterCharger"),
+      document.getElementById("pathChargerCar")
+    ];
+
+    const captionNumber = document.getElementById("captionNumber");
+    const captionTitle = document.getElementById("captionTitle");
+    const captionText = document.getElementById("captionText");
+    const sunGlow = document.getElementById("sunGlow");
+    const houseWrap = document.getElementById("houseWrap");
+
+    const captions = [
+      {
+        number: "01 / Sole",
+        title: "L’energia nasce dal sole.",
+        text: "La luce solare è il punto di partenza. Lo scroll accompagna il visitatore dentro il percorso dell’energia, trasformando il sito in un racconto visivo."
+      },
+      {
+        number: "02 / Pannelli",
+        title: "I pannelli catturano la luce.",
+        text: "I moduli fotovoltaici installati sul tetto trasformano la radiazione solare in energia elettrica pronta per essere gestita dall’impianto."
+      },
+      {
+        number: "03 / Inverter",
+        title: "L’inverter rende l’energia utilizzabile.",
+        text: "L’energia prodotta dai pannelli passa all’inverter, che la converte e la rende adatta all’utilizzo domestico o aziendale."
+      },
+      {
+        number: "04 / Batterie",
+        title: "L’energia viene accumulata.",
+        text: "Le batterie permettono di conservare l’energia prodotta e utilizzarla anche nei momenti in cui l’impianto non sta producendo."
+      },
+      {
+        number: "05 / Casa",
+        title: "La casa si alimenta con energia pulita.",
+        text: "L’energia accumulata può alimentare luci, elettrodomestici e consumi quotidiani, aumentando l’autonomia energetica dell’abitazione."
+      },
+      {
+        number: "06 / Mobilità elettrica",
+        title: "La colonnina ricarica l’auto elettrica.",
+        text: "L’energia può arrivare anche alla colonnina di ricarica, completando un ecosistema moderno fatto di fotovoltaico, accumulo e mobilità elettrica."
+      }
+    ];
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getStoryProgress() {
+      const rect = story.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const passed = -rect.top;
+      return clamp(passed / total, 0, 1);
+    }
+
+    function getPointOnPath(path, localProgress) {
+      const length = path.getTotalLength();
+      return path.getPointAtLength(length * clamp(localProgress, 0, 1));
+    }
+
+    function updateEnergyStory() {
+      const progress = getStoryProgress();
+      document.documentElement.style.setProperty("--progress", progress.toFixed(3));
+
+      const segmentCount = paths.length;
+      const rawSegment = progress * segmentCount;
+      const activeIndex = clamp(Math.floor(rawSegment), 0, segmentCount - 1);
+      const localProgress = rawSegment - activeIndex;
+
+      paths.forEach((path, index) => {
+        path.classList.toggle("active", index <= activeIndex);
+      });
+
+      const point = getPointOnPath(paths[activeIndex], localProgress);
+
+      const svg = document.querySelector(".energy-svg");
+      const svgRect = svg.getBoundingClientRect();
+
+      const x = (point.x / 1440) * svgRect.width;
+      const y = (point.y / 900) * svgRect.height;
+
+      dot.style.left = x + "px";
+      dot.style.top = y + "px";
+
+      const currentCaption = captions[activeIndex];
+      captionNumber.textContent = currentCaption.number;
+      captionTitle.textContent = currentCaption.title;
+      captionText.textContent = currentCaption.text;
+
+      const sunScale = 1 + progress * 0.16;
+      const sunOpacity = 1 - progress * 0.45;
+      sunGlow.style.transform = `translateX(-50%) scale(${sunScale})`;
+      sunGlow.style.opacity = sunOpacity;
+
+      const houseLift = Math.sin(progress * Math.PI) * -18;
+      houseWrap.style.marginBottom = houseLift + "px";
+    }
+
     const reveals = document.querySelectorAll(".reveal");
 
     function revealOnScroll() {
       reveals.forEach((el) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        const revealPoint = 120;
-
-        if (elementTop < windowHeight - revealPoint) {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 120) {
           el.classList.add("visible");
         }
       });
     }
 
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-
-    const steps = document.querySelectorAll(".step");
-
-    function activeStepOnScroll() {
-      const scrollY = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const progress = scrollY / docHeight;
-
-      let index = 0;
-
-      if (progress > 0.26) index = 1;
-      if (progress > 0.36) index = 2;
-      if (progress > 0.46) index = 3;
-
-      steps.forEach((step, i) => {
-        step.classList.toggle("active", i === index);
-      });
-    }
-
-    window.addEventListener("scroll", activeStepOnScroll);
-    activeStepOnScroll();
-
     function calcolaPreventivo() {
-      const consumo = Number(document.getElementById("consumo").value);
+      const tipo = document.getElementById("tipo").value;
+      const bolletta = Number(document.getElementById("bolletta").value);
       const accumulo = document.getElementById("accumulo").value;
       const servizio = document.getElementById("servizio").value;
-      const tipo = document.getElementById("tipo").value;
 
-      if (!consumo || consumo <= 0) {
-        document.getElementById("stima").innerText = "€ --";
-        document.getElementById("descrizione").innerText =
-          "Inserisci una spesa media bimestrale valida per ottenere una stima indicativa.";
+      const stima = document.getElementById("stima");
+      const descrizione = document.getElementById("descrizione");
+
+      if (!bolletta || bolletta <= 0) {
+        stima.textContent = "€ --";
+        descrizione.textContent = "Inserisci una spesa media bimestrale valida per ottenere una stima indicativa.";
         return;
       }
 
-      let base = consumo * 42;
+      let base = bolletta * 42;
 
       if (tipo === "azienda") base *= 1.45;
       if (tipo === "condominio") base *= 1.75;
@@ -1081,15 +1713,25 @@
       if (servizio === "fornitura") base *= 0.68;
       if (servizio === "installazione") base *= 0.28;
 
-      const min = Math.round(base * 0.9 / 100) * 100;
-      const max = Math.round(base * 1.15 / 100) * 100;
+      const min = Math.round((base * 0.9) / 100) * 100;
+      const max = Math.round((base * 1.15) / 100) * 100;
 
-      document.getElementById("stima").innerText =
+      stima.textContent =
         "€ " + min.toLocaleString("it-IT") + " - € " + max.toLocaleString("it-IT");
 
-      document.getElementById("descrizione").innerText =
-        "Questa è una stima puramente indicativa. Per un preventivo preciso Flora effettuerà una valutazione tecnica sulla base di consumi, superficie disponibile, orientamento, componenti scelti e obiettivi del cliente.";
+      descrizione.textContent =
+        "Questa è una stima puramente indicativa. Il preventivo reale dipende da consumi, superficie disponibile, esposizione, componenti scelti, accumulo, opere elettriche e sopralluogo tecnico.";
     }
+
+    window.addEventListener("scroll", () => {
+      updateEnergyStory();
+      revealOnScroll();
+    });
+
+    window.addEventListener("resize", updateEnergyStory);
+
+    updateEnergyStory();
+    revealOnScroll();
   </script>
 
 </body>
