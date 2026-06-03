@@ -3,629 +3,298 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="FLORA - Hub dell'energia, fotovoltaico, accumulo, ricarica elettrica e servizi integrati per casa e impresa." />
-  <title>FLORA | Hub dell'Energia</title>
-
-  <link rel="preconnect" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-
-  <style>
-    :root {
-      --bg: #020504;
-      --bg2: #06100b;
-      --ink: #ffffff;
-      --muted: rgba(255,255,255,.68);
-      --soft: rgba(255,255,255,.12);
-      --line: rgba(255,255,255,.14);
-      --green: #61ff9b;
-      --green2: #0fd96d;
-      --aqua: #63d8ff;
-      --amber: #ffd36a;
-      --card: rgba(255,255,255,.065);
-      --glass: rgba(3, 8, 6, .54);
-      --shadow: 0 40px 140px rgba(0,0,0,.55);
-      --radius: 32px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg); }
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      overflow-x: hidden;
-      letter-spacing: -.01em;
-    }
-    a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
-
-    .grain {
-      position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .075;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-    }
-
-    .site-progress {
-      position: fixed; left: 0; top: 0; width: 100%; height: 3px; z-index: 1002;
-      transform-origin: left; transform: scaleX(0);
-      background: linear-gradient(90deg, var(--amber), var(--green), var(--aqua));
-      box-shadow: 0 0 22px rgba(97,255,155,.55);
-    }
-
-    header {
-      position: fixed; top: 0; left: 0; width: 100%; height: 88px; z-index: 1000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(22px, 5vw, 76px);
-      background: linear-gradient(180deg, rgba(2,5,4,.82), rgba(2,5,4,.18));
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .brand-mark { display: inline-flex; align-items: center; gap: 13px; }
-    .brand-symbol {
-      width: 34px; height: 34px; border-radius: 12px;
-      background: radial-gradient(circle at 35% 25%, #fff, var(--green) 25%, #0d8d52 68%);
-      box-shadow: 0 0 36px rgba(97,255,155,.38);
-    }
-    .brand-name { font-weight: 950; letter-spacing: .28em; font-size: 1.2rem; }
-    .brand-name span { color: var(--green); }
-
-    nav { display: flex; align-items: center; gap: clamp(18px, 2.2vw, 34px); color: rgba(255,255,255,.66); font-size: .88rem; }
-    nav a { transition: .25s ease; }
-    nav a:hover { color: var(--green); }
-
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-    .pill {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.07); color: #fff; font-weight: 800;
-      box-shadow: none; transition: .3s ease; cursor: pointer;
-    }
-    .pill.primary { background: linear-gradient(135deg, var(--green), var(--aqua)); color: #021008; border-color: transparent; box-shadow: 0 0 46px rgba(97,255,155,.25); }
-    .pill:hover { transform: translateY(-2px); border-color: rgba(97,255,155,.42); }
-
-    .hero {
-      min-height: 100svh; position: relative; overflow: hidden;
-      display: flex; align-items: flex-end; padding: 140px clamp(22px, 5vw, 76px) 7.5vh;
-      background: #030806;
-    }
-    .hero-bg { position: absolute; inset: 0; overflow: hidden; }
-    .hero-bg::before {
-      content: ""; position: absolute; inset: -7%;
-      background:
-        linear-gradient(90deg, rgba(2,5,4,.9) 0%, rgba(2,5,4,.52) 43%, rgba(2,5,4,.22) 100%),
-        linear-gradient(0deg, rgba(2,5,4,.92) 0%, rgba(2,5,4,.08) 44%, rgba(2,5,4,.24) 100%),
-        url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2600&q=90");
-      background-size: cover; background-position: center;
-      transform: scale(1.08); will-change: transform;
-    }
-    .hero-bg::after {
-      content: ""; position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 72% 22%, rgba(255,211,106,.23), transparent 26%),
-        radial-gradient(circle at 38% 72%, rgba(97,255,155,.14), transparent 34%);
-      mix-blend-mode: screen;
-    }
-    .hero-content { position: relative; z-index: 4; width: min(1120px, 100%); }
-    .kicker {
-      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px;
-      color: var(--green); text-transform: uppercase; letter-spacing: .24em; font-weight: 900; font-size: .76rem;
-    }
-    .kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 18px var(--green); }
-    h1 {
-      font-size: clamp(4.4rem, 11vw, 12.8rem); line-height: .78; letter-spacing: -.09em; max-width: 1180px;
-      text-wrap: balance;
-    }
-    .hero h1 span { color: var(--green); text-shadow: 0 0 48px rgba(97,255,155,.22); }
-    .hero-lead { margin-top: 34px; max-width: 700px; color: var(--muted); line-height: 1.8; font-size: clamp(1rem, 1.35vw, 1.18rem); }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-    .scroll-cue {
-      position: absolute; z-index: 5; right: clamp(22px, 5vw, 76px); bottom: 7.5vh;
-      display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .2em; font-size: .72rem;
-    }
-    .scroll-line { width: 78px; height: 1px; background: linear-gradient(90deg, var(--green), transparent); }
-
-    .manifesto {
-      min-height: 74vh; display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 7vw, 120px);
-      align-items: center; padding: clamp(96px, 12vw, 170px) clamp(22px, 5vw, 76px);
-      background:
-        radial-gradient(circle at 80% 20%, rgba(97,255,155,.09), transparent 30%),
-        linear-gradient(180deg, #020504, #06100b);
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .section-title { font-size: clamp(3rem, 7vw, 8rem); line-height: .86; letter-spacing: -.08em; text-wrap: balance; }
-    .copy { color: var(--muted); line-height: 1.85; font-size: clamp(1rem, 1.2vw, 1.13rem); }
-    .copy strong { color: var(--ink); font-weight: 800; }
-
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
-    .stat {
-      border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 22px;
-      background: rgba(255,255,255,.05); backdrop-filter: blur(18px);
-    }
-    .stat b { display: block; color: var(--green); font-size: 1.85rem; letter-spacing: -.05em; margin-bottom: 6px; }
-    .stat span { color: rgba(255,255,255,.58); font-size: .88rem; line-height: 1.45; }
-
-    .experience { height: 760vh; position: relative; background: #010302; }
-    .experience-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-    #energyCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
-    .experience::before {
-      content: ""; position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(180deg, #020504, #030705 25%, #020504 100%);
-    }
-    .exp-bg {
-      position: absolute; inset: 0; z-index: 0; opacity: .42;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.12), rgba(0,0,0,.76)),
-        linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,.1) 55%, rgba(0,0,0,.55)),
-        url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=2600&q=90");
-      background-size: cover; background-position: center;
-      transform: scale(1.04);
-    }
-    .exp-gradient { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(circle at 55% 42%, rgba(97,255,155,.08), transparent 32%), linear-gradient(90deg, rgba(2,5,4,.86), transparent 47%, rgba(2,5,4,.82)); }
-
-    .chapter-panel {
-      position: absolute; z-index: 4; left: clamp(22px, 5vw, 76px); bottom: 9vh;
-      width: min(680px, calc(100vw - 44px));
-    }
-    .chapter-count { color: var(--green); font-size: .78rem; font-weight: 950; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 18px; }
-    .chapter-title { font-size: clamp(3rem, 6.8vw, 7.4rem); line-height: .82; letter-spacing: -.08em; text-wrap: balance; }
-    .chapter-copy { margin-top: 24px; max-width: 580px; color: var(--muted); line-height: 1.75; font-size: clamp(1rem, 1.2vw, 1.12rem); }
-    .chapter-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
-
-    .energy-rail {
-      position: absolute; z-index: 5; top: 50%; right: clamp(22px, 5vw, 76px); transform: translateY(-50%);
-      width: min(360px, 28vw); padding: 24px; border-radius: 28px; border: 1px solid rgba(255,255,255,.16);
-      background: rgba(3,8,6,.42); backdrop-filter: blur(24px); box-shadow: var(--shadow);
-    }
-    .rail-item { display: grid; grid-template-columns: 22px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.09); color: rgba(255,255,255,.52); }
-    .rail-item:last-child { border-bottom: 0; }
-    .rail-dot { width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); }
-    .rail-item.active { color: #fff; }
-    .rail-item.active .rail-dot { background: var(--green); border-color: var(--green); box-shadow: 0 0 26px rgba(97,255,155,.78); }
-    .rail-item b { display: block; font-size: .9rem; margin-bottom: 4px; }
-    .rail-item span { display: block; font-size: .78rem; line-height: 1.45; color: currentColor; opacity: .74; }
-
-    .chapter-progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; z-index: 6; background: rgba(255,255,255,.08); }
-    .chapter-progress span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--amber), var(--green), var(--aqua)); box-shadow: 0 0 20px rgba(97,255,155,.55); }
-
-    .services-section, .offers-section, .group-section { padding: clamp(100px, 12vw, 170px) clamp(22px, 5vw, 76px); background: #050907; position: relative; }
-    .services-section { border-top: 1px solid rgba(255,255,255,.08); }
-    .section-head { max-width: 990px; margin-bottom: clamp(48px, 7vw, 84px); }
-    .section-head p { margin-top: 24px; max-width: 760px; }
-
-    .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .service-card {
-      min-height: 560px; border-radius: 34px; overflow: hidden; position: relative;
-      background: #101712; border: 1px solid rgba(255,255,255,.13); box-shadow: 0 30px 90px rgba(0,0,0,.28);
-    }
-    .service-card.large { grid-column: span 2; }
-    .service-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.72) saturate(.95); transform: scale(1.02); transition: 1.1s cubic-bezier(.2,.8,.2,1); }
-    .service-card:hover img { transform: scale(1.09); filter: brightness(.9) saturate(1.02); }
-    .service-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.84)); }
-    .service-card::before { content: ""; position: absolute; z-index: 2; left: 24px; right: 24px; top: 24px; height: 1px; background: linear-gradient(90deg, rgba(97,255,155,.8), transparent); opacity: .8; }
-    .service-info { position: absolute; z-index: 3; left: clamp(24px, 3vw, 42px); right: clamp(24px, 3vw, 42px); bottom: clamp(24px, 3vw, 42px); }
-    .service-info small { color: var(--green); text-transform: uppercase; letter-spacing: .22em; font-weight: 950; font-size: .72rem; }
-    .service-info h3 { margin-top: 14px; font-size: clamp(2rem, 3.2vw, 3.8rem); line-height: .92; letter-spacing: -.06em; max-width: 600px; }
-    .service-info p { margin-top: 18px; color: rgba(255,255,255,.72); line-height: 1.65; max-width: 540px; }
-
-    .quote-section {
-      min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(42px, 7vw, 110px); align-items: center;
-      padding: clamp(100px, 12vw, 170px) clamp(22px, 5vw, 76px);
-      background:
-        linear-gradient(90deg, rgba(2,5,4,.92), rgba(2,5,4,.36), rgba(2,5,4,.92)),
-        url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=2600&q=90");
-      background-size: cover; background-position: center;
-    }
-    .quote-card {
-      border: 1px solid rgba(255,255,255,.17); border-radius: 34px; padding: clamp(26px, 3vw, 42px);
-      background: rgba(2,5,4,.62); backdrop-filter: blur(28px); box-shadow: var(--shadow);
-    }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .field.full { grid-column: 1 / -1; }
-    label { display: block; margin-bottom: 8px; color: rgba(255,255,255,.64); font-size: .9rem; }
-    input, select, textarea {
-      width: 100%; min-height: 54px; border-radius: 16px; border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.075); color: #fff; padding: 0 16px; outline: none;
-    }
-    textarea { min-height: 110px; padding-top: 14px; resize: vertical; }
-    select option { color: #07110d; }
-    input:focus, select:focus, textarea:focus { border-color: rgba(97,255,155,.58); box-shadow: 0 0 0 4px rgba(97,255,155,.08); }
-    .estimate { margin: 24px 0 10px; color: var(--green); font-weight: 950; font-size: clamp(2.6rem, 5vw, 5.4rem); line-height: .95; letter-spacing: -.08em; }
-    .note { color: rgba(255,255,255,.62); line-height: 1.65; font-size: .96rem; margin-bottom: 22px; }
-
-    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .offer-card { min-height: 360px; padding: 34px; border-radius: 32px; border: 1px solid rgba(255,255,255,.13); background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.035)); position: relative; overflow: hidden; }
-    .offer-card::before { content: ""; position: absolute; width: 260px; height: 260px; right: -100px; top: -130px; border-radius: 50%; background: rgba(97,255,155,.12); filter: blur(4px); }
-    .offer-card small { color: var(--green); text-transform: uppercase; letter-spacing: .22em; font-size: .72rem; font-weight: 950; }
-    .offer-card h3 { margin-top: 16px; font-size: clamp(2rem, 3vw, 3.2rem); line-height: .9; letter-spacing: -.06em; }
-    .offer-card p { margin-top: 20px; color: var(--muted); line-height: 1.65; }
-    .offer-card .pill { margin-top: 28px; }
-
-    .other-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .mini-card { border: 1px solid rgba(255,255,255,.12); border-radius: 26px; padding: 28px; background: rgba(255,255,255,.05); min-height: 230px; }
-    .mini-card small { color: var(--green); font-weight: 950; letter-spacing: .2em; text-transform: uppercase; font-size: .68rem; }
-    .mini-card h3 { margin-top: 18px; font-size: 1.55rem; letter-spacing: -.04em; }
-    .mini-card p { margin-top: 14px; color: var(--muted); line-height: 1.55; font-size: .95rem; }
-
-    .group-section { background: #020504; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(42px, 7vw, 110px); align-items: center; }
-    .flora-word { font-size: clamp(5rem, 15vw, 17rem); line-height: .78; letter-spacing: -.12em; font-weight: 950; }
-    .flora-word span { color: var(--green); text-shadow: 0 0 54px rgba(97,255,155,.22); }
-    .group-list { display: grid; gap: 14px; }
-    .group-card { padding: 26px; border: 1px solid rgba(255,255,255,.13); border-radius: 26px; background: rgba(255,255,255,.052); }
-    .group-card b { color: var(--green); display: block; margin-bottom: 10px; }
-    .group-card p { color: var(--muted); line-height: 1.55; }
-
-    .final-cta {
-      min-height: 100svh; position: relative; display: flex; align-items: flex-end; padding: 140px clamp(22px, 5vw, 76px) 8vh; overflow: hidden;
-      background:
-        linear-gradient(0deg, rgba(2,5,4,.92), rgba(2,5,4,.16)),
-        linear-gradient(90deg, rgba(2,5,4,.82), rgba(2,5,4,.12)),
-        url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=2600&q=90");
-      background-size: cover; background-position: center;
-    }
-    .final-cta h2 { font-size: clamp(3.8rem, 9vw, 10.5rem); line-height: .82; letter-spacing: -.09em; max-width: 1200px; text-wrap: balance; }
-    .final-cta p { max-width: 720px; margin: 28px 0 34px; color: var(--muted); line-height: 1.75; font-size: 1.08rem; }
-
-    footer { padding: 42px clamp(22px, 5vw, 76px); background: #010302; color: rgba(255,255,255,.56); border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 22px; }
-    footer strong { color: #fff; }
-
-    .mobile-toggle { display: none; }
-
-    @media (max-width: 1100px) {
-      nav { display: none; }
-      .energy-rail { display: none; }
-      .manifesto, .quote-section, .group-section { grid-template-columns: 1fr; }
-      .service-grid, .offer-grid { grid-template-columns: 1fr; }
-      .service-card.large { grid-column: span 1; }
-      .other-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 680px) {
-      header { height: 76px; }
-      .brand-symbol { width: 28px; height: 28px; border-radius: 10px; }
-      .brand-name { font-size: 1rem; letter-spacing: .22em; }
-      .nav-actions .pill.primary { display: none; }
-      h1 { font-size: clamp(4rem, 20vw, 7rem); }
-      .hero { padding-bottom: 8vh; }
-      .scroll-cue { display: none; }
-      .chapter-panel { bottom: 7vh; }
-      .chapter-title { font-size: clamp(3rem, 15vw, 5.5rem); }
-      .experience { height: 680vh; }
-      .service-card { min-height: 460px; }
-      .other-grid { grid-template-columns: 1fr; }
-      .pill { width: 100%; }
-      footer { flex-direction: column; }
-    }
-  </style>
+  <meta name="description" content="FLORA: hub per energie rinnovabili, fotovoltaico chiavi in mano, fornitura componenti, installazione, collaudo e servizi tecnici." />
+  <title>FLORA | Hub Energie Rinnovabili e Fotovoltaico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="grain"></div>
-  <div class="site-progress" id="siteProgress"></div>
+  <div class="noise"></div>
 
-  <header>
-    <a href="#" class="brand-mark" aria-label="FLORA Home">
-      <span class="brand-symbol"></span>
-      <span class="brand-name">FLORA<span>.</span></span>
-    </a>
-    <nav aria-label="Menu principale">
-      <a href="#energia">Hub energia</a>
-      <a href="#fotovoltaico">Fotovoltaico</a>
-      <a href="#preventivo">Preventivo</a>
-      <a href="#servizi">Servizi</a>
-      <a href="#gruppo">Gruppo</a>
+  <header class="site-header" id="top">
+    <nav class="navbar">
+      <a href="#top" class="brand" aria-label="FLORA home">
+        <span class="brand-mark"></span>
+        <span>FLORA</span>
+      </a>
+      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#fotovoltaico">Fotovoltaico</a>
+        <a href="#preventivo">Preventivo</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+      <a class="nav-cta" href="https://wa.me/393249581949" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
-    <div class="nav-actions">
-      <a class="pill primary" href="#preventivo">Richiedi stima</a>
-    </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content">
-        <div class="kicker">Hub dell'energia</div>
-        <h1>Energia solare. Sistema <span>FLORA</span>.</h1>
-        <p class="hero-lead">Un brand unico per progettazione, fornitura e installazione di impianti fotovoltaici, accumulo, ricarica elettrica e servizi energetici integrati. Dal primo studio tecnico alla messa in funzione: un percorso serio, completo e misurabile.</p>
-        <div class="hero-cta">
-          <a href="#energia" class="pill primary">Esplora il percorso</a>
-          <a href="#preventivo" class="pill">Calcola una prima stima</a>
-        </div>
-      </div>
-      <div class="scroll-cue"><span class="scroll-line"></span><span>Scroll</span></div>
-    </section>
-
-    <section class="manifesto">
-      <div>
-        <div class="kicker">Posizionamento</div>
-        <h2 class="section-title">FLORA non vende solo impianti. Costruisce indipendenza energetica.</h2>
-      </div>
-      <div>
-        <p class="copy"><strong>Il fotovoltaico è il servizio centrale.</strong> Il sito deve comunicarlo subito, senza sembrare un catalogo generico. FLORA viene presentata come un hub dell'energia: progettazione, componenti, installazione, accumulo, ricarica, assistenza e servizi collegati.</p>
-        <div class="stats">
-          <div class="stat"><b>01</b><span>Progettazione tecnica e analisi consumi.</span></div>
-          <div class="stat"><b>02</b><span>Fornitura di pannelli, inverter, batterie e colonnine.</span></div>
-          <div class="stat"><b>03</b><span>Installazione, collaudo e supporto operativo.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="experience" id="energia">
-      <div class="experience-sticky">
-        <div class="exp-bg"></div>
-        <canvas id="energyCanvas"></canvas>
-        <div class="exp-gradient"></div>
-
-        <div class="chapter-panel">
-          <div class="chapter-count" id="chapterCount">01 / Sole</div>
-          <h2 class="chapter-title" id="chapterTitle">L'energia nasce dalla luce.</h2>
-          <p class="chapter-copy" id="chapterCopy">Lo scroll racconta il viaggio dell'energia in modo premium: la luce solare diventa produzione, accumulo, autonomia e mobilità elettrica.</p>
-          <div class="chapter-actions">
-            <a class="pill primary" href="#preventivo">Richiedi una valutazione</a>
-            <a class="pill" href="#fotovoltaico">Servizi fotovoltaici</a>
+    <section class="hero section-pad">
+      <div class="hero-bg-orb orb-one"></div>
+      <div class="hero-bg-orb orb-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Hub energie rinnovabili</p>
+          <h1>Il futuro dell'energia passa da <strong>FLORA</strong>.</h1>
+          <p class="hero-text">
+            Fotovoltaico, accumulo, colonnine, impianti elettrici e soluzioni energetiche integrate. Un unico punto di incontro per portare energia pulita in casa, in azienda e negli spazi urbani.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#preventivo">Richiedi preventivo gratuito</a>
+            <a class="btn btn-ghost" href="#fotovoltaico">Scopri il fotovoltaico</a>
+          </div>
+          <div class="trust-row" aria-label="Punti di forza FLORA">
+            <div><strong>Chiavi in mano</strong><span>Studio, componenti e posa</span></div>
+            <div><strong>Supporto reale</strong><span>Prima, durante e dopo</span></div>
+            <div><strong>Energia smart</strong><span>Fotovoltaico e monitoraggio</span></div>
           </div>
         </div>
 
-        <aside class="energy-rail" aria-label="Percorso energia">
-          <div class="rail-item active"><div class="rail-dot"></div><div><b>Sole</b><span>Fonte primaria dell'energia.</span></div></div>
-          <div class="rail-item"><div class="rail-dot"></div><div><b>Pannelli</b><span>Produzione fotovoltaica.</span></div></div>
-          <div class="rail-item"><div class="rail-dot"></div><div><b>Inverter</b><span>Conversione e gestione.</span></div></div>
-          <div class="rail-item"><div class="rail-dot"></div><div><b>Batterie</b><span>Accumulo intelligente.</span></div></div>
-          <div class="rail-item"><div class="rail-dot"></div><div><b>Casa</b><span>Consumo domestico efficiente.</span></div></div>
-          <div class="rail-item"><div class="rail-dot"></div><div><b>Ricarica EV</b><span>Energia per la mobilità.</span></div></div>
-        </aside>
-
-        <div class="chapter-progress"><span id="chapterProgress"></span></div>
-      </div>
-    </section>
-
-    <section class="services-section" id="fotovoltaico">
-      <div class="section-head">
-        <div class="kicker">Fotovoltaico al centro</div>
-        <h2 class="section-title">Un servizio chiavi in mano, modulabile su ogni esigenza.</h2>
-        <p class="copy">Il cliente deve capire immediatamente che FLORA può seguire l'intero processo oppure intervenire su una singola fase: solo progettazione, solo fornitura o sola installazione.</p>
-      </div>
-
-      <div class="service-grid">
-        <article class="service-card large">
-          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=90" alt="Pannelli fotovoltaici su tetto moderno" />
-          <div class="service-info"><small>Servizio completo</small><h3>Impianti fotovoltaici chiavi in mano.</h3><p>Studio tecnico, componenti, installazione, collaudo e supporto. Un unico interlocutore per portare l'energia solare dentro casa o in azienda.</p></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1400&q=90" alt="Progettazione e analisi impianto solare" />
-          <div class="service-info"><small>01</small><h3>Progettazione</h3><p>Analisi consumi, dimensionamento, valutazione tecnica e scelta della configurazione più efficiente.</p></div>
-        </article>
-        <article class="service-card">
-          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1400&q=90" alt="Fornitura pannelli solari" />
-          <div class="service-info"><small>02</small><h3>Fornitura</h3><p>Pannelli, inverter, batterie, colonnine, quadri elettrici e sistemi di monitoraggio.</p></div>
-        </article>
-        <article class="service-card large">
-          <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1800&q=90" alt="Installazione elettrica professionale" />
-          <div class="service-info"><small>03</small><h3>Installazione, collaudo e messa in funzione.</h3><p>Squadre operative, montaggio, collegamenti, configurazione dell'impianto e assistenza nella fase di avvio.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="quote-section" id="preventivo">
-      <div>
-        <div class="kicker">Preventivatore online</div>
-        <h2 class="section-title">Trasforma l'interesse in richiesta concreta.</h2>
-        <p class="copy">Una prima stima indicativa aiuta il cliente a orientarsi. Il preventivo reale verrà definito dopo analisi tecnica, sopralluogo e verifica dei componenti necessari.</p>
-      </div>
-      <div class="quote-card">
-        <div class="form-grid">
-          <div class="field"><label for="tipo">Tipo di immobile</label><select id="tipo"><option value="casa">Abitazione privata</option><option value="azienda">Azienda / capannone</option><option value="condominio">Condominio</option></select></div>
-          <div class="field"><label for="bolletta">Spesa media bimestrale</label><input id="bolletta" type="number" inputmode="decimal" placeholder="Esempio: 250" /></div>
-          <div class="field"><label for="accumulo">Batteria di accumulo</label><select id="accumulo"><option value="no">No</option><option value="si">Sì</option></select></div>
-          <div class="field"><label for="servizio">Servizio richiesto</label><select id="servizio"><option value="chiavi">Chiavi in mano</option><option value="progettazione">Solo progettazione</option><option value="fornitura">Solo fornitura</option><option value="installazione">Solo installazione</option></select></div>
-          <div class="field full"><label for="note">Note del cliente</label><textarea id="note" placeholder="Esempio: tetto a falda, interesse per accumulo, colonnina, abitazione o azienda..."></textarea></div>
+        <div class="hero-visual reveal delay-1" aria-hidden="true">
+          <div class="solar-card main-solar-card">
+            <div class="card-topline">
+              <span>FLORA Energy OS</span>
+              <strong>98%</strong>
+            </div>
+            <div class="panel-grid">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="energy-stats">
+              <div><span>Produzione oggi</span><strong>42.8 kWh</strong></div>
+              <div><span>CO₂ evitata</span><strong>18 kg</strong></div>
+            </div>
+          </div>
+          <div class="floating-chip chip-a">Batterie di accumulo</div>
+          <div class="floating-chip chip-b">Colonnine EV</div>
+          <div class="floating-chip chip-c">Monitoraggio smart</div>
         </div>
-        <button class="pill primary" onclick="calcolaPreventivo()">Calcola stima indicativa</button>
-        <div class="estimate" id="stima">€ --</div>
-        <p class="note" id="descrizione">Inserisci i dati principali per visualizzare una fascia di investimento orientativa. La stima non sostituisce il sopralluogo tecnico.</p>
-        <a class="pill" href="mailto:info@florambiente.it?subject=Richiesta preventivo fotovoltaico">Invia richiesta a FLORA</a>
       </div>
     </section>
 
-    <section class="offers-section" id="offerte">
-      <div class="section-head">
-        <div class="kicker">Offerte del momento</div>
-        <h2 class="section-title">Pacchetti commerciali chiari, aggiornabili nel tempo.</h2>
-        <p class="copy">La sezione offerte può ospitare promozioni stagionali, pacchetti con accumulo, soluzioni per aziende e campagne dedicate alla ricarica elettrica.</p>
-      </div>
-      <div class="offer-grid">
-        <article class="offer-card"><small>Casa</small><h3>Solar Starter</h3><p>Soluzione per abitazioni private che vogliono iniziare a produrre energia con un impianto dimensionato sui consumi reali.</p><a class="pill" href="#preventivo">Calcola stima</a></article>
-        <article class="offer-card"><small>Accumulo</small><h3>Solar Battery</h3><p>Fotovoltaico con batteria per aumentare autoconsumo, autonomia e continuità d'uso nelle ore serali.</p><a class="pill" href="#preventivo">Calcola stima</a></article>
-        <article class="offer-card"><small>Business</small><h3>Energy Business</h3><p>Soluzioni per aziende, attività e capannoni con consumi elevati e superfici adatte alla produzione.</p><a class="pill" href="#preventivo">Calcola stima</a></article>
+    <section class="logo-strip" aria-label="Servizi principali">
+      <div class="container strip-inner">
+        <span>Fotovoltaico</span>
+        <span>Accumulo</span>
+        <span>Inverter</span>
+        <span>Colonnine</span>
+        <span>Installazione</span>
+        <span>Collaudo</span>
       </div>
     </section>
 
-    <section class="services-section" id="servizi">
-      <div class="section-head">
-        <div class="kicker">Servizi collegati</div>
-        <h2 class="section-title">Un ecosistema operativo intorno all'energia.</h2>
-      </div>
-      <div class="other-grid">
-        <div class="mini-card"><small>Edilizia</small><h3>Ristrutturazioni</h3><p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p></div>
-        <div class="mini-card"><small>Impianti</small><h3>Elettrico domestico</h3><p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p></div>
-        <div class="mini-card"><small>Clima</small><h3>Riscaldamento e raffrescamento</h3><p>Condizionatori, caldaie, solare termico e sistemi di comfort.</p></div>
-        <div class="mini-card"><small>Territorio</small><h3>Ripristino e verde</h3><p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p></div>
-        <div class="mini-card"><small>Futuro</small><h3>Microeolico</h3><p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell'offerta.</p></div>
-        <div class="mini-card"><small>Mobilità</small><h3>Microcar elettriche</h3><p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p></div>
-        <div class="mini-card"><small>EV</small><h3>Colonnine di ricarica</h3><p>Integrazione con impianti fotovoltaici o installazione indipendente.</p></div>
-        <div class="mini-card"><small>Assistenza</small><h3>Monitoraggio</h3><p>Supporto, verifica performance e lettura dell'impianto nel tempo.</p></div>
+    <section id="fotovoltaico" class="section-pad">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> Il cuore dell'offerta</p>
+          <h2>Fotovoltaico evoluto, progettato per funzionare davvero.</h2>
+          <p>
+            FLORA accompagna privati e aziende nella realizzazione di impianti fotovoltaici completi, efficienti e pronti all'uso. Dallo studio tecnico alla messa in funzione, fino al supporto nel tempo.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card large reveal">
+            <div class="icon">☀</div>
+            <h3>Impianti fotovoltaici chiavi in mano</h3>
+            <p>
+              Studio tecnico, componenti, installazione, collaudo e supporto. Un unico interlocutore per portare l'energia solare dentro casa o in azienda.
+            </p>
+          </article>
+          <article class="feature-card reveal delay-1">
+            <div class="icon">▣</div>
+            <h3>Solo fornitura</h3>
+            <p>
+              Pannelli, inverter, batterie, colonnine, quadri elettrici, sistemi di monitoraggio, strutture e tutto il necessario per rendere l'impianto completo e funzionante.
+            </p>
+          </article>
+          <article class="feature-card reveal delay-2">
+            <div class="icon">⌁</div>
+            <h3>Progettazione</h3>
+            <p>
+              Analisi consumi, dimensionamento, valutazione tecnica e scelta della configurazione più efficiente per abitazioni e aziende.
+            </p>
+          </article>
+          <article class="feature-card reveal delay-3">
+            <div class="icon">⚡</div>
+            <h3>Installazione e collaudo</h3>
+            <p>
+              Squadre operative, montaggio, collegamenti, configurazione dell'impianto, collaudo, messa in funzione e assistenza nella fase di avvio.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="group-section" id="gruppo">
-      <div>
-        <div class="kicker">Brand architecture</div>
-        <div class="flora-word">FLORA<span>.</span></div>
-        <p class="copy">Il sito valorizza FLORA come marchio principale: una realtà più ampia della singola società, strutturata come sistema coordinato di competenze tecniche, operative e amministrative.</p>
-      </div>
-      <div class="group-list">
-        <div class="group-card"><b>Flora Esco S.r.l.</b><p>Progettazione, sviluppo tecnico e soluzioni energetiche.</p></div>
-        <div class="group-card"><b>Flora Multiservice S.r.l.</b><p>Installazione, cantieri, interventi operativi e servizi sul territorio.</p></div>
-        <div class="group-card"><b>Flora Holding S.r.l.</b><p>Gestione amministrativa, contabile e coordinamento delle società del gruppo.</p></div>
-        <div class="group-card"><b>FLORA</b><p>Il marchio unico che rappresenta energia, affidabilità, innovazione e servizi integrati.</p></div>
+    <section class="split-section section-pad">
+      <div class="container split-grid">
+        <div class="image-panel reveal">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="Pannelli fotovoltaici al tramonto" />
+          <div class="glass-badge">
+            <span>Energia pulita</span>
+            <strong>per casa e azienda</strong>
+          </div>
+        </div>
+        <div class="split-copy reveal delay-1">
+          <p class="eyebrow"><span></span> Metodo FLORA</p>
+          <h2>Dal sopralluogo alla produzione: ogni fase è coordinata.</h2>
+          <p>
+            Un impianto fotovoltaico non è solo un insieme di pannelli: è un sistema composto da progettazione, componenti, installazione, configurazione e controllo delle performance. FLORA mette insieme tutte queste parti in un percorso semplice e concreto.
+          </p>
+          <ul class="check-list">
+            <li>Analisi preliminare dei consumi e dell'edificio.</li>
+            <li>Scelta della soluzione più adatta: pannelli, inverter, accumulo e monitoraggio.</li>
+            <li>Installazione, collaudo e messa in funzione dell'impianto.</li>
+            <li>Assistenza e verifica delle performance nel tempo.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="final-cta">
-      <div>
-        <div class="kicker">Inizia dal sopralluogo</div>
-        <h2>Porta l'energia solare dentro il tuo spazio.</h2>
-        <p>FLORA può seguire l'intero percorso: progettazione, fornitura, installazione, accumulo, colonnina di ricarica e assistenza.</p>
-        <a class="pill primary" href="mailto:info@florambiente.it?subject=Richiesta informazioni FLORA">Contatta FLORA</a>
+    <section id="preventivo" class="quote-section section-pad">
+      <div class="container quote-grid">
+        <div class="quote-copy reveal">
+          <p class="eyebrow"><span></span> Preventivo rapido</p>
+          <h2>Richiedi una stima gratuita in meno di un minuto.</h2>
+          <p>
+            Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA. È veloce, senza impegno e totalmente gratuito.
+          </p>
+          <div class="quote-points">
+            <div><strong>01</strong><span>Inserisci i dati principali</span></div>
+            <div><strong>02</strong><span>Genera il messaggio automatico</span></div>
+            <div><strong>03</strong><span>Invia la richiesta su WhatsApp</span></div>
+          </div>
+        </div>
+
+        <form class="quote-form reveal delay-1" id="quoteForm">
+          <div class="form-row">
+            <label for="clientType">Tipo cliente</label>
+            <select id="clientType" required>
+              <option value="">Seleziona</option>
+              <option value="Privato">Privato</option>
+              <option value="Azienda">Azienda</option>
+            </select>
+          </div>
+
+          <div class="form-two">
+            <div class="form-row">
+              <label for="firstName">Nome</label>
+              <input id="firstName" type="text" placeholder="Mario" required />
+            </div>
+            <div class="form-row">
+              <label for="lastName">Cognome</label>
+              <input id="lastName" type="text" placeholder="Rossi" required />
+            </div>
+          </div>
+
+          <div class="form-two">
+            <div class="form-row">
+              <label for="phone">Telefono</label>
+              <input id="phone" type="tel" placeholder="333 000 0000" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="nome@email.it" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="buildingType">Tipologia edificio</label>
+            <select id="buildingType" required>
+              <option value="">Seleziona</option>
+              <option value="Casa indipendente">Casa indipendente</option>
+              <option value="Appartamento">Appartamento</option>
+              <option value="Pensilina parcheggio">Pensilina parcheggio</option>
+              <option value="Azienda / capannone">Azienda / capannone</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="annualConsumption">Consumo energetico annuale medio <span>opzionale</span></label>
+            <input id="annualConsumption" type="text" placeholder="Es. 4.500 kWh/anno" />
+          </div>
+
+          <div class="form-row">
+            <label for="battery">Batterie di accumulo</label>
+            <select id="battery" required>
+              <option value="">Seleziona</option>
+              <option value="Sì, desidero valutarle">Sì, desidero valutarle</option>
+              <option value="No">No</option>
+              <option value="Non so, vorrei un consiglio">Non so, vorrei un consiglio</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="address">Indirizzo di installazione</label>
+            <input id="address" type="text" placeholder="Via, città, provincia" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit">Apri WhatsApp e invia richiesta</button>
+          <p class="privacy-note">La richiesta viene preparata sul tuo dispositivo e inviata solo dopo conferma su WhatsApp.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="servizi" class="section-pad services-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> Ecosistema FLORA</p>
+          <h2>Oltre il fotovoltaico: tutti i servizi per energia, casa e impresa.</h2>
+          <p>
+            FLORA integra competenze tecniche, operative e manutentive per offrire un servizio completo su immobili, impianti e spazi esterni.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal"><span>01</span><h3>Edilizia e ristrutturazioni</h3><p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p></article>
+          <article class="service-card reveal"><span>02</span><h3>Elettrico domestico</h3><p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p></article>
+          <article class="service-card reveal"><span>03</span><h3>Riscaldamento e raffrescamento</h3><p>Condizionatori, caldaie, solare termico e sistemi di comfort.</p></article>
+          <article class="service-card reveal"><span>04</span><h3>Ripristino e verde</h3><p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p></article>
+          <article class="service-card reveal"><span>05</span><h3>Microeolico</h3><p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell'offerta.</p></article>
+          <article class="service-card reveal"><span>06</span><h3>Microcar elettriche</h3><p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p></article>
+          <article class="service-card reveal"><span>07</span><h3>Monitoraggio e assistenza</h3><p>Supporto, verifica performance e lettura dell'impianto nel tempo.</p></article>
+          <article class="service-card reveal"><span>08</span><h3>Colonnine di ricarica</h3><p>Integrazione con impianti fotovoltaici o installazione indipendente.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner reveal">
+        <div>
+          <p class="eyebrow"><span></span> Energia su misura</p>
+          <h2>Parliamo del tuo prossimo impianto.</h2>
+        </div>
+        <a class="btn btn-dark" href="#preventivo">Calcola una prima richiesta</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div><strong>FLORA</strong> — Hub dell'energia, fotovoltaico e rinnovabili</div>
-    <div>© 2026 FLORA. Tutti i diritti riservati.</div>
+  <footer id="contatti" class="site-footer section-pad">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand"><span class="brand-mark"></span><span>FLORA</span></a>
+        <p>
+          Hub per energie rinnovabili, fotovoltaico, impianti, edilizia, assistenza e soluzioni integrate per privati e aziende.
+        </p>
+      </div>
+      <div class="footer-contact">
+        <h3>Contatti</h3>
+        <a class="contact-link whatsapp" href="https://wa.me/393249581949" target="_blank" rel="noopener">☘ WhatsApp: 324 958 1949</a>
+        <a class="contact-link" href="mailto:costruzioni@florambiente.it">costruzioni@florambiente.it</a>
+        <p>Viterbo, Strada Cassia Nord Km 87.700</p>
+        <p>Partita IVA 02513380564</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> FLORA. Tutti i diritti riservati.</span>
+      <a href="#top">Torna su ↑</a>
+    </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const progressBar = document.getElementById('siteProgress');
-    gsap.to(progressBar, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: .15 } });
-    gsap.to('.hero-bg::before', { duration: 1 });
-    gsap.to('.hero-bg', { yPercent: 11, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.from('.hero-content > *', { opacity: 0, y: 60, duration: 1.25, stagger: .12, ease: 'power3.out' });
-    gsap.utils.toArray('.service-card, .offer-card, .mini-card, .group-card, .quote-card, .section-head').forEach(el => {
-      gsap.from(el, { opacity: 0, y: 80, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 84%' } });
-    });
-
-    const canvas = document.getElementById('energyCanvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.06;
-
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x020504, 0.035);
-    const camera = new THREE.PerspectiveCamera(35, 1, .1, 120);
-    camera.position.set(0, 1.8, 10);
-
-    const ambient = new THREE.AmbientLight(0x9fffc2, .42); scene.add(ambient);
-    const key = new THREE.DirectionalLight(0xffffff, 2.8); key.position.set(4, 7, 6); scene.add(key);
-    const greenLight = new THREE.PointLight(0x61ff9b, 8, 24); greenLight.position.set(-2, 1.8, 3); scene.add(greenLight);
-    const amberLight = new THREE.PointLight(0xffd36a, 6, 30); amberLight.position.set(-6, 5, -4); scene.add(amberLight);
-
-    const root = new THREE.Group(); scene.add(root);
-
-    const matDark = new THREE.MeshStandardMaterial({ color: 0x07110d, roughness: .55, metalness: .18 });
-    const matGreen = new THREE.MeshStandardMaterial({ color: 0x61ff9b, emissive: 0x0fd96d, emissiveIntensity: .85, roughness: .28, metalness: .22 });
-    const matGlass = new THREE.MeshPhysicalMaterial({ color: 0x8bdfff, roughness: .18, metalness: .05, transmission: .25, transparent: true, opacity: .76, clearcoat: .9, clearcoatRoughness: .12 });
-    const matWhite = new THREE.MeshStandardMaterial({ color: 0xe8eee8, roughness: .36, metalness: .28 });
-    const matBlack = new THREE.MeshStandardMaterial({ color: 0x040806, roughness: .62, metalness: .25 });
-
-    function roundedBox(w,h,d,r=0.08,s=4) {
-      const shape = new THREE.Shape(); const x=-w/2,y=-h/2;
-      shape.moveTo(x+r,y); shape.lineTo(x+w-r,y); shape.quadraticCurveTo(x+w,y,x+w,y+r); shape.lineTo(x+w,y+h-r); shape.quadraticCurveTo(x+w,y+h,x+w-r,y+h); shape.lineTo(x+r,y+h); shape.quadraticCurveTo(x,y+h,x,y+h-r); shape.lineTo(x,y+r); shape.quadraticCurveTo(x,y,x+r,y);
-      return new THREE.ExtrudeGeometry(shape,{ depth:d, bevelEnabled:true, bevelSize:r/2, bevelThickness:r/2, bevelSegments:s }).translate(0,0,-d/2);
-    }
-
-    const sun = new THREE.Mesh(new THREE.SphereGeometry(1.15,64,64), new THREE.MeshBasicMaterial({ color: 0xffd36a }));
-    sun.position.set(-5.8,3.5,-2.5); root.add(sun);
-    const sunGlow = new THREE.Mesh(new THREE.SphereGeometry(1.72,64,64), new THREE.MeshBasicMaterial({ color: 0xffd36a, transparent:true, opacity:.16 })); sun.add(sunGlow);
-
-    const panelGroup = new THREE.Group(); panelGroup.position.set(-2.25,.85,0); panelGroup.rotation.set(-0.22,0.38,0.04); root.add(panelGroup);
-    for(let i=0;i<6;i++) {
-      const panel = new THREE.Mesh(roundedBox(.92,.58,.045,.055,4), matGlass);
-      panel.position.set((i%3-1)*1.02, Math.floor(i/3)*-.68, 0);
-      panelGroup.add(panel);
-      const frame = new THREE.Mesh(roundedBox(.98,.64,.035,.06,4), new THREE.MeshStandardMaterial({ color:0x0a1612, roughness:.28, metalness:.65 }));
-      frame.position.copy(panel.position); frame.position.z -= .035; panelGroup.add(frame);
-    }
-
-    const inverter = new THREE.Mesh(roundedBox(.78,1.2,.22,.12,6), matWhite); inverter.position.set(.65,.25,.05); root.add(inverter);
-    const inverterLight = new THREE.Mesh(new THREE.BoxGeometry(.38,.045,.035), matGreen); inverterLight.position.set(.65,-.1,.19); root.add(inverterLight);
-
-    const battery = new THREE.Group(); battery.position.set(2.35,.18,.05); root.add(battery);
-    const batteryShell = new THREE.Mesh(roundedBox(.72,1.55,.25,.13,6), matWhite); battery.add(batteryShell);
-    const batteryFill = new THREE.Mesh(new THREE.BoxGeometry(.48,.1,.285), matGreen); batteryFill.position.set(0,-.52,.035); battery.add(batteryFill);
-
-    const homeHub = new THREE.Group(); homeHub.position.set(3.92,-.15,-.1); root.add(homeHub);
-    const home = new THREE.Mesh(roundedBox(1.35,.95,.28,.13,6), matDark); homeHub.add(home);
-    const roof = new THREE.Mesh(new THREE.ConeGeometry(1.1,.55,4), new THREE.MeshStandardMaterial({ color:0x102019, roughness:.5, metalness:.2 })); roof.position.set(0,.76,0); roof.rotation.y = Math.PI/4; homeHub.add(roof);
-    const windowLight = new THREE.Mesh(new THREE.PlaneGeometry(.35,.35), new THREE.MeshBasicMaterial({ color:0xffd36a, transparent:true, opacity:.85 })); windowLight.position.set(-.23,.05,.151); homeHub.add(windowLight);
-
-    const charger = new THREE.Mesh(roundedBox(.32,.9,.18,.08,5), matWhite); charger.position.set(5.38,-.25,.1); root.add(charger);
-    const chargerLed = new THREE.Mesh(new THREE.SphereGeometry(.09,24,24), matGreen); chargerLed.position.set(5.38,-.06,.22); root.add(chargerLed);
-    const car = new THREE.Group(); car.position.set(6.35,-.62,.08); root.add(car);
-    const carBody = new THREE.Mesh(roundedBox(1.28,.46,.45,.18,8), new THREE.MeshStandardMaterial({ color:0x0f7ba4, roughness:.3, metalness:.42 })); car.add(carBody);
-    const carTop = new THREE.Mesh(roundedBox(.58,.32,.42,.11,6), new THREE.MeshPhysicalMaterial({ color:0x8bdfff, transparent:true, opacity:.52, roughness:.08, metalness:.05 })); carTop.position.set(-.1,.31,0); car.add(carTop);
-    [-.42,.42].forEach(x=>{ const w = new THREE.Mesh(new THREE.CylinderGeometry(.14,.14,.09,32), matBlack); w.rotation.x=Math.PI/2; w.position.set(x,-.25,.25); car.add(w); });
-
-    const platform = new THREE.Mesh(new THREE.CylinderGeometry(5.4,5.4,.035,96), new THREE.MeshBasicMaterial({ color:0x61ff9b, transparent:true, opacity:.055 })); platform.position.set(1.2,-1.05,-.4); root.add(platform);
-
-    const curvePoints = [
-      new THREE.Vector3(-5.8,3.5,-2.5), new THREE.Vector3(-4.1,2.35,-1.25), new THREE.Vector3(-2.25,.85,0),
-      new THREE.Vector3(-.6,.62,.04), new THREE.Vector3(.65,.25,.05), new THREE.Vector3(1.55,.25,.06),
-      new THREE.Vector3(2.35,.18,.05), new THREE.Vector3(3.25,.08,-.02), new THREE.Vector3(3.92,-.15,-.1),
-      new THREE.Vector3(4.82,-.2,.02), new THREE.Vector3(5.38,-.25,.1), new THREE.Vector3(6.35,-.62,.08)
-    ];
-    const curve = new THREE.CatmullRomCurve3(curvePoints);
-    const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, 240, .025, 10, false), new THREE.MeshBasicMaterial({ color:0x61ff9b, transparent:true, opacity:.45 })); root.add(tube);
-    const energyOrb = new THREE.Mesh(new THREE.SphereGeometry(.12,32,32), new THREE.MeshBasicMaterial({ color:0x61ff9b })); root.add(energyOrb);
-    const orbGlow = new THREE.Mesh(new THREE.SphereGeometry(.28,32,32), new THREE.MeshBasicMaterial({ color:0x61ff9b, transparent:true, opacity:.22 })); energyOrb.add(orbGlow);
-
-    const particles = new THREE.BufferGeometry(); const count=720; const pos=new Float32Array(count*3);
-    for(let i=0;i<count;i++){ pos[i*3]=(Math.random()-.5)*18; pos[i*3+1]=(Math.random()-.5)*8; pos[i*3+2]=(Math.random()-.5)*10; }
-    particles.setAttribute('position', new THREE.BufferAttribute(pos,3));
-    const particleMesh = new THREE.Points(particles, new THREE.PointsMaterial({ color:0x61ff9b, size:.018, transparent:true, opacity:.42 })); scene.add(particleMesh);
-
-    const chapters = [
-      { count:'01 / Sole', title:"L'energia nasce dalla luce.", copy:"Il percorso parte dalla fonte più naturale: il sole. Il sito racconta l'energia come flusso, non come semplice elenco di servizi.", cam:[-2.8,2.25,8.2], look:[-3.8,1.55,-.8] },
-      { count:'02 / Pannelli', title:'La luce diventa produzione.', copy:'I pannelli fotovoltaici catturano la radiazione solare e la trasformano in energia elettrica prodotta direttamente sul tetto.', cam:[-1.7,1.45,6.2], look:[-2.2,.55,0] },
-      { count:'03 / Inverter', title:"L'inverter governa il sistema.", copy:"L'energia viene convertita, stabilizzata e resa utilizzabile per l'abitazione, l'azienda o il sistema di accumulo.", cam:[.4,1.05,5.2], look:[.65,.18,.03] },
-      { count:'04 / Batterie', title:"L'energia viene accumulata.", copy:"Le batterie permettono di conservare l'energia prodotta durante il giorno e utilizzarla quando serve davvero.", cam:[2.15,.95,4.75], look:[2.35,.1,.03] },
-      { count:'05 / Casa', title:'La casa si alimenta.', copy:'Luce, elettrodomestici e consumi quotidiani possono essere coperti da energia prodotta e gestita in modo intelligente.', cam:[3.82,.9,4.5], look:[3.95,-.12,-.06] },
-      { count:'06 / Ricarica EV', title:"La mobilità entra nell'hub.", copy:"La colonnina porta l'energia anche all'auto elettrica, completando un ecosistema moderno: fotovoltaico, accumulo e ricarica.", cam:[5.55,.75,4.8], look:[5.7,-.28,.05] }
-    ];
-    const countEl = document.getElementById('chapterCount'), titleEl=document.getElementById('chapterTitle'), copyEl=document.getElementById('chapterCopy'), progEl=document.getElementById('chapterProgress');
-    const railItems = gsap.utils.toArray('.rail-item');
-    let scrollP = 0, currentChapter = 0;
-    function updateChapter(i){ if(i===currentChapter && countEl.textContent) return; currentChapter=i; countEl.textContent=chapters[i].count; titleEl.textContent=chapters[i].title; copyEl.textContent=chapters[i].copy; railItems.forEach((el,idx)=>el.classList.toggle('active', idx===i)); gsap.fromTo([countEl,titleEl,copyEl],{opacity:.25,y:18},{opacity:1,y:0,duration:.35,stagger:.035,ease:'power2.out'}); }
-    ScrollTrigger.create({ trigger:'.experience', start:'top top', end:'bottom bottom', scrub:true, onUpdate:self=>{ scrollP=self.progress; progEl.style.width=(self.progress*100).toFixed(2)+'%'; const idx=Math.min(chapters.length-1, Math.floor(self.progress*chapters.length)); updateChapter(idx); }});
-
-    function resize(){ const w=canvas.clientWidth, h=canvas.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
-    window.addEventListener('resize', resize); resize();
-    const lookVec = new THREE.Vector3();
-    function lerpArray(a,b,t){ return a.map((v,i)=>v+(b[i]-v)*t); }
-    function animate(t){
-      requestAnimationFrame(animate);
-      const scaled=scrollP*(chapters.length-1); const i=Math.min(chapters.length-2, Math.floor(scaled)); const f=scaled-i;
-      const cp=lerpArray(chapters[i].cam, chapters[i+1].cam, f); const lp=lerpArray(chapters[i].look, chapters[i+1].look, f);
-      camera.position.set(cp[0],cp[1],cp[2]); lookVec.set(lp[0],lp[1],lp[2]); camera.lookAt(lookVec);
-      const p = curve.getPoint(Math.min(.999, scrollP)); energyOrb.position.copy(p);
-      sun.rotation.y += .002; sunGlow.scale.setScalar(1.03 + Math.sin(t*.0012)*.08);
-      panelGroup.rotation.z = .04 + Math.sin(t*.0007)*.02;
-      batteryFill.scale.y = .2 + scrollP*.9; batteryFill.position.y = -.62 + batteryFill.scale.y*.28;
-      particleMesh.rotation.y += .00045; particleMesh.rotation.x = Math.sin(t*.0002)*.08;
-      greenLight.position.copy(p); greenLight.position.y += .55;
-      tube.material.opacity = .24 + Math.sin(t*.003)*.12;
-      renderer.render(scene,camera);
-    }
-    animate(0);
-
-    window.calcolaPreventivo = function(){
-      const tipo=document.getElementById('tipo').value; const bolletta=Number(document.getElementById('bolletta').value); const accumulo=document.getElementById('accumulo').value; const servizio=document.getElementById('servizio').value; const stima=document.getElementById('stima'); const descrizione=document.getElementById('descrizione');
-      if(!bolletta || bolletta<=0){ stima.textContent='€ --'; descrizione.textContent='Inserisci una spesa bimestrale valida per ottenere una prima stima indicativa.'; return; }
-      let base=bolletta*42; if(tipo==='azienda') base*=1.45; if(tipo==='condominio') base*=1.75; if(accumulo==='si') base+=5500; if(servizio==='progettazione') base*=.12; if(servizio==='fornitura') base*=.68; if(servizio==='installazione') base*=.28;
-      const min=Math.round((base*.9)/100)*100, max=Math.round((base*1.15)/100)*100;
-      stima.textContent='€ '+min.toLocaleString('it-IT')+' - € '+max.toLocaleString('it-IT');
-      descrizione.textContent='Stima puramente indicativa. Il preventivo reale dipende da consumi, superficie disponibile, esposizione, componenti scelti, accumulo, opere elettriche e sopralluogo tecnico.';
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
