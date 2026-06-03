@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,13 +20,11 @@
       --lime: #b7ef63;
       --blue: #dff2ff;
       --sky: #edf8ff;
-      --sand: #f7f0e3;
       --cream: #fbfaf5;
       --white: #ffffff;
       --text: #172117;
       --muted: #61705f;
       --line: rgba(25, 52, 30, 0.13);
-      --card: rgba(255, 255, 255, 0.76);
       --shadow: 0 24px 70px rgba(30, 64, 38, 0.13);
       --shadow-strong: 0 34px 95px rgba(31, 80, 42, 0.18);
       --radius-xl: 38px;
@@ -44,6 +41,7 @@
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
@@ -61,9 +59,11 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
     .container {
@@ -77,6 +77,7 @@
       color: var(--text);
       letter-spacing: -0.045em;
       line-height: 1;
+      font-weight: 800;
     }
 
     h1 {
@@ -118,7 +119,7 @@
       padding: 12px 14px 12px 18px;
       border: 1px solid rgba(31, 122, 58, 0.12);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(22px);
       box-shadow: 0 18px 55px rgba(25, 68, 35, 0.11);
     }
@@ -131,6 +132,7 @@
       font-weight: 900;
       letter-spacing: 0.08em;
       color: #17351d;
+      flex: 0 0 auto;
     }
 
     .logo-mark {
@@ -185,6 +187,7 @@
       border-radius: 50%;
       font-size: 22px;
       cursor: pointer;
+      flex: 0 0 auto;
     }
 
     .hero {
@@ -273,6 +276,7 @@
       font-size: 15px;
       cursor: pointer;
       transition: 0.25s ease;
+      text-align: center;
     }
 
     .btn-primary {
@@ -323,6 +327,7 @@
       height: 8px;
       background: var(--green);
       border-radius: 50%;
+      flex: 0 0 auto;
     }
 
     section {
@@ -369,7 +374,7 @@
     }
 
     .intro-card {
-      background: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 255, 255, 0.86);
       border: 1px solid rgba(31, 122, 58, 0.12);
       border-radius: var(--radius-xl);
       padding: 34px;
@@ -609,8 +614,7 @@
     }
 
     .quote-section {
-      background:
-        linear-gradient(180deg, #fbfaf5, #eef8e8 100%);
+      background: linear-gradient(180deg, #fbfaf5, #eef8e8 100%);
     }
 
     .quote-box {
@@ -708,7 +712,6 @@
       background: #f8fbf5;
       color: var(--text);
       padding: 0 15px;
-      font-family: inherit;
       outline: none;
       transition: 0.2s ease;
     }
@@ -753,8 +756,7 @@
     }
 
     .services-section {
-      background:
-        linear-gradient(180deg, #eef8e8 0%, #fbfaf5 100%);
+      background: linear-gradient(180deg, #eef8e8 0%, #fbfaf5 100%);
     }
 
     .services-grid {
@@ -830,8 +832,7 @@
     }
 
     .contacts {
-      background:
-        linear-gradient(180deg, var(--cream), #edf7e8);
+      background: linear-gradient(180deg, var(--cream), #edf7e8);
       padding-bottom: 54px;
     }
 
@@ -866,6 +867,7 @@
       color: #374735;
       line-height: 1.5;
       font-weight: 650;
+      word-break: break-word;
     }
 
     .contact-item span:first-child {
@@ -923,32 +925,105 @@
     }
 
     @media (max-width: 980px) {
+      .container {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .site-header {
+        top: 12px;
+      }
+
+      .nav {
+        width: min(100% - 24px, var(--max));
+        padding: 10px 12px 10px 14px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+      }
+
       .nav-links {
         display: none;
         position: absolute;
-        left: 20px;
-        right: 20px;
-        top: 72px;
+        left: 12px;
+        right: 12px;
+        top: 68px;
         flex-direction: column;
         align-items: stretch;
-        background: rgba(255,255,255,0.96);
-        border: 1px solid var(--line);
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid rgba(31, 122, 58, 0.14);
         border-radius: 26px;
-        padding: 18px;
+        padding: 14px;
+        box-shadow: 0 24px 60px rgba(31, 80, 42, 0.16);
       }
 
       .nav-links.active {
         display: flex;
       }
 
+      .nav-links a {
+        padding: 13px 14px;
+        border-radius: 16px;
+        font-size: 15px;
+      }
+
+      .nav-links a:hover {
+        background: var(--green-soft);
+      }
+
+      .nav-cta {
+        text-align: center;
+        margin-top: 6px;
+      }
+
       .menu-btn {
         display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 128px 0 70px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(248, 251, 242, 0.94) 0%, rgba(248, 251, 242, 0.88) 52%, rgba(248, 251, 242, 0.96) 100%),
+          url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1400&q=85") center/cover;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(42px, 9vw, 68px);
+        line-height: 0.98;
+      }
+
+      .hero-text {
+        max-width: 100%;
+        font-size: 18px;
+      }
+
+      .intro-panel {
+        margin-top: 0;
+        padding-top: 40px;
       }
 
       .intro-grid,
       .quote-box,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .intro-image {
+        min-height: 330px;
       }
 
       .solar-main,
@@ -965,32 +1040,171 @@
       }
 
       .quote-info {
-        min-height: 460px;
+        min-height: 430px;
+      }
+
+      .banner {
+        min-height: 420px;
       }
     }
 
     @media (max-width: 640px) {
+      body {
+        background:
+          radial-gradient(circle at 20% 0%, rgba(183, 239, 99, 0.28), transparent 30%),
+          radial-gradient(circle at 90% 12%, rgba(157, 219, 255, 0.34), transparent 28%),
+          linear-gradient(180deg, #f8fbf2 0%, #f3f8ef 42%, #fbfaf5 100%);
+      }
+
       .container {
-        width: min(100% - 26px, var(--max));
+        width: min(100% - 24px, var(--max));
+      }
+
+      .site-header {
+        top: 10px;
+      }
+
+      .nav {
+        width: calc(100% - 20px);
+        border-radius: 22px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .logo-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+      }
+
+      .menu-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
       }
 
       .hero {
-        padding-top: 124px;
+        padding: 118px 0 58px;
+        text-align: left;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(248, 251, 242, 0.92) 0%, rgba(248, 251, 242, 0.92) 58%, rgba(248, 251, 242, 1) 100%),
+          url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1100&q=85") center/cover;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        padding: 8px 11px;
+        margin-bottom: 18px;
       }
 
       h1 {
-        font-size: 48px;
+        font-size: 43px;
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 36px;
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
+      h3 {
+        font-size: 22px;
       }
 
       .hero-text {
-        font-size: 17px;
+        font-size: 16.5px;
+        line-height: 1.65;
+        margin-bottom: 24px;
       }
 
-      .solar-grid,
-      .process,
-      .services-grid,
-      .form-grid {
+      .hero-actions {
+        display: grid;
         grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 52px;
+        padding: 0 18px;
+        font-size: 14px;
+      }
+
+      .trust-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .trust-pill {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 13px;
+        padding: 10px 12px;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .section-head {
+        margin-bottom: 30px;
+      }
+
+      .section-label {
+        font-size: 11.5px;
+        margin-bottom: 10px;
+      }
+
+      .section-head p {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .intro-panel {
+        padding-top: 28px;
+      }
+
+      .intro-card {
+        padding: 24px;
+        border-radius: 28px;
+      }
+
+      .intro-card h2 {
+        font-size: 34px;
+      }
+
+      .intro-card p {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .mini-list {
+        gap: 11px;
+      }
+
+      .mini-item {
+        font-size: 14.5px;
+        line-height: 1.55;
+      }
+
+      .intro-image {
+        min-height: 260px;
+        border-radius: 28px;
+      }
+
+      .solar-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
 
       .solar-main,
@@ -1002,29 +1216,216 @@
         min-height: 390px;
       }
 
+      .solar-card {
+        border-radius: 28px;
+      }
+
       .solar-content {
-        inset: auto 16px 16px 16px;
-        padding: 20px;
+        inset: auto 14px 14px 14px;
+        padding: 18px;
+        border-radius: 22px;
       }
 
-      section {
-        padding: 76px 0;
+      .solar-card h3 {
+        font-size: 22px;
+        line-height: 1.08;
       }
 
-      .intro-card,
-      .quote-info,
-      form,
-      .banner,
-      .contact-card {
-        padding: 26px;
+      .solar-card p {
+        font-size: 14.2px;
+        line-height: 1.58;
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 15px;
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
+
+      .process,
+      .services-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .step,
+      .service-card {
+        padding: 22px;
+        border-radius: 24px;
+        min-height: auto;
+      }
+
+      .step h3,
+      .service-card h3 {
+        font-size: 21px;
+      }
+
+      .step p,
+      .service-card p {
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+
+      .quote-box {
+        border-radius: 30px;
+      }
+
+      .quote-info {
+        min-height: 390px;
+        padding: 24px;
+      }
+
+      .quote-info h2 {
+        font-size: 34px;
+      }
+
+      .quote-info p {
+        font-size: 15.8px;
+        line-height: 1.65;
+      }
+
+      .quote-pills {
+        gap: 8px;
+      }
+
+      .quote-pills span {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      form {
+        padding: 22px;
+      }
+
+      label {
+        font-size: 12.5px;
+      }
+
+      input,
+      select,
+      textarea {
+        min-height: 50px;
+        border-radius: 14px;
+        font-size: 15px;
+      }
+
+      textarea {
+        min-height: 105px;
+      }
+
+      .form-note {
+        font-size: 12.8px;
+        line-height: 1.55;
+      }
+
+      .form-submit {
+        min-height: 56px;
+        font-size: 15px;
+      }
+
+      .banner-section {
+        padding-top: 0;
       }
 
       .banner {
-        min-height: 520px;
+        min-height: 470px;
+        padding: 24px;
+        border-radius: 30px;
+        align-items: flex-end;
+        background:
+          linear-gradient(180deg, rgba(248,251,242,0.12), rgba(248,251,242,0.96) 70%),
+          url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=85") center/cover;
+      }
+
+      .banner h2 {
+        font-size: 35px;
+      }
+
+      .banner p {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .contact-card {
+        padding: 24px;
+        border-radius: 26px;
+      }
+
+      .contact-card h3 {
+        font-size: 24px;
+      }
+
+      .contact-item {
+        align-items: flex-start;
+        font-size: 14.5px;
+      }
+
+      .contact-item span:first-child {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+      }
+
+      .footer {
+        padding: 24px 0 90px;
+        font-size: 13px;
       }
 
       .footer-inner {
         display: grid;
+        gap: 8px;
+      }
+
+      .floating-whatsapp {
+        width: 58px;
+        height: 58px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .floating-whatsapp svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .hero-text,
+      .section-head p,
+      .intro-card p,
+      .banner p {
+        font-size: 15.5px;
+      }
+
+      .solar-main,
+      .solar-supply,
+      .solar-design,
+      .solar-install,
+      .solar-storage {
+        min-height: 410px;
+      }
+
+      .solar-content {
+        padding: 16px;
+      }
+
+      .solar-card h3 {
+        font-size: 20px;
+      }
+
+      .solar-card p {
+        font-size: 13.8px;
       }
     }
   </style>
@@ -1075,7 +1476,7 @@
           <div class="trust-row">
             <div class="trust-pill"><i></i> Fotovoltaico chiavi in mano</div>
             <div class="trust-pill"><i></i> Privati e aziende</div>
-            <div class="trust-pill"><i></i> Sopralluogo e analisi tecnica</div>
+            <div class="trust-pill"><i></i> Analisi tecnica</div>
             <div class="trust-pill"><i></i> Supporto nel tempo</div>
           </div>
         </div>
@@ -1096,7 +1497,7 @@
 
             <div class="mini-list">
               <div class="mini-item"><span>✓</span> Analisi dei consumi e configurazione dell’impianto più adatto.</div>
-              <div class="mini-item"><span>✓</span> Fornitura di componenti selezionati: pannelli, inverter, batterie, strutture e colonnine.</div>
+              <div class="mini-item"><span>✓</span> Fornitura di componenti: pannelli, inverter, batterie, strutture e colonnine.</div>
               <div class="mini-item"><span>✓</span> Installazione, collaudo, messa in funzione e assistenza post intervento.</div>
             </div>
           </div>
