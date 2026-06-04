@@ -100,13 +100,38 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(44px) scale(0.985);
+      filter: blur(8px);
+      transition:
+        opacity 0.9s cubic-bezier(.2,.8,.2,1),
+        transform 0.9s cubic-bezier(.2,.8,.2,1),
+        filter 0.9s cubic-bezier(.2,.8,.2,1);
+      transition-delay: var(--delay, 0ms);
+      will-change: opacity, transform, filter;
     }
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .reveal-left {
+      transform: translateX(-44px) scale(0.985);
+    }
+
+    .reveal-right {
+      transform: translateX(44px) scale(0.985);
+    }
+
+    .reveal-zoom {
+      transform: translateY(28px) scale(0.94);
+    }
+
+    .reveal-left.visible,
+    .reveal-right.visible,
+    .reveal-zoom.visible {
+      transform: translateX(0) translateY(0) scale(1);
     }
 
     .site-header {
@@ -203,6 +228,18 @@
         linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.88) 42%, rgba(251, 250, 244, 0.18) 100%),
         url("./impianto.png") center right/cover;
       z-index: -2;
+      transform: scale(1.04);
+      animation: heroImageFloat 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroImageFloat {
+      from {
+        transform: scale(1.04) translateX(0);
+      }
+
+      to {
+        transform: scale(1.08) translateX(-18px);
+      }
     }
 
     .hero::after {
@@ -1721,35 +1758,35 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero-content reveal">
-        <div class="eyebrow"><span></span> Energia pulita. Futuro concreto.</div>
+      <div class="hero-content">
+        <div class="eyebrow reveal"><span></span> Energia pulita. Futuro concreto.</div>
 
-        <h1>Soluzioni fotovoltaiche su misura per abitazioni e aziende.</h1>
+        <h1 class="reveal">Soluzioni fotovoltaiche su misura per abitazioni e aziende.</h1>
 
-        <p class="hero-text">
+        <p class="hero-text reveal">
           Progettiamo, forniamo e installiamo impianti fotovoltaici chiavi in mano con batterie di accumulo,
           monitoraggio avanzato e assistenza continua. Più efficienza, più risparmio, meno impatto.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal">
           <a class="btn btn-primary" href="#preventivo">Richiedi preventivo →</a>
           <a class="btn btn-secondary" href="#fotovoltaico">Scopri le soluzioni</a>
         </div>
 
         <div class="hero-stats">
-          <div class="hero-stat">
+          <div class="hero-stat reveal">
             <div class="stat-icon">⌂</div>
             <div><strong>500+</strong><span>Impianti realizzati</span></div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat reveal">
             <div class="stat-icon">✓</div>
             <div><strong>98%</strong><span>Clienti soddisfatti</span></div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat reveal">
             <div class="stat-icon">✦</div>
             <div><strong>10+</strong><span>Anni di esperienza</span></div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat reveal">
             <div class="stat-icon">＋</div>
             <div><strong>Assistenza</strong><span>Supporto continuo</span></div>
           </div>
@@ -1760,11 +1797,11 @@
 
   <section class="solar-shell" id="fotovoltaico">
     <div class="container">
-      <div class="solar-panel reveal">
+      <div class="solar-panel reveal reveal-zoom">
         <div class="services-title">
-          <div class="section-label">Fotovoltaico</div>
-          <h2>Impianti smart, energia per il domani.</h2>
-          <p>Soluzioni complete e integrate per ogni esigenza energetica.</p>
+          <div class="section-label reveal">Fotovoltaico</div>
+          <h2 class="reveal">Impianti smart, energia per il domani.</h2>
+          <p class="reveal">Soluzioni complete e integrate per ogni esigenza energetica.</p>
         </div>
 
         <div class="solar-services-grid">
@@ -1804,17 +1841,17 @@
 
   <section class="ecosystem-section">
     <div class="container">
-      <div class="ecosystem-image-card reveal">
+      <div class="ecosystem-image-card reveal reveal-zoom">
         <div class="ecosystem-image-copy">
-          <div class="section-label">Il tuo ecosistema energetico</div>
-          <h2>Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
-          <p>
+          <div class="section-label reveal">Il tuo ecosistema energetico</div>
+          <h2 class="reveal">Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
+          <p class="reveal">
             Osserva il ciclo dell’energia: dai pannelli fotovoltaici all’inverter, dalla batteria alla colonnina,
             fino alla ricarica dell’auto, alla casa e alla rete elettrica.
           </p>
         </div>
 
-        <div class="ecosystem-image-wrap interactive-plant" id="interactivePlant">
+        <div class="ecosystem-image-wrap interactive-plant reveal" id="interactivePlant">
           <img src="./impianto.png" alt="Sistema energetico FLORA con fotovoltaico, accumulo, colonnina e auto elettrica">
 
           <div class="energy-animation-layer" aria-hidden="true">
@@ -1909,8 +1946,8 @@
   <section class="about-process" id="chi-siamo">
     <div class="container">
       <div class="about-process-grid">
-        <div class="about-card reveal">
-          <div class="about-text">
+        <div class="about-card">
+          <div class="about-text reveal reveal-left">
             <div class="section-label">Chi siamo</div>
             <h2>Esperienza, competenza, affidabilità.</h2>
             <p>
@@ -1919,30 +1956,30 @@
             </p>
             <a href="#" class="text-link">Scopri di più →</a>
           </div>
-          <div class="team-photo"></div>
+          <div class="team-photo reveal reveal-right"></div>
         </div>
 
-        <div class="process-block reveal">
+        <div class="process-block reveal reveal-right">
           <div class="section-label">Il nostro processo</div>
           <h2>Semplice, chiaro, senza pensieri.</h2>
 
           <div class="process-steps">
-            <div class="step">
+            <div class="step reveal">
               <div class="step-num">01</div>
               <h3>Analisi e sopralluogo</h3>
               <p>Valutiamo consumi, edificio ed esigenze specifiche.</p>
             </div>
-            <div class="step">
+            <div class="step reveal">
               <div class="step-num">02</div>
               <h3>Progettazione</h3>
               <p>Definiamo la soluzione più efficiente.</p>
             </div>
-            <div class="step">
+            <div class="step reveal">
               <div class="step-num">03</div>
               <h3>Installazione</h3>
               <p>Installiamo e verifichiamo ogni componente.</p>
             </div>
-            <div class="step">
+            <div class="step reveal">
               <div class="step-num">04</div>
               <h3>Assistenza</h3>
               <p>Ti seguiamo nel tempo con monitoraggio e supporto.</p>
@@ -1955,10 +1992,10 @@
 
   <section class="all-services" id="servizi">
     <div class="container">
-      <div class="section-head center reveal">
-        <div class="section-label">Altri servizi</div>
-        <h2>Oltre il fotovoltaico.</h2>
-        <p>
+      <div class="section-head center">
+        <div class="section-label reveal">Altri servizi</div>
+        <h2 class="reveal">Oltre il fotovoltaico.</h2>
+        <p class="reveal">
           FLORA integra competenze tecniche, operative e impiantistiche per offrire soluzioni complete,
           concrete e coordinate.
         </p>
@@ -2018,12 +2055,12 @@
 
   <section class="cta-section">
     <div class="container">
-      <div class="cta-card reveal">
-        <div class="section-label">Preventivo gratuito</div>
-        <h2>Richiedi una consulenza gratuita e senza impegno.</h2>
-        <p>Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
+      <div class="cta-card reveal reveal-zoom">
+        <div class="section-label reveal">Preventivo gratuito</div>
+        <h2 class="reveal">Richiedi una consulenza gratuita e senza impegno.</h2>
+        <p class="reveal">Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
 
-        <div class="quick-form">
+        <div class="quick-form reveal">
           <input type="email" placeholder="La tua email">
           <input type="tel" placeholder="Il tuo numero di telefono">
           <button onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
@@ -2034,26 +2071,26 @@
 
   <section class="quote-section" id="preventivo">
     <div class="container">
-      <div class="quote-box reveal">
+      <div class="quote-box reveal reveal-zoom">
         <div class="quote-info">
-          <div class="section-label">Preventivo gratuito</div>
-          <h2>Raccontaci il tuo progetto energetico.</h2>
-          <p>
+          <div class="section-label reveal">Preventivo gratuito</div>
+          <h2 class="reveal">Raccontaci il tuo progetto energetico.</h2>
+          <p class="reveal">
             Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA.
             È veloce, senza impegno e totalmente gratuito.
           </p>
 
           <div class="quote-pills">
-            <span>Risposta rapida</span>
-            <span>Nessun impegno</span>
-            <span>Privati e aziende</span>
-            <span>Fotovoltaico e accumulo</span>
+            <span class="reveal">Risposta rapida</span>
+            <span class="reveal">Nessun impegno</span>
+            <span class="reveal">Privati e aziende</span>
+            <span class="reveal">Fotovoltaico e accumulo</span>
           </div>
         </div>
 
-        <form id="quoteForm">
+        <form id="quoteForm" class="reveal reveal-right">
           <div class="form-grid">
-            <div class="field">
+            <div class="field reveal">
               <label for="tipoCliente">Sei un privato o un’azienda?</label>
               <select id="tipoCliente" required>
                 <option value="">Seleziona</option>
@@ -2062,22 +2099,22 @@
               </select>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="nome">Nome e cognome</label>
               <input type="text" id="nome" placeholder="Mario Rossi" required />
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="telefono">Contatto telefonico</label>
               <input type="tel" id="telefono" placeholder="+39 333 000 0000" required />
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="email">Email</label>
               <input type="email" id="email" placeholder="nome@email.it" required />
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="edificio">Tipologia edificio</label>
               <select id="edificio" required>
                 <option value="">Seleziona</option>
@@ -2089,12 +2126,12 @@
               </select>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="consumo">Consumo energetico annuale medio</label>
               <input type="text" id="consumo" placeholder="Es. 4.500 kWh, opzionale" />
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="batterie">Batterie di accumulo</label>
               <select id="batterie" required>
                 <option value="">Seleziona</option>
@@ -2104,7 +2141,7 @@
               </select>
             </div>
 
-            <div class="field">
+            <div class="field reveal">
               <label for="servizio">Servizio richiesto</label>
               <select id="servizio" required>
                 <option value="">Seleziona</option>
@@ -2116,23 +2153,23 @@
               </select>
             </div>
 
-            <div class="field full">
+            <div class="field full reveal">
               <label for="indirizzo">Indirizzo di installazione</label>
               <input type="text" id="indirizzo" placeholder="Comune, via, provincia" required />
             </div>
 
-            <div class="field full">
+            <div class="field full reveal">
               <label for="note">Note aggiuntive</label>
               <textarea id="note" placeholder="Es. tetto piano, tetto a falda, presenza contatore, richiesta accumulo, colonnina, ecc."></textarea>
             </div>
           </div>
 
-          <p class="form-note">
+          <p class="form-note reveal">
             Cliccando sul pulsante verrà generato un messaggio WhatsApp con i dati inseriti.
             Potrai controllarlo prima di inviarlo.
           </p>
 
-          <button type="submit" class="form-submit">Invia richiesta su WhatsApp</button>
+          <button type="submit" class="form-submit reveal">Invia richiesta su WhatsApp</button>
         </form>
       </div>
     </div>
@@ -2143,14 +2180,14 @@
 <footer class="footer" id="contatti">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
+      <div class="footer-brand reveal">
         <div class="logo">
           <img src="./logo.png" alt="FLORA" class="logo-image">
         </div>
         <p>Energia pulita.<br>Futuro sostenibile.</p>
       </div>
 
-      <div>
+      <div class="reveal">
         <h3>Navigazione</h3>
         <div class="footer-links">
           <a href="#fotovoltaico">Fotovoltaico</a>
@@ -2160,7 +2197,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="reveal">
         <h3>Servizi</h3>
         <div class="footer-links">
           <span>Impianti chiavi in mano</span>
@@ -2172,7 +2209,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="reveal">
         <h3>Contatti</h3>
         <div class="footer-links">
           <a href="https://wa.me/393249581949">WhatsApp: 324 958 1949</a>
@@ -2183,7 +2220,7 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
+    <div class="footer-bottom reveal">
       <span>© <span id="year"></span> FLORA. Tutti i diritti riservati.</span>
       <span>Privacy Policy · Cookie Policy</span>
     </div>
@@ -2212,15 +2249,28 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  const revealElements = document.querySelectorAll(".reveal");
+
+  revealElements.forEach((el, index) => {
+    const parent = el.parentElement;
+    const siblings = parent ? Array.from(parent.children).filter(child => child.classList && child.classList.contains("reveal")) : [];
+    const localIndex = siblings.indexOf(el);
+    const delay = localIndex >= 0 ? Math.min(localIndex * 90, 420) : Math.min(index * 30, 300);
+    el.style.setProperty("--delay", `${delay}ms`);
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
       }
     });
-  }, { threshold: 0.12 });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -60px 0px"
+  });
 
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  revealElements.forEach((el) => observer.observe(el));
 
   const plant = document.getElementById("interactivePlant");
   const plantTooltip = document.getElementById("plantTooltip");
