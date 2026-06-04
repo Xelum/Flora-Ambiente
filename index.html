@@ -229,7 +229,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(251, 250, 244, 0.82) 0%, rgba(251, 250, 244, 0.55) 40%, rgba(251, 250, 244, 0.06) 100%),
+        linear-gradient(90deg, rgba(6, 27, 21, 0.54) 0%, rgba(11, 74, 47, 0.24) 38%, rgba(251, 250, 244, 0.02) 100%),
         url("./sfondo.png") center right/cover;
       z-index: -2;
       transform: scale(1.04);
@@ -256,7 +256,34 @@
     }
 
     .hero-content {
-      max-width: 760px;
+      max-width: 790px;
+      padding: 38px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.88), rgba(255,255,255,0.64)),
+        radial-gradient(circle at 0% 0%, rgba(184, 239, 104, 0.28), transparent 34%);
+      border: 1px solid rgba(255, 255, 255, 0.52);
+      box-shadow: 0 34px 90px rgba(6, 27, 21, 0.24);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 34px;
+      bottom: 34px;
+      width: 6px;
+      border-radius: 0 999px 999px 0;
+      background: linear-gradient(180deg, var(--lime), var(--green));
+      box-shadow: 0 0 28px rgba(105, 191, 69, 0.38);
+    }
+
+    .hero-content h1 {
+      color: #08241b;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.42);
     }
 
     .eyebrow {
@@ -285,10 +312,11 @@
     }
 
     .hero-text {
-      font-size: 18px;
-      color: #435044;
-      max-width: 610px;
+      font-size: 19px;
+      color: #263326;
+      max-width: 650px;
       margin-bottom: 32px;
+      font-weight: 650;
     }
 
     .hero-actions {
@@ -1423,6 +1451,25 @@
       grid-column: 1 / -1;
     }
 
+    .fixed-panel-note .fixed-value {
+      min-height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(11, 74, 47, 0.16);
+      background: linear-gradient(135deg, #f8fbf5, #ffffff);
+      color: var(--green-dark);
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .fixed-panel-note small {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .simulator-actions {
       display: flex;
       flex-wrap: wrap;
@@ -1872,7 +1919,7 @@
 
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(251, 250, 244, 0.78) 0%, rgba(251, 250, 244, 0.62) 55%, rgba(251, 250, 244, 0.86) 100%),
+          linear-gradient(180deg, rgba(6, 27, 21, 0.20) 0%, rgba(251, 250, 244, 0.58) 48%, rgba(251, 250, 244, 0.88) 100%),
           url("./sfondo.png") center/cover;
       }
 
@@ -1926,6 +1973,11 @@
 
       .hero {
         padding: 116px 0 58px;
+      }
+
+      .hero-content {
+        padding: 26px;
+        border-radius: 28px;
       }
 
       h1 {
@@ -2262,10 +2314,10 @@
 
     <div class="nav-links" id="navLinks">
       <a href="#fotovoltaico">Fotovoltaico</a>
-      <a href="#simulatore">Simulatore</a>
       <a href="#chi-siamo">Chi siamo</a>
       <a href="#servizi">Servizi</a>
       <a href="#contatti">Contatti</a>
+      <a href="#simulatore">Simulatore</a>
       <a class="nav-cta" href="#preventivo">Richiedi preventivo →</a>
     </div>
 
@@ -2280,11 +2332,11 @@
       <div class="hero-content">
         <div class="eyebrow reveal"><span></span> Energia pulita. Futuro concreto.</div>
 
-        <h1 class="reveal">Soluzioni fotovoltaiche su misura per abitazioni e aziende.</h1>
+        <h1 class="reveal">La tua energia, prodotta dal sole. Progettata da FLORA.</h1>
 
         <p class="hero-text reveal">
-          Progettiamo, forniamo e installiamo impianti fotovoltaici chiavi in mano con batterie di accumulo,
-          monitoraggio avanzato e assistenza continua. Più efficienza, più risparmio, meno impatto.
+          Portiamo il fotovoltaico dentro la vita reale di case e aziende: progettazione, installazione,
+          accumulo, monitoraggio e assistenza continua. Una soluzione concreta per ridurre i consumi e aumentare la tua indipendenza energetica.
         </p>
 
         <div class="hero-actions reveal">
@@ -2600,8 +2652,8 @@
             <h2>Scopri una stima preliminare in base ai tuoi consumi.</h2>
             <p>
               Inserisci il consumo indicato in bolletta e scegli se il dato è mensile, bimestrale o annuale.
-              Il simulatore calcola una possibile potenza dell’impianto, il numero indicativo di pannelli e
-              una batteria di accumulo consigliata.
+              Il simulatore calcola una possibile potenza dell’impianto, il numero indicativo di pannelli
+              considerando moduli da 430 W e una batteria di accumulo consigliata.
             </p>
           </div>
 
@@ -2640,13 +2692,10 @@
                 </select>
               </div>
 
-              <div class="field reveal">
-                <label for="potenzaPannello">Potenza singolo pannello</label>
-                <select id="potenzaPannello" required>
-                  <option value="0.45" selected>450 W</option>
-                  <option value="0.43">430 W</option>
-                  <option value="0.50">500 W</option>
-                </select>
+              <div class="field reveal fixed-panel-note">
+                <label>Potenza pannello usata per la stima</label>
+                <div class="fixed-value">430 W</div>
+                <small>Valore tecnico indicativo utilizzato automaticamente dal simulatore.</small>
               </div>
             </div>
 
@@ -3189,9 +3238,9 @@
       const period = document.getElementById("periodoConsumo").value;
       const consumption = Number(document.getElementById("valoreConsumo").value);
       const area = document.getElementById("zonaItalia").value;
-      const panelPower = Number(document.getElementById("potenzaPannello").value);
+      const panelPower = 0.43;
 
-      if (!period || !consumption || consumption <= 0 || !area || !panelPower) return;
+      if (!period || !consumption || consumption <= 0 || !area) return;
 
       const areaData = productionByArea[area];
       const annualConsumption = getAnnualConsumption(period, consumption);
