@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -1331,6 +1331,242 @@
       line-height: 1.65;
     }
 
+
+
+    .simulator-section {
+      background: linear-gradient(180deg, #fbfaf4 0%, #f3f8ef 100%);
+      padding-top: 42px;
+    }
+
+    .simulator-box {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+      border-radius: 34px;
+      padding: 22px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(11, 74, 47, 0.11);
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(14px);
+    }
+
+    .simulator-copy {
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(184,239,104,0.24), transparent 36%),
+        linear-gradient(135deg, #0b4a2f, #164e31 58%, #4a8d2b);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .simulator-copy::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -70px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(184,239,104,0.16);
+      filter: blur(2px);
+    }
+
+    .simulator-copy .section-label,
+    .simulator-copy h2 {
+      color: white;
+    }
+
+    .simulator-copy p {
+      color: rgba(255,255,255,0.83);
+      font-size: 16.5px;
+      margin-top: 12px;
+    }
+
+    .simulator-warning {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.86);
+      font-size: 14px;
+      line-height: 1.6;
+      backdrop-filter: blur(14px);
+    }
+
+    .simulator-form-card {
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(184,239,104,0.17), transparent 32%),
+        #ffffff;
+      border: 1px solid rgba(11, 74, 47, 0.09);
+    }
+
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .simulator-grid .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .simulator-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .simulator-submit,
+    .simulator-reset {
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 950;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .simulator-submit {
+      background: var(--green-dark);
+      color: white;
+      box-shadow: 0 18px 36px rgba(11, 74, 47, 0.22);
+    }
+
+    .simulator-reset {
+      background: #f1f7ed;
+      color: var(--green-dark);
+      border: 1px solid rgba(11, 74, 47, 0.10);
+    }
+
+    .simulator-submit:hover,
+    .simulator-reset:hover {
+      transform: translateY(-2px);
+    }
+
+    .simulator-result {
+      display: none;
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: 24px;
+      background: #f7fbf3;
+      border: 1px solid rgba(11, 74, 47, 0.12);
+    }
+
+    .simulator-result.visible {
+      display: block;
+    }
+
+    .result-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .result-head h3 {
+      color: var(--green-dark);
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .result-head p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .result-badge {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(105, 191, 69, 0.12);
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .result-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .result-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid rgba(11, 74, 47, 0.09);
+      box-shadow: 0 14px 30px rgba(18, 68, 38, 0.06);
+    }
+
+    .result-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .result-card strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .formula-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid rgba(11, 74, 47, 0.09);
+    }
+
+    .formula-box h4 {
+      color: var(--green-dark);
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .formula-box ul {
+      display: grid;
+      gap: 8px;
+      padding-left: 18px;
+      color: #4f5d52;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .formula-box code {
+      font-family: "Instrument Sans", sans-serif;
+      font-weight: 850;
+      color: var(--green-dark);
+      background: rgba(105,191,69,0.10);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
     .cta-section {
       background: #fbfaf4;
       padding-top: 24px;
@@ -1660,6 +1896,18 @@
       .quick-form {
         grid-template-columns: 1fr;
       }
+
+      .simulator-box {
+        grid-template-columns: 1fr;
+      }
+
+      .simulator-copy {
+        min-height: auto;
+      }
+
+      .result-cards {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1899,6 +2147,43 @@
         min-height: 380px;
       }
 
+
+
+      .simulator-box,
+      .simulator-form-card,
+      .simulator-copy {
+        border-radius: 24px;
+      }
+
+      .simulator-box {
+        padding: 14px;
+      }
+
+      .simulator-form-card,
+      .simulator-copy {
+        padding: 22px;
+      }
+
+      .simulator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .simulator-actions {
+        display: grid;
+      }
+
+      .simulator-submit,
+      .simulator-reset {
+        width: 100%;
+      }
+
+      .result-head {
+        display: grid;
+      }
+
+      .result-badge {
+        width: max-content;
+      }
       .footer-bottom {
         display: grid;
       }
@@ -1977,6 +2262,7 @@
 
     <div class="nav-links" id="navLinks">
       <a href="#fotovoltaico">Fotovoltaico</a>
+      <a href="#simulatore">Simulatore</a>
       <a href="#chi-siamo">Chi siamo</a>
       <a href="#servizi">Servizi</a>
       <a href="#contatti">Contatti</a>
@@ -2299,6 +2585,107 @@
           <h3>Rendering e progettazione strutturale</h3>
           <p>Rilievi, rendering e supporto alla progettazione anche tramite drone per una visione tecnica più completa.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="simulator-section" id="simulatore">
+    <div class="container">
+      <div class="simulator-box reveal reveal-zoom">
+        <div class="simulator-copy reveal reveal-left">
+          <div>
+            <div class="section-label">Simulatore impianto consigliato</div>
+            <h2>Scopri una stima preliminare in base ai tuoi consumi.</h2>
+            <p>
+              Inserisci il consumo indicato in bolletta e scegli se il dato è mensile, bimestrale o annuale.
+              Il simulatore calcola una possibile potenza dell’impianto, il numero indicativo di pannelli e
+              una batteria di accumulo consigliata.
+            </p>
+          </div>
+
+          <div class="simulator-warning">
+            <strong>Nota importante:</strong> questo simulatore non sostituisce il progetto tecnico e non rappresenta
+            un dimensionamento definitivo. Il risultato è solo una stima orientativa basata sui consumi indicati,
+            utile per capire quale tipologia di impianto potrebbe essere valutata in fase di sopralluogo.
+          </div>
+        </div>
+
+        <div class="simulator-form-card reveal reveal-right">
+          <form id="solarSimulatorForm">
+            <div class="simulator-grid">
+              <div class="field reveal">
+                <label for="periodoConsumo">Il consumo che inserisci è</label>
+                <select id="periodoConsumo" required>
+                  <option value="">Seleziona</option>
+                  <option value="mensile">Mensile</option>
+                  <option value="bimestrale">Bimestrale</option>
+                  <option value="annuale">Annuale</option>
+                </select>
+              </div>
+
+              <div class="field reveal">
+                <label for="valoreConsumo">Valore consumo in kWh</label>
+                <input type="number" id="valoreConsumo" min="1" step="1" placeholder="Es. 350" required />
+              </div>
+
+              <div class="field reveal">
+                <label for="zonaItalia">Zona geografica</label>
+                <select id="zonaItalia" required>
+                  <option value="">Seleziona</option>
+                  <option value="nord">Nord Italia</option>
+                  <option value="centro">Centro Italia</option>
+                  <option value="sud">Sud Italia</option>
+                </select>
+              </div>
+
+              <div class="field reveal">
+                <label for="potenzaPannello">Potenza singolo pannello</label>
+                <select id="potenzaPannello" required>
+                  <option value="0.45" selected>450 W</option>
+                  <option value="0.43">430 W</option>
+                  <option value="0.50">500 W</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="simulator-actions reveal">
+              <button type="submit" class="simulator-submit">Calcola impianto consigliato</button>
+              <button type="button" class="simulator-reset" id="resetSimulator">Cancella</button>
+            </div>
+
+            <div class="simulator-result" id="simulatorResult" aria-live="polite">
+              <div class="result-head">
+                <div>
+                  <h3>Stima impianto consigliato</h3>
+                  <p id="simulatorSummary">Inserisci i dati per visualizzare il risultato.</p>
+                </div>
+                <div class="result-badge">Stima orientativa</div>
+              </div>
+
+              <div class="result-cards">
+                <div class="result-card">
+                  <span>Potenza FV</span>
+                  <strong id="resultKw">-</strong>
+                </div>
+                <div class="result-card">
+                  <span>Pannelli</span>
+                  <strong id="resultPanels">-</strong>
+                </div>
+                <div class="result-card">
+                  <span>Batteria</span>
+                  <strong id="resultBattery">-</strong>
+                </div>
+              </div>
+
+              <div class="formula-box">
+                <h4>Formula applicata alla tua situazione</h4>
+                <ul id="formulaList"></ul>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -2742,6 +3129,111 @@
 
   if (plant) {
     plantObserver.observe(plant);
+  }
+
+
+
+  const solarSimulatorForm = document.getElementById("solarSimulatorForm");
+  const resetSimulator = document.getElementById("resetSimulator");
+  const simulatorResult = document.getElementById("simulatorResult");
+  const simulatorSummary = document.getElementById("simulatorSummary");
+  const resultKw = document.getElementById("resultKw");
+  const resultPanels = document.getElementById("resultPanels");
+  const resultBattery = document.getElementById("resultBattery");
+  const formulaList = document.getElementById("formulaList");
+
+  const productionByArea = {
+    nord: { label: "Nord Italia", value: 1150 },
+    centro: { label: "Centro Italia", value: 1350 },
+    sud: { label: "Sud Italia", value: 1550 }
+  };
+
+  function formatItalianNumber(value, decimals = 0) {
+    return value.toLocaleString("it-IT", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function roundUpOneDecimal(value) {
+    return Math.ceil(value * 10) / 10;
+  }
+
+  function getNearestBatterySize(rawBattery) {
+    const commercialSizes = [5, 7.5, 10, 15, 20];
+    let nearest = commercialSizes[0];
+
+    commercialSizes.forEach(size => {
+      if (Math.abs(size - rawBattery) < Math.abs(nearest - rawBattery)) {
+        nearest = size;
+      }
+    });
+
+    if (rawBattery > 20) {
+      return "20 kWh o taglio superiore";
+    }
+
+    return `${String(nearest).replace(".", ",")} kWh`;
+  }
+
+  function getAnnualConsumption(period, consumption) {
+    if (period === "mensile") return consumption * 12;
+    if (period === "bimestrale") return consumption * 6;
+    return consumption;
+  }
+
+  if (solarSimulatorForm) {
+    solarSimulatorForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const period = document.getElementById("periodoConsumo").value;
+      const consumption = Number(document.getElementById("valoreConsumo").value);
+      const area = document.getElementById("zonaItalia").value;
+      const panelPower = Number(document.getElementById("potenzaPannello").value);
+
+      if (!period || !consumption || consumption <= 0 || !area || !panelPower) return;
+
+      const areaData = productionByArea[area];
+      const annualConsumption = getAnnualConsumption(period, consumption);
+      const rawKw = annualConsumption / areaData.value;
+      const recommendedKw = roundUpOneDecimal(rawKw);
+      const panels = Math.ceil(recommendedKw / panelPower);
+      const realKwFromPanels = panels * panelPower;
+      const dailyConsumption = annualConsumption / 365;
+      const rawBattery = dailyConsumption * 0.50;
+      const battery = getNearestBatterySize(rawBattery);
+
+      const periodLabel = period === "mensile" ? "mensile" : period === "bimestrale" ? "bimestrale" : "annuale";
+      const panelPowerWatts = Math.round(panelPower * 1000);
+
+      resultKw.textContent = `${formatItalianNumber(recommendedKw, 1)} kW`;
+      resultPanels.textContent = `${panels}`;
+      resultBattery.textContent = battery;
+
+      simulatorSummary.textContent = `Con un consumo ${periodLabel} di ${formatItalianNumber(consumption)} kWh, il consumo annuo stimato è di ${formatItalianNumber(annualConsumption)} kWh. Per la zona ${areaData.label}, il simulatore suggerisce un impianto da circa ${formatItalianNumber(recommendedKw, 1)} kW, pari a ${panels} pannelli da ${panelPowerWatts} W.`;
+
+      formulaList.innerHTML = `
+        <li><code>Consumo annuo</code> = ${period === "mensile" ? `${formatItalianNumber(consumption)} × 12` : period === "bimestrale" ? `${formatItalianNumber(consumption)} × 6` : `${formatItalianNumber(consumption)}`} = <strong>${formatItalianNumber(annualConsumption)} kWh</strong></li>
+        <li><code>kW fotovoltaico</code> = ${formatItalianNumber(annualConsumption)} / ${formatItalianNumber(areaData.value)} = ${formatItalianNumber(rawKw, 2)} kW, arrotondato a <strong>${formatItalianNumber(recommendedKw, 1)} kW</strong></li>
+        <li><code>Numero pannelli</code> = ${formatItalianNumber(recommendedKw, 1)} / ${String(panelPower).replace(".", ",")} = <strong>${panels} pannelli</strong> da ${panelPowerWatts} W, per circa ${formatItalianNumber(realKwFromPanels, 2)} kW installati</li>
+        <li><code>Batteria</code> = (${formatItalianNumber(annualConsumption)} / 365) × 0,50 = ${formatItalianNumber(rawBattery, 2)} kWh, arrotondata al taglio commerciale più vicino: <strong>${battery}</strong></li>
+      `;
+
+      simulatorResult.classList.add("visible");
+      simulatorResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+
+  if (resetSimulator) {
+    resetSimulator.addEventListener("click", function() {
+      solarSimulatorForm.reset();
+      simulatorResult.classList.remove("visible");
+      resultKw.textContent = "-";
+      resultPanels.textContent = "-";
+      resultBattery.textContent = "-";
+      simulatorSummary.textContent = "Inserisci i dati per visualizzare il risultato.";
+      formulaList.innerHTML = "";
+    });
   }
 
   const quoteForm = document.getElementById("quoteForm");
