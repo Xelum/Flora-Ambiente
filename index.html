@@ -693,16 +693,16 @@
     }
 
     .glow-inverter {
-      left: 34%;
-      top: 56%;
+      left: 40%;
+      top: 55%;
       width: 110px;
       height: 110px;
       border-radius: 30px;
     }
 
     .glow-battery {
-      left: 19%;
-      top: 72%;
+      left: 20%;
+      top: 62%;
       width: 120px;
       height: 150px;
       border-radius: 30px;
@@ -725,8 +725,8 @@
     }
 
     .glow-grid {
-      left: 8%;
-      top: 50%;
+      left: 7.5%;
+      top: 31%;
       width: 140px;
       height: 180px;
       border-radius: 42px;
@@ -756,8 +756,8 @@
 
     .battery-charge {
       position: absolute;
-      left: 17.2%;
-      top: 64%;
+      left: 20%;
+      top: 62%;
       width: 44px;
       height: 92px;
       border-radius: 12px;
@@ -821,71 +821,71 @@
     }
 
     .interactive-plant.step-solar .sun-pulse {
-      animation: sunPulse 3s ease-in-out forwards;
+      animation: sunPulse 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-solar .glow-panels {
-      animation: componentGlow 3s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-panels-inverter .path-panels-inverter {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-panels-inverter .glow-inverter {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .path-inverter-battery {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .glow-battery {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .battery-charge {
-      animation: showBattery 2s ease-in-out forwards;
+      animation: showBattery 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .battery-fill {
-      animation: batteryFill 2s ease-in-out forwards;
+      animation: batteryFill 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-battery-charger .path-battery-charger {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-battery-charger .glow-charger {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-charger-car .path-charger-car {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-charger-car .glow-car {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-grid .path-inverter-grid {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-grid .glow-grid {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-home-light .path-inverter-home {
-      animation: drawEnergy 2s ease-in-out forwards;
+      animation: drawEnergy 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-home-light .glow-home {
-      animation: componentGlow 2s ease-in-out forwards;
+      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-home-light .home-light {
-      animation: homeLightOn 2s ease-in-out forwards;
+      animation: homeLightOn 4s ease-in-out forwards;
     }
 
     @keyframes drawEnergy {
@@ -1754,12 +1754,12 @@
             <div class="home-light home-light-3"></div>
 
             <svg class="energy-svg" viewBox="0 0 1000 430" preserveAspectRatio="none">
-              <path class="energy-path path-panels-inverter" d="M360 120 C350 180, 350 205, 340 240" />
-              <path class="energy-path path-inverter-battery" d="M340 250 C300 270, 235 290, 190 310" />
-              <path class="energy-path path-battery-charger" d="M200 325 C350 380, 560 385, 690 320" />
+              <path class="energy-path path-panels-inverter" d="M360 120 C350 180, 350 205, 400 235" />
+              <path class="energy-path path-inverter-battery" d="M400 240 C350 260, 265 275, 200 285" />
+              <path class="energy-path path-battery-charger" d="M200 285 C350 370, 560 385, 690 320" />
               <path class="energy-path path-charger-car" d="M700 318 C740 340, 785 345, 830 325" />
-              <path class="energy-path path-inverter-grid" d="M335 245 C260 210, 165 195, 80 205" />
-              <path class="energy-path path-inverter-home" d="M350 250 C410 255, 465 250, 520 230" />
+              <path class="energy-path path-inverter-grid" d="M400 240 C300 185, 160 140, 75 135" />
+              <path class="energy-path path-inverter-home" d="M400 240 C440 250, 485 250, 520 230" />
             </svg>
 
             <div class="energy-status" id="energyStatus">
@@ -1769,7 +1769,7 @@
 
           <button
             class="plant-hotspot hotspot-grid"
-            style="left: 8%; top: 50%;"
+            style="left: 7.5%; top: 31%;"
             data-title="Traliccio rete elettrica"
             data-text="Rappresenta il collegamento alla rete elettrica. L’impianto può prelevare energia quando necessario o immettere quella prodotta in eccesso.">
           </button>
@@ -1783,14 +1783,14 @@
 
           <button
             class="plant-hotspot hotspot-inverter"
-            style="left: 34%; top: 56%;"
+            style="left: 40%; top: 55%;"
             data-title="Inverter"
             data-text="L’inverter converte l’energia prodotta dai pannelli in corrente utilizzabile per alimentare casa, azienda, batterie e colonnine.">
           </button>
 
           <button
             class="plant-hotspot hotspot-battery"
-            style="left: 19%; top: 72%;"
+            style="left: 20%; top: 62%;"
             data-title="Batteria di accumulo"
             data-text="La batteria conserva l’energia prodotta durante il giorno e la rende disponibile quando serve, anche nelle ore serali.">
           </button>
@@ -2208,37 +2208,37 @@
   const energySteps = [
     {
       className: "step-solar",
-      duration: 3000,
+      duration: 4000,
       text: "I pannelli fotovoltaici vengono irradiati dal sole e iniziano a produrre energia."
     },
     {
       className: "step-panels-inverter",
-      duration: 2000,
+      duration: 4000,
       text: "L’energia prodotta dai pannelli viene trasferita all’inverter."
     },
     {
       className: "step-inverter-battery",
-      duration: 2000,
+      duration: 4000,
       text: "L’inverter invia energia alla batteria, che si ricarica progressivamente."
     },
     {
       className: "step-battery-charger",
-      duration: 2000,
+      duration: 4000,
       text: "La batteria alimenta la colonnina attraverso il collegamento energetico."
     },
     {
       className: "step-charger-car",
-      duration: 2000,
+      duration: 4000,
       text: "La colonnina trasferisce energia all’auto elettrica in ricarica."
     },
     {
       className: "step-inverter-grid",
-      duration: 2000,
+      duration: 4000,
       text: "L’energia in eccesso può essere indirizzata verso la rete elettrica."
     },
     {
       className: "step-home-light",
-      duration: 2000,
+      duration: 4000,
       text: "La casa viene alimentata dall’energia autoprodotta e le luci si accendono."
     }
   ];
