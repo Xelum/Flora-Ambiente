@@ -6,15 +6,15 @@
 
   <title>FLORA | Fotovoltaico, Energia e Soluzioni Integrate</title>
 
-  <meta name="description" content="FLORA realizza impianti fotovoltaici chiavi in mano, fornitura componenti, progettazione, installazione, collaudo, colonnine di ricarica e servizi integrati per casa e azienda." />
+  <meta name="description" content="FLORA realizza impianti fotovoltaici chiavi in mano, progettazione, installazione, fornitura componenti, colonnine di ricarica e servizi integrati per casa e azienda." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --green: #5fd13d;
+      --green: #59d83b;
       --green-dark: #1f7a3a;
       --green-soft: #e9f8df;
       --lime: #b7ef63;
@@ -22,14 +22,11 @@
       --sky: #edf8ff;
       --cream: #fbfaf5;
       --white: #ffffff;
-      --text: #172117;
-      --muted: #61705f;
+      --text: #142018;
+      --muted: #60705f;
       --line: rgba(25, 52, 30, 0.13);
       --shadow: 0 24px 70px rgba(30, 64, 38, 0.13);
       --shadow-strong: 0 34px 95px rgba(31, 80, 42, 0.18);
-      --radius-xl: 38px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
       --max: 1180px;
     }
 
@@ -75,19 +72,19 @@
     h2,
     h3 {
       color: var(--text);
-      letter-spacing: -0.045em;
+      letter-spacing: -0.052em;
       line-height: 1;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     h1 {
-      font-size: clamp(48px, 7.4vw, 94px);
+      font-size: clamp(48px, 7.1vw, 94px);
       max-width: 850px;
       margin-bottom: 26px;
     }
 
     h2 {
-      font-size: clamp(36px, 5.2vw, 66px);
+      font-size: clamp(36px, 5vw, 66px);
       margin-bottom: 18px;
     }
 
@@ -117,7 +114,7 @@
       justify-content: space-between;
       gap: 22px;
       padding: 12px 14px 12px 18px;
-      border: 1px solid rgba(31, 122, 58, 0.12);
+      border: 1px solid rgba(31, 122, 58, 0.13);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(22px);
@@ -129,7 +126,7 @@
       align-items: center;
       gap: 10px;
       font-size: 22px;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: 0.08em;
       color: #17351d;
       flex: 0 0 auto;
@@ -161,7 +158,7 @@
       gap: 24px;
       color: #526251;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .nav-links a:hover {
@@ -173,7 +170,7 @@
       border-radius: 999px;
       background: var(--text);
       color: white !important;
-      font-weight: 800;
+      font-weight: 850;
       box-shadow: 0 14px 30px rgba(23, 33, 23, 0.16);
     }
 
@@ -192,33 +189,47 @@
 
     .hero {
       position: relative;
-      padding: 154px 0 88px;
       min-height: 100vh;
+      padding: 150px 0 92px;
       display: flex;
       align-items: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(248, 251, 242, 0.96) 0%, rgba(248, 251, 242, 0.78) 42%, rgba(248, 251, 242, 0.18) 100%),
-        url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1800&q=85") center right/cover;
-      z-index: -2;
+        radial-gradient(circle at 70% 36%, rgba(95, 216, 59, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(149, 219, 255, 0.42), transparent 30%),
+        linear-gradient(135deg, #f8fbf2 0%, #eff8ea 42%, #f7fbff 100%);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 210px;
+      height: 190px;
       background: linear-gradient(180deg, transparent, #f3f8ef);
-      z-index: -1;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    #solar3d {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 32px;
+      align-items: center;
     }
 
     .hero-content {
-      max-width: 780px;
+      max-width: 760px;
     }
 
     .eyebrow {
@@ -227,11 +238,11 @@
       gap: 10px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.78);
       border: 1px solid rgba(31, 122, 58, 0.15);
       color: var(--green-dark);
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 950;
       text-transform: uppercase;
       letter-spacing: 0.11em;
       margin-bottom: 24px;
@@ -272,7 +283,7 @@
       justify-content: center;
       border-radius: 999px;
       border: 1px solid transparent;
-      font-weight: 900;
+      font-weight: 950;
       font-size: 15px;
       cursor: pointer;
       transition: 0.25s ease;
@@ -291,7 +302,7 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.78);
       border-color: rgba(25, 52, 30, 0.13);
       color: var(--text);
       box-shadow: 0 14px 34px rgba(31, 80, 42, 0.08);
@@ -314,11 +325,11 @@
       gap: 8px;
       padding: 10px 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.68);
+      background: rgba(255, 255, 255, 0.72);
       border: 1px solid rgba(31, 122, 58, 0.12);
       color: #42523f;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
       box-shadow: 0 12px 28px rgba(31, 80, 42, 0.06);
     }
 
@@ -328,6 +339,84 @@
       background: var(--green);
       border-radius: 50%;
       flex: 0 0 auto;
+    }
+
+    .hero-side {
+      min-height: 560px;
+      position: relative;
+    }
+
+    .energy-widget {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: min(360px, 100%);
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 122, 58, 0.14);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 70px rgba(31, 80, 42, 0.14);
+      z-index: 4;
+    }
+
+    .energy-widget-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .energy-widget small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .energy-widget strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 34px;
+      line-height: 1;
+      margin-top: 6px;
+    }
+
+    .energy-bars {
+      height: 84px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 6px;
+      align-items: end;
+    }
+
+    .energy-bars i {
+      display: block;
+      border-radius: 999px 999px 8px 8px;
+      background: linear-gradient(180deg, var(--green), var(--lime));
+      box-shadow: 0 8px 18px rgba(95, 209, 61, 0.22);
+      animation: barPulse 2.4s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.08s);
+    }
+
+    .energy-bars i:nth-child(1) { height: 24%; --i: 1; }
+    .energy-bars i:nth-child(2) { height: 42%; --i: 2; }
+    .energy-bars i:nth-child(3) { height: 58%; --i: 3; }
+    .energy-bars i:nth-child(4) { height: 76%; --i: 4; }
+    .energy-bars i:nth-child(5) { height: 46%; --i: 5; }
+    .energy-bars i:nth-child(6) { height: 90%; --i: 6; }
+    .energy-bars i:nth-child(7) { height: 72%; --i: 7; }
+    .energy-bars i:nth-child(8) { height: 94%; --i: 8; }
+    .energy-bars i:nth-child(9) { height: 66%; --i: 9; }
+    .energy-bars i:nth-child(10) { height: 52%; --i: 10; }
+    .energy-bars i:nth-child(11) { height: 40%; --i: 11; }
+    .energy-bars i:nth-child(12) { height: 68%; --i: 12; }
+
+    @keyframes barPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.82; }
+      50% { transform: scaleY(1.14); opacity: 1; }
     }
 
     section {
@@ -361,7 +450,7 @@
     }
 
     .intro-panel {
-      margin-top: -48px;
+      margin-top: -42px;
       position: relative;
       z-index: 5;
     }
@@ -374,9 +463,9 @@
     }
 
     .intro-card {
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(31, 122, 58, 0.12);
-      border-radius: var(--radius-xl);
+      border-radius: 38px;
       padding: 34px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
@@ -403,7 +492,7 @@
       gap: 12px;
       align-items: flex-start;
       color: #40503f;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .mini-item span {
@@ -420,7 +509,7 @@
 
     .intro-image {
       min-height: 360px;
-      border-radius: var(--radius-xl);
+      border-radius: 38px;
       overflow: hidden;
       box-shadow: var(--shadow);
       background:
@@ -576,7 +665,7 @@
     }
 
     .step {
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.76);
       border: 1px solid rgba(31, 122, 58, 0.12);
       border-radius: 28px;
       padding: 28px;
@@ -669,7 +758,7 @@
       border: 1px solid rgba(255, 255, 255, 0.24);
       color: white;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
       backdrop-filter: blur(12px);
     }
 
@@ -866,7 +955,7 @@
       gap: 13px;
       color: #374735;
       line-height: 1.5;
-      font-weight: 650;
+      font-weight: 700;
       word-break: break-word;
     }
 
@@ -988,17 +1077,19 @@
 
       .hero {
         min-height: auto;
-        padding: 128px 0 70px;
+        padding: 126px 0 70px;
       }
 
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(248, 251, 242, 0.94) 0%, rgba(248, 251, 242, 0.88) 52%, rgba(248, 251, 242, 0.96) 100%),
-          url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1400&q=85") center/cover;
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-content {
-        max-width: 100%;
+      .hero-side {
+        min-height: 420px;
+      }
+
+      #solar3d {
+        opacity: 0.88;
       }
 
       h1 {
@@ -1086,14 +1177,12 @@
       }
 
       .hero {
-        padding: 118px 0 58px;
+        padding: 116px 0 58px;
         text-align: left;
       }
 
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(248, 251, 242, 0.92) 0%, rgba(248, 251, 242, 0.92) 58%, rgba(248, 251, 242, 1) 100%),
-          url("https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1100&q=85") center/cover;
+      .hero-grid {
+        gap: 18px;
       }
 
       .eyebrow {
@@ -1103,14 +1192,14 @@
       }
 
       h1 {
-        font-size: 43px;
+        font-size: 42px;
         line-height: 0.98;
         letter-spacing: -0.055em;
         margin-bottom: 20px;
       }
 
       h2 {
-        font-size: 36px;
+        font-size: 35px;
         line-height: 1.02;
         letter-spacing: -0.05em;
       }
@@ -1150,6 +1239,28 @@
         justify-content: flex-start;
         font-size: 13px;
         padding: 10px 12px;
+      }
+
+      .hero-side {
+        min-height: 360px;
+        margin-top: 6px;
+      }
+
+      #solar3d {
+        position: absolute;
+        height: 470px;
+        top: auto;
+        bottom: 10px;
+        opacity: 0.92;
+      }
+
+      .energy-widget {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 18px;
+        border-radius: 24px;
       }
 
       section {
@@ -1394,11 +1505,11 @@
 
     @media (max-width: 390px) {
       h1 {
-        font-size: 38px;
+        font-size: 37px;
       }
 
       h2 {
-        font-size: 32px;
+        font-size: 31px;
       }
 
       .hero-text,
@@ -1406,6 +1517,10 @@
       .intro-card p,
       .banner p {
         font-size: 15.5px;
+      }
+
+      .hero-side {
+        min-height: 340px;
       }
 
       .solar-main,
@@ -1455,7 +1570,9 @@
   <main>
 
     <section class="hero">
-      <div class="container">
+      <canvas id="solar3d"></canvas>
+
+      <div class="container hero-grid">
         <div class="hero-content">
           <div class="eyebrow"><span></span> Hub energie rinnovabili</div>
 
@@ -1478,6 +1595,26 @@
             <div class="trust-pill"><i></i> Privati e aziende</div>
             <div class="trust-pill"><i></i> Analisi tecnica</div>
             <div class="trust-pill"><i></i> Supporto nel tempo</div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="energy-widget">
+            <div class="energy-widget-top">
+              <div>
+                <small>Produzione simulata</small>
+                <strong>98%</strong>
+              </div>
+              <div style="text-align:right">
+                <small>Monitoraggio</small>
+                <strong style="font-size:24px;">Live</strong>
+              </div>
+            </div>
+
+            <div class="energy-bars">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
           </div>
         </div>
       </div>
@@ -1892,6 +2029,8 @@
     </svg>
   </a>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
@@ -1950,6 +2089,302 @@ Grazie.`;
 
       window.open(whatsappUrl, "_blank");
     });
+
+    function initSolarScene() {
+      const canvas = document.getElementById("solar3d");
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true
+      });
+
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      const camera = new THREE.PerspectiveCamera(
+        42,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+      );
+
+      camera.position.set(0, 2.2, 9);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.25);
+      scene.add(ambientLight);
+
+      const sunLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      sunLight.position.set(-4, 6, 5);
+      scene.add(sunLight);
+
+      const greenLight = new THREE.PointLight(0x7cff4d, 1.6, 14);
+      greenLight.position.set(3, 3, 4);
+      scene.add(greenLight);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const panelMaterial = new THREE.MeshStandardMaterial({
+        color: 0x103d55,
+        metalness: 0.35,
+        roughness: 0.22
+      });
+
+      const panelGlass = new THREE.MeshPhysicalMaterial({
+        color: 0x1c6a88,
+        metalness: 0.15,
+        roughness: 0.08,
+        transparent: true,
+        opacity: 0.78,
+        clearcoat: 1,
+        clearcoatRoughness: 0.12
+      });
+
+      const frameMaterial = new THREE.MeshStandardMaterial({
+        color: 0xe9f0e7,
+        metalness: 0.55,
+        roughness: 0.2
+      });
+
+      const lineMaterial = new THREE.MeshBasicMaterial({
+        color: 0xb7ef63,
+        transparent: true,
+        opacity: 0.52
+      });
+
+      function createSolarPanel(x, y, z, scale, rotationY) {
+        const panelGroup = new THREE.Group();
+
+        const base = new THREE.Mesh(
+          new THREE.BoxGeometry(2.4, 0.08, 1.45),
+          frameMaterial
+        );
+        panelGroup.add(base);
+
+        const glass = new THREE.Mesh(
+          new THREE.BoxGeometry(2.22, 0.05, 1.27),
+          panelGlass
+        );
+        glass.position.y = 0.055;
+        panelGroup.add(glass);
+
+        for (let i = -2; i <= 2; i++) {
+          const line = new THREE.Mesh(
+            new THREE.BoxGeometry(0.012, 0.065, 1.22),
+            lineMaterial
+          );
+          line.position.set(i * 0.43, 0.09, 0);
+          panelGroup.add(line);
+        }
+
+        for (let j = -1; j <= 1; j++) {
+          const line = new THREE.Mesh(
+            new THREE.BoxGeometry(2.1, 0.065, 0.012),
+            lineMaterial
+          );
+          line.position.set(0, 0.092, j * 0.36);
+          panelGroup.add(line);
+        }
+
+        const support = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.035, 0.035, 1.2, 16),
+          frameMaterial
+        );
+        support.position.set(0, -0.66, 0.1);
+        support.rotation.x = Math.PI / 10;
+        panelGroup.add(support);
+
+        panelGroup.position.set(x, y, z);
+        panelGroup.rotation.x = -0.42;
+        panelGroup.rotation.y = rotationY;
+        panelGroup.scale.setScalar(scale);
+
+        group.add(panelGroup);
+
+        return panelGroup;
+      }
+
+      const panels = [
+        createSolarPanel(2.7, 1.15, -0.8, 1.25, -0.35),
+        createSolarPanel(4.9, 0.55, -1.15, 1.05, -0.42),
+        createSolarPanel(1.35, -0.2, 0.15, 0.9, -0.26),
+        createSolarPanel(3.5, -1.0, 0.35, 0.82, -0.3)
+      ];
+
+      const sunGroup = new THREE.Group();
+      scene.add(sunGroup);
+
+      const sun = new THREE.Mesh(
+        new THREE.SphereGeometry(0.45, 48, 48),
+        new THREE.MeshStandardMaterial({
+          color: 0xfff4a3,
+          emissive: 0xffd84d,
+          emissiveIntensity: 1.2,
+          roughness: 0.25
+        })
+      );
+      sun.position.set(-3.4, 3.3, -1);
+      sunGroup.add(sun);
+
+      const ringMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffd84d,
+        transparent: true,
+        opacity: 0.28,
+        side: THREE.DoubleSide
+      });
+
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(0.66, 0.7, 64),
+        ringMaterial
+      );
+      ring.position.copy(sun.position);
+      ring.lookAt(camera.position);
+      sunGroup.add(ring);
+
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particleCount = 180;
+      const positions = new Float32Array(particleCount * 3);
+      const velocities = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = -3.4 + Math.random() * 6.4;
+        positions[i * 3 + 1] = 2.8 - Math.random() * 4.8;
+        positions[i * 3 + 2] = -1 + Math.random() * 2.2;
+
+        velocities.push({
+          x: 0.008 + Math.random() * 0.012,
+          y: -0.004 + Math.random() * 0.008,
+          z: 0
+        });
+      }
+
+      particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+      const particlesMaterial = new THREE.PointsMaterial({
+        color: 0x7cff4d,
+        size: 0.035,
+        transparent: true,
+        opacity: 0.62
+      });
+
+      const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particles);
+
+      const orbitLines = [];
+      const curveMaterial = new THREE.LineBasicMaterial({
+        color: 0x59d83b,
+        transparent: true,
+        opacity: 0.18
+      });
+
+      for (let i = 0; i < 5; i++) {
+        const points = [];
+        for (let j = 0; j <= 80; j++) {
+          const t = j / 80;
+          points.push(new THREE.Vector3(
+            -3.2 + t * 7.2,
+            2.9 - t * (2.2 + i * 0.34) + Math.sin(t * Math.PI) * (0.38 + i * 0.04),
+            -0.8 + i * 0.22
+          ));
+        }
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        const line = new THREE.Line(geometry, curveMaterial);
+        scene.add(line);
+        orbitLines.push(line);
+      }
+
+      const mouse = {
+        x: 0,
+        y: 0
+      };
+
+      window.addEventListener("mousemove", (event) => {
+        mouse.x = (event.clientX / window.innerWidth - 0.5) * 2;
+        mouse.y = (event.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      window.addEventListener("touchmove", (event) => {
+        if (!event.touches.length) return;
+        mouse.x = (event.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        mouse.y = (event.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+
+      function resizeScene() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        if (width < 640) {
+          camera.position.set(0.2, 1.9, 10.2);
+          group.position.set(-1.6, -0.35, 0);
+          group.scale.setScalar(0.9);
+          sunGroup.position.set(1.2, -0.2, 0);
+        } else if (width < 980) {
+          camera.position.set(0.2, 2.1, 9.7);
+          group.position.set(-0.5, -0.15, 0);
+          group.scale.setScalar(0.95);
+          sunGroup.position.set(0.2, 0, 0);
+        } else {
+          camera.position.set(0, 2.2, 9);
+          group.position.set(0, 0, 0);
+          group.scale.setScalar(1);
+          sunGroup.position.set(0, 0, 0);
+        }
+      }
+
+      window.addEventListener("resize", resizeScene);
+      resizeScene();
+
+      let frame = 0;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        frame += 0.01;
+
+        group.rotation.y += ((mouse.x * 0.12) - group.rotation.y) * 0.035;
+        group.rotation.x += ((-mouse.y * 0.04) - group.rotation.x) * 0.035;
+
+        panels.forEach((panel, index) => {
+          panel.position.y += Math.sin(frame * 1.4 + index) * 0.0017;
+          panel.rotation.z = Math.sin(frame + index) * 0.018;
+        });
+
+        sun.rotation.y += 0.006;
+        ring.rotation.z += 0.006;
+        ring.material.opacity = 0.22 + Math.sin(frame * 2) * 0.05;
+
+        const pos = particlesGeometry.attributes.position.array;
+
+        for (let i = 0; i < particleCount; i++) {
+          pos[i * 3] += velocities[i].x;
+          pos[i * 3 + 1] += velocities[i].y;
+
+          if (pos[i * 3] > 5.6) {
+            pos[i * 3] = -3.8;
+            pos[i * 3 + 1] = 2.8 - Math.random() * 4.8;
+          }
+        }
+
+        particlesGeometry.attributes.position.needsUpdate = true;
+
+        orbitLines.forEach((line, index) => {
+          line.material.opacity = 0.12 + Math.sin(frame * 1.8 + index) * 0.05;
+        });
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    window.addEventListener("load", initSolarScene);
   </script>
 
 </body>
