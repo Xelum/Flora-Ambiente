@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -229,7 +229,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.88) 42%, rgba(251, 250, 244, 0.18) 100%),
+        linear-gradient(90deg, rgba(251, 250, 244, 0.82) 0%, rgba(251, 250, 244, 0.55) 40%, rgba(251, 250, 244, 0.06) 100%),
         url("./sfondo.png") center right/cover;
       z-index: -2;
       transform: scale(1.04);
@@ -569,6 +569,24 @@
       object-fit: contain;
       user-select: none;
       pointer-events: none;
+    }
+
+    .plant-stage,
+    .plant-stage * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      caret-color: transparent;
+    }
+
+    .plant-hotspot,
+    .plant-hotspot * {
+      cursor: pointer !important;
+    }
+
+    .plant-tooltip,
+    .mobile-component-info {
+      caret-color: transparent;
     }
 
     .energy-animation-layer {
@@ -1342,30 +1360,27 @@
     }
 
     .quick-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      gap: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       max-width: 800px;
+      align-items: center;
     }
 
-    .quick-form input {
-      border: 1px solid rgba(255,255,255,0.24);
-      background: rgba(255,255,255,0.14);
-      color: white;
-    }
-
-    .quick-form input::placeholder {
-      color: rgba(255,255,255,0.70);
-    }
-
-    .quick-form button {
+    .quick-form button,
+    .quick-form a {
+      min-height: 52px;
       border: none;
-      padding: 0 22px;
+      padding: 0 24px;
       border-radius: 999px;
       background: white;
       color: var(--green-dark);
       font-weight: 950;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.10);
     }
 
     .quote-section {
@@ -1621,7 +1636,7 @@
 
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(251, 250, 244, 0.95) 0%, rgba(251, 250, 244, 0.90) 55%, rgba(251, 250, 244, 0.98) 100%),
+          linear-gradient(180deg, rgba(251, 250, 244, 0.78) 0%, rgba(251, 250, 244, 0.62) 55%, rgba(251, 250, 244, 0.86) 100%),
           url("./sfondo.png") center/cover;
       }
 
@@ -2108,6 +2123,7 @@
             </div>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-grid"
               style="left: 10%; top: 27%;"
               data-title="Traliccio rete elettrica"
@@ -2115,6 +2131,7 @@
             </button>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-panels"
               style="left: 49%; top: 23%;"
               data-title="Pannelli fotovoltaici"
@@ -2122,6 +2139,7 @@
             </button>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-inverter"
               style="left: 37.4%; top: 51.4%;"
               data-title="Inverter"
@@ -2129,6 +2147,7 @@
             </button>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-battery"
               style="left: 39%; top: 69%;"
               data-title="Batteria di accumulo"
@@ -2136,6 +2155,7 @@
             </button>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-charger"
               style="left: 73%; top: 66%;"
               data-title="Colonnina di ricarica"
@@ -2143,6 +2163,7 @@
             </button>
 
             <button
+              type="button"
               class="plant-hotspot hotspot-car"
               style="left: 86%; top: 72%;"
               data-title="Auto elettrica"
@@ -2290,9 +2311,7 @@
         <p class="reveal">Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze. Puoi contattarci anche al numero verde <strong>800-12-55-60</strong>.</p>
 
         <div class="quick-form reveal">
-          <input type="email" placeholder="La tua email">
-          <input type="tel" placeholder="Il tuo numero di telefono">
-          <button onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
+          <button type="button" onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
         </div>
       </div>
     </div>
@@ -2378,8 +2397,6 @@
                 <option value="Solo fornitura componenti">Solo fornitura componenti</option>
                 <option value="Progettazione">Progettazione</option>
                 <option value="Installazione, collaudo e messa in funzione">Installazione, collaudo e messa in funzione</option>
-                <option value="Ripristino Post incidente">Ripristino Post incidente</option>
-                <option value="Rendering e progettazione strutturale">Rendering e progettazione strutturale</option>
               </select>
             </div>
 
@@ -2576,6 +2593,18 @@
   }
 
   plantHotspots.forEach((hotspot) => {
+    hotspot.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+    });
+
+    hotspot.addEventListener("selectstart", (event) => {
+      event.preventDefault();
+    });
+
+    hotspot.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
+
     hotspot.addEventListener("mouseenter", () => {
       if (!isMobilePlantView()) {
         showPlantTooltip(hotspot);
