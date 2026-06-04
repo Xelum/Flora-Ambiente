@@ -23,12 +23,9 @@
       --text: #102016;
       --muted: #647164;
       --line: rgba(16, 32, 22, 0.12);
-      --dark: #061f18;
-      --dark-2: #0b3326;
       --shadow: 0 26px 80px rgba(18, 68, 38, 0.13);
       --shadow-strong: 0 40px 110px rgba(18, 68, 38, 0.20);
       --max: 1180px;
-      --radius: 32px;
     }
 
     * {
@@ -558,26 +555,26 @@
     }
 
     .hotspot-grid {
-      width: 120px;
-      height: 170px;
+      width: 130px;
+      height: 190px;
       border-radius: 42px;
     }
 
     .hotspot-panels {
-      width: 290px;
+      width: 360px;
       height: 120px;
       border-radius: 34px;
     }
 
     .hotspot-inverter {
-      width: 95px;
+      width: 92px;
       height: 105px;
       border-radius: 24px;
     }
 
     .hotspot-battery {
-      width: 105px;
-      height: 145px;
+      width: 120px;
+      height: 180px;
       border-radius: 26px;
     }
 
@@ -588,8 +585,8 @@
     }
 
     .hotspot-car {
-      width: 270px;
-      height: 140px;
+      width: 300px;
+      height: 145px;
       border-radius: 65px;
     }
 
@@ -685,31 +682,31 @@
     }
 
     .glow-panels {
-      left: 35%;
-      top: 22%;
-      width: 280px;
-      height: 110px;
+      left: 49%;
+      top: 23%;
+      width: 400px;
+      height: 120px;
       border-radius: 34px;
     }
 
     .glow-inverter {
-      left: 40%;
-      top: 55%;
-      width: 110px;
-      height: 110px;
+      left: 39%;
+      top: 54%;
+      width: 105px;
+      height: 105px;
       border-radius: 30px;
     }
 
     .glow-battery {
-      left: 20%;
-      top: 62%;
-      width: 120px;
-      height: 150px;
+      left: 39%;
+      top: 69%;
+      width: 125px;
+      height: 170px;
       border-radius: 30px;
     }
 
     .glow-charger {
-      left: 69%;
+      left: 73%;
       top: 66%;
       width: 100px;
       height: 160px;
@@ -717,49 +714,82 @@
     }
 
     .glow-car {
-      left: 83%;
+      left: 86%;
       top: 72%;
-      width: 280px;
+      width: 310px;
       height: 150px;
       border-radius: 70px;
     }
 
     .glow-grid {
-      left: 7.5%;
-      top: 31%;
-      width: 140px;
-      height: 180px;
+      left: 10%;
+      top: 27%;
+      width: 150px;
+      height: 215px;
       border-radius: 42px;
     }
 
     .glow-home {
-      left: 47%;
+      left: 54%;
       top: 55%;
-      width: 250px;
+      width: 270px;
       height: 170px;
       border-radius: 40px;
     }
 
     .sun-pulse {
       position: absolute;
-      left: 31%;
-      top: 9%;
-      width: 170px;
-      height: 170px;
+      left: 48%;
+      top: 18%;
+      width: 360px;
+      height: 210px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background:
-        radial-gradient(circle, rgba(255, 238, 151, 0.42) 0%, rgba(184, 239, 104, 0.20) 36%, transparent 70%);
-      filter: blur(2px);
+        radial-gradient(circle, rgba(255, 245, 165, 0.95) 0%, rgba(255, 233, 111, 0.52) 24%, rgba(184, 239, 104, 0.28) 48%, transparent 72%);
+      filter: blur(4px);
       opacity: 0;
     }
 
+    .sun-rays {
+      position: absolute;
+      left: 49%;
+      top: 19%;
+      width: 440px;
+      height: 160px;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      background:
+        linear-gradient(100deg, transparent 0%, rgba(255,255,180,0.65) 44%, transparent 55%),
+        linear-gradient(80deg, transparent 0%, rgba(184,239,104,0.42) 45%, transparent 57%),
+        linear-gradient(120deg, transparent 0%, rgba(255,245,165,0.45) 45%, transparent 58%);
+      filter: blur(6px);
+      mix-blend-mode: screen;
+      border-radius: 80px;
+    }
+
+    .panel-spark {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 245, 165, 0.95);
+      box-shadow:
+        0 0 18px rgba(255, 245, 165, 0.95),
+        0 0 38px rgba(184, 239, 104, 0.85);
+      opacity: 0;
+    }
+
+    .spark-1 { left: 36%; top: 21%; }
+    .spark-2 { left: 48%; top: 18%; }
+    .spark-3 { left: 58%; top: 26%; }
+
     .battery-charge {
       position: absolute;
-      left: 20%;
-      top: 62%;
-      width: 44px;
-      height: 92px;
+      left: 39%;
+      top: 69%;
+      width: 45px;
+      height: 98px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(184, 239, 104, 0.35);
@@ -789,20 +819,9 @@
       opacity: 0;
     }
 
-    .home-light-1 {
-      left: 43%;
-      top: 54%;
-    }
-
-    .home-light-2 {
-      left: 49%;
-      top: 54%;
-    }
-
-    .home-light-3 {
-      left: 55%;
-      top: 54%;
-    }
+    .home-light-1 { left: 54%; top: 48%; }
+    .home-light-2 { left: 59%; top: 48%; }
+    .home-light-3 { left: 64%; top: 48%; }
 
     .energy-status {
       position: absolute;
@@ -811,7 +830,7 @@
       max-width: 430px;
       padding: 12px 15px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
       color: var(--green-dark);
       font-size: 13px;
       font-weight: 900;
@@ -824,23 +843,41 @@
       animation: sunPulse 4s ease-in-out forwards;
     }
 
+    .interactive-plant.step-solar .sun-rays {
+      animation: sunRays 4s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-solar .panel-spark {
+      animation: panelSpark 4s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-solar .spark-2 {
+      animation-delay: 0.35s;
+    }
+
+    .interactive-plant.step-solar .spark-3 {
+      animation-delay: 0.7s;
+    }
+
     .interactive-plant.step-solar .glow-panels {
-      animation: componentGlow 4s ease-in-out forwards;
+      animation: componentGlowStrong 4s ease-in-out forwards;
     }
 
-    .interactive-plant.step-panels-inverter .path-panels-inverter {
+    .interactive-plant.step-panels-inverter .path-panels-inverter,
+    .interactive-plant.step-inverter-battery .path-inverter-battery,
+    .interactive-plant.step-battery-charger .path-battery-charger,
+    .interactive-plant.step-charger-car .path-charger-car,
+    .interactive-plant.step-inverter-grid .path-inverter-grid,
+    .interactive-plant.step-home-light .path-inverter-home {
       animation: drawEnergy 4s ease-in-out forwards;
     }
 
-    .interactive-plant.step-panels-inverter .glow-inverter {
-      animation: componentGlow 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-inverter-battery .path-inverter-battery {
-      animation: drawEnergy 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-inverter-battery .glow-battery {
+    .interactive-plant.step-panels-inverter .glow-inverter,
+    .interactive-plant.step-inverter-battery .glow-battery,
+    .interactive-plant.step-battery-charger .glow-charger,
+    .interactive-plant.step-charger-car .glow-car,
+    .interactive-plant.step-inverter-grid .glow-grid,
+    .interactive-plant.step-home-light .glow-home {
       animation: componentGlow 4s ease-in-out forwards;
     }
 
@@ -850,38 +887,6 @@
 
     .interactive-plant.step-inverter-battery .battery-fill {
       animation: batteryFill 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-battery-charger .path-battery-charger {
-      animation: drawEnergy 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-battery-charger .glow-charger {
-      animation: componentGlow 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-charger-car .path-charger-car {
-      animation: drawEnergy 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-charger-car .glow-car {
-      animation: componentGlow 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-inverter-grid .path-inverter-grid {
-      animation: drawEnergy 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-inverter-grid .glow-grid {
-      animation: componentGlow 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-home-light .path-inverter-home {
-      animation: drawEnergy 4s ease-in-out forwards;
-    }
-
-    .interactive-plant.step-home-light .glow-home {
-      animation: componentGlow 4s ease-in-out forwards;
     }
 
     .interactive-plant.step-home-light .home-light {
@@ -921,25 +926,96 @@
       }
     }
 
-    @keyframes sunPulse {
+    @keyframes componentGlowStrong {
       0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.45);
+        transform: translate(-50%, -50%) scale(0.62);
       }
 
       35% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%, -50%) scale(1.22);
       }
 
       70% {
-        opacity: 0.86;
-        transform: translate(-50%, -50%) scale(1.25);
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1.1);
       }
 
       100% {
-        opacity: 0.25;
+        opacity: 0.58;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes sunPulse {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.55);
+      }
+
+      25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+
+      60% {
+        opacity: 0.92;
+        transform: translate(-50%, -50%) scale(1.28);
+      }
+
+      100% {
+        opacity: 0.28;
         transform: translate(-50%, -50%) scale(1.45);
+      }
+    }
+
+    @keyframes sunRays {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scaleX(0.45) scaleY(0.7);
+      }
+
+      30% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scaleX(1.05) scaleY(1);
+      }
+
+      70% {
+        opacity: 0.75;
+        transform: translate(-50%, -50%) scaleX(1.2) scaleY(1.05);
+      }
+
+      100% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scaleX(1.35) scaleY(1.1);
+      }
+    }
+
+    @keyframes panelSpark {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      28% {
+        opacity: 1;
+        transform: scale(1.25);
+      }
+
+      55% {
+        opacity: 0.55;
+        transform: scale(0.85);
+      }
+
+      82% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.6);
       }
     }
 
@@ -1736,6 +1812,10 @@
 
           <div class="energy-animation-layer" aria-hidden="true">
             <div class="sun-pulse"></div>
+            <div class="sun-rays"></div>
+            <div class="panel-spark spark-1"></div>
+            <div class="panel-spark spark-2"></div>
+            <div class="panel-spark spark-3"></div>
 
             <div class="energy-glow glow-panels"></div>
             <div class="energy-glow glow-inverter"></div>
@@ -1754,12 +1834,12 @@
             <div class="home-light home-light-3"></div>
 
             <svg class="energy-svg" viewBox="0 0 1000 430" preserveAspectRatio="none">
-              <path class="energy-path path-panels-inverter" d="M360 120 C350 180, 350 205, 400 235" />
-              <path class="energy-path path-inverter-battery" d="M400 240 C350 260, 265 275, 200 285" />
-              <path class="energy-path path-battery-charger" d="M200 285 C350 370, 560 385, 690 320" />
-              <path class="energy-path path-charger-car" d="M700 318 C740 340, 785 345, 830 325" />
-              <path class="energy-path path-inverter-grid" d="M400 240 C300 185, 160 140, 75 135" />
-              <path class="energy-path path-inverter-home" d="M400 240 C440 250, 485 250, 520 230" />
+              <path class="energy-path path-panels-inverter" d="M490 100 C480 150, 430 190, 390 220" />
+              <path class="energy-path path-inverter-battery" d="M390 230 C390 250, 390 275, 390 305" />
+              <path class="energy-path path-battery-charger" d="M390 315 C500 375, 620 375, 730 310" />
+              <path class="energy-path path-charger-car" d="M735 310 C775 330, 825 340, 875 325" />
+              <path class="energy-path path-inverter-grid" d="M390 230 C310 180, 185 135, 100 120" />
+              <path class="energy-path path-inverter-home" d="M390 230 C455 250, 510 250, 575 215" />
             </svg>
 
             <div class="energy-status" id="energyStatus">
@@ -1769,42 +1849,42 @@
 
           <button
             class="plant-hotspot hotspot-grid"
-            style="left: 7.5%; top: 31%;"
+            style="left: 10%; top: 27%;"
             data-title="Traliccio rete elettrica"
             data-text="Rappresenta il collegamento alla rete elettrica. L’impianto può prelevare energia quando necessario o immettere quella prodotta in eccesso.">
           </button>
 
           <button
             class="plant-hotspot hotspot-panels"
-            style="left: 35%; top: 22%;"
+            style="left: 49%; top: 23%;"
             data-title="Pannelli fotovoltaici"
             data-text="I pannelli trasformano la luce del sole in energia elettrica pulita. Sono il cuore dell’impianto fotovoltaico.">
           </button>
 
           <button
             class="plant-hotspot hotspot-inverter"
-            style="left: 40%; top: 55%;"
+            style="left: 39%; top: 54%;"
             data-title="Inverter"
             data-text="L’inverter converte l’energia prodotta dai pannelli in corrente utilizzabile per alimentare casa, azienda, batterie e colonnine.">
           </button>
 
           <button
             class="plant-hotspot hotspot-battery"
-            style="left: 20%; top: 62%;"
+            style="left: 39%; top: 69%;"
             data-title="Batteria di accumulo"
             data-text="La batteria conserva l’energia prodotta durante il giorno e la rende disponibile quando serve, anche nelle ore serali.">
           </button>
 
           <button
             class="plant-hotspot hotspot-charger"
-            style="left: 69%; top: 66%;"
+            style="left: 73%; top: 66%;"
             data-title="Colonnina di ricarica"
             data-text="La colonnina ricarica l’auto elettrica utilizzando l’energia prodotta dall’impianto o, se necessario, quella della rete.">
           </button>
 
           <button
             class="plant-hotspot hotspot-car"
-            style="left: 83%; top: 72%;"
+            style="left: 86%; top: 72%;"
             data-title="Auto elettrica"
             data-text="L’auto elettrica può essere alimentata dall’impianto fotovoltaico, integrando energia domestica o aziendale e mobilità sostenibile.">
           </button>
