@@ -4,30 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FLORA | Fotovoltaico, Energia e Soluzioni Integrate</title>
-
-  <meta name="description" content="FLORA realizza impianti fotovoltaici chiavi in mano, progettazione, installazione, fornitura componenti, colonnine di ricarica e servizi integrati per casa e azienda." />
+  <title>FLORA | Soluzioni fotovoltaiche per abitazioni e aziende</title>
+  <meta name="description" content="FLORA progetta, fornisce e installa impianti fotovoltaici chiavi in mano, batterie di accumulo, colonnine di ricarica e soluzioni energetiche integrate." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800;900&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --green: #59d83b;
-      --green-dark: #1f7a3a;
-      --green-soft: #e9f8df;
-      --lime: #b7ef63;
-      --blue: #dff2ff;
-      --sky: #edf8ff;
-      --cream: #fbfaf5;
+      --green: #69bf45;
+      --green-dark: #0b4a2f;
+      --green-deep: #06291f;
+      --lime: #b8ef68;
+      --sage: #edf6e8;
+      --cream: #fbfaf4;
       --white: #ffffff;
-      --text: #142018;
-      --muted: #60705f;
-      --line: rgba(25, 52, 30, 0.13);
-      --shadow: 0 24px 70px rgba(30, 64, 38, 0.13);
-      --shadow-strong: 0 34px 95px rgba(31, 80, 42, 0.18);
+      --text: #102016;
+      --muted: #647164;
+      --line: rgba(16, 32, 22, 0.12);
+      --dark: #061f18;
+      --dark-2: #0b3326;
+      --shadow: 0 26px 80px rgba(18, 68, 38, 0.13);
+      --shadow-strong: 0 40px 110px rgba(18, 68, 38, 0.20);
       --max: 1180px;
+      --radius: 32px;
     }
 
     * {
@@ -45,9 +46,9 @@
       font-family: "Instrument Sans", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 8%, rgba(183, 239, 99, 0.32), transparent 28%),
-        radial-gradient(circle at 84% 18%, rgba(157, 219, 255, 0.46), transparent 27%),
-        linear-gradient(180deg, #f8fbf2 0%, #f3f8ef 38%, #fbfaf5 100%);
+        radial-gradient(circle at 10% 3%, rgba(184, 239, 104, 0.30), transparent 28%),
+        radial-gradient(circle at 92% 15%, rgba(180, 225, 255, 0.32), transparent 30%),
+        linear-gradient(180deg, #fbfaf4 0%, #f3f8ef 36%, #fbfaf4 100%);
       overflow-x: hidden;
     }
 
@@ -72,28 +73,45 @@
     h2,
     h3 {
       color: var(--text);
-      letter-spacing: -0.052em;
+      letter-spacing: -0.045em;
       line-height: 1;
-      font-weight: 900;
+    }
+
+    h1,
+    h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
     }
 
     h1 {
-      font-size: clamp(48px, 7.1vw, 94px);
-      max-width: 850px;
-      margin-bottom: 26px;
+      font-size: clamp(48px, 6vw, 82px);
+      max-width: 690px;
+      margin-bottom: 24px;
     }
 
     h2 {
-      font-size: clamp(36px, 5vw, 66px);
+      font-size: clamp(36px, 4.5vw, 60px);
       margin-bottom: 18px;
     }
 
     h3 {
-      font-size: 24px;
+      font-size: 23px;
+      font-weight: 850;
     }
 
     p {
       line-height: 1.75;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .site-header {
@@ -114,11 +132,11 @@
       justify-content: space-between;
       gap: 22px;
       padding: 12px 14px 12px 18px;
-      border: 1px solid rgba(31, 122, 58, 0.13);
+      border: 1px solid rgba(11, 74, 47, 0.12);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.84);
       backdrop-filter: blur(22px);
-      box-shadow: 0 18px 55px rgba(25, 68, 35, 0.11);
+      box-shadow: 0 18px 55px rgba(25, 68, 35, 0.12);
     }
 
     .logo {
@@ -128,37 +146,50 @@
       font-size: 22px;
       font-weight: 950;
       letter-spacing: 0.08em;
-      color: #17351d;
+      color: var(--green-dark);
       flex: 0 0 auto;
     }
 
     .logo-mark {
       width: 36px;
       height: 36px;
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 36% 32%, #ffffff 0 5%, transparent 6%),
-        linear-gradient(135deg, var(--lime), var(--green-dark));
-      box-shadow: 0 12px 26px rgba(95, 209, 61, 0.32);
+      border-radius: 50%;
       position: relative;
+      background: var(--green);
+      box-shadow: 0 14px 30px rgba(105, 191, 69, 0.28);
     }
 
+    .logo-mark::before,
     .logo-mark::after {
       content: "";
       position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(9, 54, 22, 0.35);
-      border-radius: 50% 50% 50% 8px;
-      transform: rotate(-35deg);
+      inset: 8px;
+      background: var(--cream);
+      border-radius: 50%;
+    }
+
+    .logo-mark::before {
+      box-shadow:
+        0 -13px 0 var(--green),
+        0 13px 0 var(--green),
+        13px 0 0 var(--green),
+        -13px 0 0 var(--green);
+    }
+
+    .logo-mark::after {
+      width: 8px;
+      height: 8px;
+      inset: 14px;
+      background: var(--green-dark);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
-      color: #526251;
+      gap: 30px;
+      color: #3f4d43;
       font-size: 14px;
-      font-weight: 750;
+      font-weight: 800;
     }
 
     .nav-links a:hover {
@@ -166,12 +197,12 @@
     }
 
     .nav-cta {
-      padding: 11px 18px;
+      padding: 12px 18px;
       border-radius: 999px;
-      background: var(--text);
+      background: var(--green-dark);
       color: white !important;
-      font-weight: 850;
-      box-shadow: 0 14px 30px rgba(23, 33, 23, 0.16);
+      font-weight: 900;
+      box-shadow: 0 16px 34px rgba(11, 74, 47, 0.22);
     }
 
     .menu-btn {
@@ -184,48 +215,34 @@
       border-radius: 50%;
       font-size: 22px;
       cursor: pointer;
-      flex: 0 0 auto;
     }
 
     .hero {
       position: relative;
       min-height: 100vh;
-      padding: 150px 0 92px;
+      padding: 150px 0 88px;
       display: flex;
       align-items: center;
       overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(circle at 70% 36%, rgba(95, 216, 59, 0.18), transparent 28%),
-        radial-gradient(circle at 88% 18%, rgba(149, 219, 255, 0.42), transparent 30%),
-        linear-gradient(135deg, #f8fbf2 0%, #eff8ea 42%, #f7fbff 100%);
+        linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.87) 42%, rgba(251, 250, 244, 0.18) 100%),
+        url("https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=1900&q=85") center right/cover;
+      z-index: -2;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 190px;
+      height: 230px;
       background: linear-gradient(180deg, transparent, #f3f8ef);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    #solar3d {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 3;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 32px;
-      align-items: center;
+      z-index: -1;
     }
 
     .hero-content {
@@ -238,13 +255,13 @@
       gap: 10px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(31, 122, 58, 0.15);
+      background: rgba(255, 255, 255, 0.80);
+      border: 1px solid rgba(11, 74, 47, 0.15);
       color: var(--green-dark);
       font-size: 13px;
       font-weight: 950;
       text-transform: uppercase;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.12em;
       margin-bottom: 24px;
       box-shadow: 0 12px 30px rgba(31, 122, 58, 0.08);
     }
@@ -254,18 +271,14 @@
       height: 9px;
       background: var(--green);
       border-radius: 50%;
-      box-shadow: 0 0 0 7px rgba(95, 209, 61, 0.15);
-    }
-
-    .hero h1 span {
-      color: var(--green-dark);
+      box-shadow: 0 0 0 7px rgba(105, 191, 69, 0.14);
     }
 
     .hero-text {
-      font-size: 20px;
-      color: #40503f;
-      max-width: 680px;
-      margin-bottom: 34px;
+      font-size: 18px;
+      color: #435044;
+      max-width: 610px;
+      margin-bottom: 32px;
     }
 
     .hero-actions {
@@ -276,29 +289,29 @@
     }
 
     .btn {
-      min-height: 54px;
-      padding: 0 24px;
+      min-height: 52px;
+      padding: 0 23px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
       border: 1px solid transparent;
-      font-weight: 950;
-      font-size: 15px;
+      font-weight: 900;
+      font-size: 14px;
       cursor: pointer;
       transition: 0.25s ease;
       text-align: center;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--green), var(--lime));
-      color: #0d220f;
-      box-shadow: 0 18px 36px rgba(95, 209, 61, 0.28);
+      background: var(--green-dark);
+      color: white;
+      box-shadow: 0 18px 36px rgba(11, 74, 47, 0.26);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 24px 46px rgba(95, 209, 61, 0.36);
+      box-shadow: 0 24px 46px rgba(11, 74, 47, 0.34);
     }
 
     .btn-secondary {
@@ -308,125 +321,54 @@
       box-shadow: 0 14px 34px rgba(31, 80, 42, 0.08);
     }
 
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      background: white;
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 18px;
+      max-width: 680px;
+      margin-top: 30px;
     }
 
-    .trust-row {
+    .hero-stat {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 10px;
     }
 
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      color: #42523f;
-      font-size: 13px;
-      font-weight: 800;
-      box-shadow: 0 12px 28px rgba(31, 80, 42, 0.06);
-    }
-
-    .trust-pill i {
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
+    .stat-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: rgba(105, 191, 69, 0.10);
+      color: var(--green-dark);
+      display: grid;
+      place-items: center;
       flex: 0 0 auto;
     }
 
-    .hero-side {
-      min-height: 560px;
-      position: relative;
+    .hero-stat strong {
+      display: block;
+      font-size: 20px;
+      color: var(--green-dark);
+      line-height: 1;
     }
 
-    .energy-widget {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      width: min(360px, 100%);
-      padding: 22px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(31, 122, 58, 0.14);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 24px 70px rgba(31, 80, 42, 0.14);
-      z-index: 4;
-    }
-
-    .energy-widget-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-end;
-      margin-bottom: 18px;
-    }
-
-    .energy-widget small {
+    .hero-stat span {
+      display: block;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .energy-widget strong {
-      display: block;
-      color: var(--green-dark);
-      font-size: 34px;
-      line-height: 1;
-      margin-top: 6px;
-    }
-
-    .energy-bars {
-      height: 84px;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 6px;
-      align-items: end;
-    }
-
-    .energy-bars i {
-      display: block;
-      border-radius: 999px 999px 8px 8px;
-      background: linear-gradient(180deg, var(--green), var(--lime));
-      box-shadow: 0 8px 18px rgba(95, 209, 61, 0.22);
-      animation: barPulse 2.4s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.08s);
-    }
-
-    .energy-bars i:nth-child(1) { height: 24%; --i: 1; }
-    .energy-bars i:nth-child(2) { height: 42%; --i: 2; }
-    .energy-bars i:nth-child(3) { height: 58%; --i: 3; }
-    .energy-bars i:nth-child(4) { height: 76%; --i: 4; }
-    .energy-bars i:nth-child(5) { height: 46%; --i: 5; }
-    .energy-bars i:nth-child(6) { height: 90%; --i: 6; }
-    .energy-bars i:nth-child(7) { height: 72%; --i: 7; }
-    .energy-bars i:nth-child(8) { height: 94%; --i: 8; }
-    .energy-bars i:nth-child(9) { height: 66%; --i: 9; }
-    .energy-bars i:nth-child(10) { height: 52%; --i: 10; }
-    .energy-bars i:nth-child(11) { height: 40%; --i: 11; }
-    .energy-bars i:nth-child(12) { height: 68%; --i: 12; }
-
-    @keyframes barPulse {
-      0%, 100% { transform: scaleY(1); opacity: 0.82; }
-      50% { transform: scaleY(1.14); opacity: 1; }
+      line-height: 1.2;
+      margin-top: 3px;
     }
 
     section {
-      padding: 104px 0;
       position: relative;
+      padding: 96px 0;
     }
 
     .section-head {
       max-width: 780px;
-      margin-bottom: 46px;
+      margin-bottom: 42px;
     }
 
     .section-head.center {
@@ -436,274 +378,554 @@
     }
 
     .section-label {
-      color: var(--green-dark);
+      color: var(--green);
       text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.14em;
       font-weight: 950;
-      letter-spacing: 0.12em;
-      font-size: 13px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .section-head p {
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
     }
 
-    .intro-panel {
-      margin-top: -42px;
+    .solar-shell {
+      margin-top: -56px;
       position: relative;
       z-index: 5;
     }
 
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .intro-card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      border-radius: 38px;
-      padding: 34px;
-      box-shadow: var(--shadow);
+    .solar-panel {
+      padding: 42px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(11, 74, 47, 0.10);
+      box-shadow: var(--shadow-strong);
       backdrop-filter: blur(14px);
     }
 
-    .intro-card h2 {
-      font-size: clamp(34px, 4.5vw, 56px);
+    .services-title {
+      text-align: center;
+      margin-bottom: 34px;
     }
 
-    .intro-card p {
+    .services-title h2 {
+      font-size: clamp(32px, 3.2vw, 44px);
+      margin-bottom: 8px;
+    }
+
+    .services-title p {
       color: var(--muted);
-      font-size: 17px;
-      max-width: 760px;
     }
 
-    .mini-list {
+    .solar-services-grid {
       display: grid;
-      gap: 12px;
-      margin-top: 24px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
     }
 
-    .mini-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: #40503f;
-      font-weight: 750;
+    .solar-service {
+      min-height: 210px;
+      padding: 24px 18px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid rgba(11, 74, 47, 0.11);
+      box-shadow: 0 18px 45px rgba(18, 68, 38, 0.07);
+      text-align: center;
+      transition: 0.3s ease;
     }
 
-    .mini-item span {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: var(--green-soft);
-      color: var(--green-dark);
+    .solar-service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(18, 68, 38, 0.12);
+    }
+
+    .solar-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 19px;
+      margin: 0 auto 18px;
       display: grid;
       place-items: center;
-      font-size: 13px;
-      flex: 0 0 auto;
+      background: linear-gradient(135deg, #f0fae9, #ffffff);
+      color: var(--green-dark);
+      border: 1px solid rgba(105, 191, 69, 0.22);
     }
 
-    .intro-image {
-      min-height: 360px;
-      border-radius: 38px;
+    .solar-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .solar-service h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .solar-service p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .ecosystem-section {
+      padding-top: 32px;
+    }
+
+    .ecosystem-card {
+      position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow);
+      min-height: 420px;
+      border-radius: 30px;
+      padding: 46px;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.2)),
-        url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85") center/cover;
-    }
-
-    .solar-section {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0), rgba(233,248,223,0.78)),
-        radial-gradient(circle at 10% 20%, rgba(183, 239, 99, 0.24), transparent 30%);
-    }
-
-    .solar-grid {
+        radial-gradient(circle at 82% 20%, rgba(105, 191, 69, 0.24), transparent 28%),
+        linear-gradient(135deg, #061b15 0%, #08241b 55%, #04120e 100%);
+      color: white;
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(255,255,255,0.12);
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: 0.34fr 0.66fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .ecosystem-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ecosystem-copy .section-label {
+      color: var(--lime);
+    }
+
+    .ecosystem-copy h2 {
+      color: white;
+      font-size: clamp(34px, 4.2vw, 58px);
+    }
+
+    .ecosystem-copy p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 22px;
+    }
+
+    .btn-dark {
+      border-color: rgba(255,255,255,0.28);
+      color: white;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .model {
+      position: relative;
+      height: 360px;
+      z-index: 2;
+    }
+
+    .house {
+      position: absolute;
+      left: 11%;
+      right: 21%;
+      bottom: 35px;
+      height: 220px;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(180deg, #dde2dc, #aeb7ae);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.36);
+    }
+
+    .roof {
+      position: absolute;
+      left: 5%;
+      right: 15%;
+      top: 42px;
+      height: 92px;
+      transform: skewX(-18deg);
+      background: linear-gradient(135deg, #1f2e31, #0e1618);
+      border-top: 8px solid #394b4e;
+      box-shadow: 0 24px 36px rgba(0,0,0,0.26);
+    }
+
+    .solar-roof {
+      position: absolute;
+      left: 10%;
+      right: 18%;
+      top: 51px;
+      height: 62px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 3px;
+      transform: skewX(-18deg);
+    }
+
+    .solar-roof i {
+      display: block;
+      background: linear-gradient(135deg, #243c45, #0c2029);
+      border: 1px solid rgba(167,239,255,0.24);
+      box-shadow: inset 0 0 12px rgba(136,229,255,0.14);
+    }
+
+    .door {
+      position: absolute;
+      right: 18%;
+      bottom: 0;
+      width: 58px;
+      height: 104px;
+      background: linear-gradient(180deg, #737f78, #58635e);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .window {
+      position: absolute;
+      left: 15%;
+      bottom: 82px;
+      width: 72px;
+      height: 42px;
+      background: rgba(255,255,255,0.62);
+      border: 4px solid #eef2ec;
+      box-shadow: inset 0 0 18px rgba(105,191,69,0.15);
+    }
+
+    .inverter,
+    .box1,
+    .box2,
+    .battery {
+      position: absolute;
+      background: linear-gradient(180deg, #edf1ec, #cbd2ca);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+    }
+
+    .inverter {
+      left: 35%;
+      bottom: 98px;
+      width: 58px;
+      height: 66px;
+      border-radius: 8px;
+    }
+
+    .box1 {
+      left: 46%;
+      bottom: 106px;
+      width: 42px;
+      height: 50px;
+      border-radius: 7px;
+    }
+
+    .box2 {
+      left: 55%;
+      bottom: 101px;
+      width: 48px;
+      height: 56px;
+      border-radius: 7px;
+    }
+
+    .battery {
+      left: 12%;
+      bottom: 24px;
+      width: 72px;
+      height: 116px;
+      border-radius: 12px;
+    }
+
+    .inverter::after,
+    .box1::after,
+    .box2::after,
+    .battery::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      top: 14px;
+      right: 14px;
+      box-shadow: 0 0 14px var(--green);
+    }
+
+    .charger {
+      position: absolute;
+      right: 15%;
+      bottom: 34px;
+      width: 40px;
+      height: 120px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #eef3ee, #b8c2b9);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.25);
+    }
+
+    .charger::before {
+      content: "";
+      position: absolute;
+      inset: 20px 12px auto 12px;
+      height: 42px;
+      border-radius: 12px;
+      background: #0b4a2f;
+      box-shadow: inset 0 0 12px rgba(105,191,69,0.5);
+    }
+
+    .car {
+      position: absolute;
+      right: 1%;
+      bottom: 25px;
+      width: 190px;
+      height: 68px;
+      border-radius: 55px 65px 20px 20px;
+      background: linear-gradient(180deg, #f7f7f4, #bfc8c1);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.24);
+    }
+
+    .car::before {
+      content: "";
+      position: absolute;
+      left: 42px;
+      top: -28px;
+      width: 92px;
+      height: 42px;
+      border-radius: 70px 70px 8px 8px;
+      background: linear-gradient(180deg, #dce7eb, #8ea1a7);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1b2525;
+      border: 5px solid #6e7a76;
+    }
+
+    .wheel.left {
+      left: 35px;
+    }
+
+    .wheel.right {
+      right: 35px;
+    }
+
+    .cable {
+      position: absolute;
+      left: 38%;
+      right: 18%;
+      bottom: 92px;
+      height: 74px;
+      border-left: 4px solid var(--green);
+      border-bottom: 4px solid var(--green);
+      border-radius: 0 0 0 16px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 8px rgba(105,191,69,0.65));
+      animation: glowCable 2.4s ease-in-out infinite;
+    }
+
+    @keyframes glowCable {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+
+    .callout {
+      position: absolute;
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.2;
+    }
+
+    .callout::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+    }
+
+    .c1 { left: 2%; top: 74px; }
+    .c1::after { width: 90px; left: 105px; top: 9px; }
+    .c2 { left: 2%; top: 177px; }
+    .c2::after { width: 100px; left: 85px; top: 9px; }
+    .c3 { right: 3%; top: 150px; }
+    .c3::after { width: 80px; right: 105px; top: 9px; }
+    .c4 { right: 3%; bottom: 52px; }
+    .c4::after { width: 72px; right: 83px; top: 9px; }
+
+    .about-process {
+      background: linear-gradient(180deg, #fbfaf4, #f5f9f0);
+    }
+
+    .about-process-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .team-photo {
+      min-height: 250px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.22)),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .text-link {
+      color: var(--green-dark);
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
 
-    .solar-card {
-      position: relative;
-      min-height: 360px;
-      border-radius: 34px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      background: white;
-      isolation: isolate;
-      transition: 0.35s ease;
-    }
-
-    .solar-card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow-strong);
-    }
-
-    .solar-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-position: center;
-      background-size: cover;
-      transform: scale(1.02);
-      transition: 0.45s ease;
-      z-index: -2;
-    }
-
-    .solar-card:hover::before {
-      transform: scale(1.08);
-    }
-
-    .solar-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(5,20,8,0.02), rgba(5,20,8,0.72));
-      z-index: -1;
-    }
-
-    .solar-main {
-      grid-column: span 6;
-      min-height: 460px;
-    }
-
-    .solar-supply,
-    .solar-design {
-      grid-column: span 3;
-      min-height: 460px;
-    }
-
-    .solar-install,
-    .solar-storage {
-      grid-column: span 6;
-      min-height: 340px;
-    }
-
-    .solar-main::before {
-      background-image: url("https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1300&q=85");
-    }
-
-    .solar-supply::before {
-      background-image: url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=85");
-    }
-
-    .solar-design::before {
-      background-image: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85");
-    }
-
-    .solar-install::before {
-      background-image: url("https://images.unsplash.com/photo-1624397640148-949b1732bb0a?auto=format&fit=crop&w=1200&q=85");
-    }
-
-    .solar-storage::before {
-      background-image: url("https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=85");
-    }
-
-    .solar-content {
-      position: absolute;
-      inset: auto 20px 20px 20px;
-      padding: 24px;
-      border-radius: 24px;
-      color: white;
-      background: rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--green-dark);
-      display: grid;
-      place-items: center;
-      font-size: 24px;
-      margin-bottom: 18px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.16);
-    }
-
-    .card-kicker {
-      display: inline-block;
-      color: var(--lime);
-      font-size: 12px;
-      font-weight: 950;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      margin-bottom: 9px;
-    }
-
-    .solar-card h3 {
-      color: white;
-      font-size: 25px;
-      margin-bottom: 12px;
-    }
-
-    .solar-card p {
-      color: rgba(255,255,255,0.88);
-      font-size: 15px;
-      line-height: 1.68;
-    }
-
-    .process-section {
-      background:
-        linear-gradient(180deg, rgba(233,248,223,0.78), rgba(251,250,245,0.98)),
-        radial-gradient(circle at 82% 10%, rgba(157, 219, 255, 0.38), transparent 28%);
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
     .step {
-      background: rgba(255, 255, 255, 0.76);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
-      transition: 0.25s ease;
-    }
-
-    .step:hover {
-      transform: translateY(-5px);
-      background: white;
-      box-shadow: var(--shadow);
+      position: relative;
     }
 
     .step-num {
-      width: 44px;
-      height: 44px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--lime));
-      color: #0b250d;
+      background: var(--green);
+      color: white;
       display: grid;
       place-items: center;
       font-weight: 950;
-      margin-bottom: 24px;
-      box-shadow: 0 14px 28px rgba(95, 209, 61, 0.24);
+      font-size: 13px;
+      margin-bottom: 16px;
     }
 
     .step h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      margin-bottom: 9px;
     }
 
     .step p {
       color: var(--muted);
-      font-size: 15px;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .extra-cta {
+      background: #fbfaf4;
+      padding-top: 42px;
+    }
+
+    .extra-cta-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .extra-services,
+    .cta-card {
+      border-radius: 28px;
+      padding: 38px;
+      background: white;
+      border: 1px solid rgba(11, 74, 47, 0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .extra-services p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .mini-services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .mini-service {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #39493d;
+      font-weight: 850;
+      font-size: 14px;
+    }
+
+    .mini-service span {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--sage);
+      color: var(--green-dark);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    .cta-card {
+      background:
+        radial-gradient(circle at 100% 50%, rgba(184,239,104,0.28), transparent 30%),
+        linear-gradient(135deg, #164e31, #4a8d2b);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card .section-label,
+    .cta-card h2 {
+      color: white;
+    }
+
+    .cta-card p {
+      color: rgba(255,255,255,0.83);
+      margin-bottom: 24px;
+    }
+
+    .quick-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+    }
+
+    .quick-form input {
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.14);
+      color: white;
+    }
+
+    .quick-form input::placeholder {
+      color: rgba(255,255,255,0.70);
+    }
+
+    .quick-form button {
+      border: none;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: white;
+      color: var(--green-dark);
+      font-weight: 950;
+      cursor: pointer;
     }
 
     .quote-section {
-      background: linear-gradient(180deg, #fbfaf5, #eef8e8 100%);
+      background: linear-gradient(180deg, #fbfaf4, #edf7e9);
     }
 
     .quote-box {
@@ -711,20 +933,20 @@
       grid-template-columns: 0.9fr 1.1fr;
       gap: 0;
       overflow: hidden;
-      border-radius: 42px;
-      border: 1px solid rgba(31, 122, 58, 0.13);
+      border-radius: 36px;
+      border: 1px solid rgba(11, 74, 47, 0.13);
       background: white;
       box-shadow: var(--shadow-strong);
     }
 
     .quote-info {
-      min-height: 650px;
+      min-height: 620px;
       padding: 44px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       background:
-        linear-gradient(180deg, rgba(8,48,18,0.18), rgba(8,48,18,0.78)),
+        linear-gradient(180deg, rgba(8,48,18,0.12), rgba(8,48,18,0.78)),
         url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=85") center/cover;
       color: white;
     }
@@ -735,7 +957,6 @@
 
     .quote-info h2 {
       color: white;
-      font-size: clamp(34px, 4.2vw, 58px);
     }
 
     .quote-info p {
@@ -765,7 +986,7 @@
     form {
       padding: 42px;
       background:
-        radial-gradient(circle at 100% 0%, rgba(183, 239, 99, 0.18), transparent 30%),
+        radial-gradient(circle at 100% 0%, rgba(184, 239, 104, 0.18), transparent 30%),
         white;
     }
 
@@ -797,7 +1018,7 @@
       width: 100%;
       min-height: 52px;
       border-radius: 16px;
-      border: 1px solid rgba(31, 122, 58, 0.16);
+      border: 1px solid rgba(11, 74, 47, 0.16);
       background: #f8fbf5;
       color: var(--text);
       padding: 0 15px;
@@ -816,7 +1037,7 @@
     textarea:focus {
       border-color: var(--green);
       background: white;
-      box-shadow: 0 0 0 4px rgba(95, 209, 61, 0.13);
+      box-shadow: 0 0 0 4px rgba(105, 191, 69, 0.13);
     }
 
     .form-note {
@@ -830,155 +1051,53 @@
       min-height: 58px;
       border: none;
       border-radius: 18px;
-      background: linear-gradient(135deg, var(--green), var(--lime));
-      color: #0b250d;
+      background: var(--green-dark);
+      color: white;
       font-size: 16px;
       font-weight: 950;
       cursor: pointer;
-      box-shadow: 0 16px 34px rgba(95, 209, 61, 0.25);
+      box-shadow: 0 18px 36px rgba(11, 74, 47, 0.24);
       transition: 0.25s ease;
     }
 
     .form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 22px 46px rgba(95, 209, 61, 0.32);
-    }
-
-    .services-section {
-      background: linear-gradient(180deg, #eef8e8 0%, #fbfaf5 100%);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .service-card {
-      min-height: 255px;
-      padding: 26px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
-      transition: 0.25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      background: white;
-      box-shadow: var(--shadow);
-    }
-
-    .small-icon {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--green-soft), var(--blue));
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
-
-    .service-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 14.5px;
-    }
-
-    .banner-section {
-      background: var(--cream);
-      padding-top: 30px;
-    }
-
-    .banner {
-      border-radius: 44px;
-      min-height: 450px;
-      padding: 58px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(31, 122, 58, 0.13);
-      box-shadow: var(--shadow-strong);
-      background:
-        linear-gradient(90deg, rgba(248,251,242,0.98), rgba(248,251,242,0.76), rgba(248,251,242,0.2)),
-        url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1700&q=85") center/cover;
-    }
-
-    .banner-content {
-      max-width: 680px;
-    }
-
-    .banner p {
-      color: var(--muted);
-      font-size: 18px;
-      margin: 18px 0 28px;
-    }
-
-    .contacts {
-      background: linear-gradient(180deg, var(--cream), #edf7e8);
-      padding-bottom: 54px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .contact-card {
-      padding: 34px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(31, 122, 58, 0.12);
-      box-shadow: 0 18px 45px rgba(31, 80, 42, 0.08);
-    }
-
-    .contact-card h3 {
-      font-size: 26px;
-      margin-bottom: 18px;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      color: #374735;
-      line-height: 1.5;
-      font-weight: 700;
-      word-break: break-word;
-    }
-
-    .contact-item span:first-child {
-      width: 42px;
-      height: 42px;
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      background: var(--green-soft);
-      color: var(--green-dark);
-      flex: 0 0 auto;
+      box-shadow: 0 22px 46px rgba(11, 74, 47, 0.32);
     }
 
     .footer {
       background: #edf7e8;
-      border-top: 1px solid rgba(31, 122, 58, 0.12);
-      padding: 28px 0 40px;
+      border-top: 1px solid rgba(11, 74, 47, 0.12);
+      padding: 54px 0 36px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .footer-inner {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .footer h3 {
+      font-size: 16px;
+      margin-bottom: 14px;
+      letter-spacing: 0;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 14px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(11, 74, 47, 0.12);
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       gap: 20px;
@@ -1002,11 +1121,6 @@
       transition: 0.25s ease;
     }
 
-    .floating-whatsapp:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 22px 56px rgba(37, 211, 102, 0.48);
-    }
-
     .floating-whatsapp svg {
       width: 34px;
       height: 34px;
@@ -1024,16 +1138,6 @@
 
       .nav {
         width: min(100% - 24px, var(--max));
-        padding: 10px 12px 10px 14px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .logo-mark {
-        width: 34px;
-        height: 34px;
       }
 
       .nav-links {
@@ -1046,7 +1150,7 @@
         align-items: stretch;
         gap: 4px;
         background: rgba(255, 255, 255, 0.98);
-        border: 1px solid rgba(31, 122, 58, 0.14);
+        border: 1px solid rgba(11, 74, 47, 0.14);
         border-radius: 26px;
         padding: 14px;
         box-shadow: 0 24px 60px rgba(31, 80, 42, 0.16);
@@ -1062,97 +1166,55 @@
         font-size: 15px;
       }
 
-      .nav-links a:hover {
-        background: var(--green-soft);
-      }
-
-      .nav-cta {
-        text-align: center;
-        margin-top: 6px;
-      }
-
       .menu-btn {
         display: block;
       }
 
       .hero {
         min-height: auto;
-        padding: 126px 0 70px;
+        padding: 124px 0 70px;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(251, 250, 244, 0.95) 0%, rgba(251, 250, 244, 0.90) 55%, rgba(251, 250, 244, 0.98) 100%),
+          url("https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=1400&q=85") center/cover;
       }
 
-      .hero-side {
-        min-height: 420px;
-      }
-
-      #solar3d {
-        opacity: 0.88;
-      }
-
-      h1 {
-        font-size: clamp(42px, 9vw, 68px);
-        line-height: 0.98;
-      }
-
-      .hero-text {
-        max-width: 100%;
-        font-size: 18px;
-      }
-
-      .intro-panel {
-        margin-top: 0;
-        padding-top: 40px;
-      }
-
-      .intro-grid,
-      .quote-box,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .intro-image {
-        min-height: 330px;
-      }
-
-      .solar-main,
-      .solar-supply,
-      .solar-design,
-      .solar-install,
-      .solar-storage {
-        grid-column: span 6;
-      }
-
-      .process,
-      .services-grid {
+      .hero-stats,
+      .solar-services-grid,
+      .process-steps,
+      .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .quote-info {
-        min-height: 430px;
+      .ecosystem-card,
+      .about-process-grid,
+      .extra-cta-grid,
+      .quote-box {
+        grid-template-columns: 1fr;
       }
 
-      .banner {
-        min-height: 420px;
+      .ecosystem-card {
+        padding: 34px;
+      }
+
+      .model {
+        height: 350px;
+      }
+
+      .about-card {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-form {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
-      body {
-        background:
-          radial-gradient(circle at 20% 0%, rgba(183, 239, 99, 0.28), transparent 30%),
-          radial-gradient(circle at 90% 12%, rgba(157, 219, 255, 0.34), transparent 28%),
-          linear-gradient(180deg, #f8fbf2 0%, #f3f8ef 42%, #fbfaf5 100%);
-      }
-
       .container {
         width: min(100% - 24px, var(--max));
-      }
-
-      .site-header {
-        top: 10px;
       }
 
       .nav {
@@ -1167,327 +1229,86 @@
       .logo-mark {
         width: 32px;
         height: 32px;
-        border-radius: 12px;
-      }
-
-      .menu-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 21px;
       }
 
       .hero {
         padding: 116px 0 58px;
-        text-align: left;
-      }
-
-      .hero-grid {
-        gap: 18px;
-      }
-
-      .eyebrow {
-        font-size: 11px;
-        padding: 8px 11px;
-        margin-bottom: 18px;
       }
 
       h1 {
         font-size: 42px;
-        line-height: 0.98;
-        letter-spacing: -0.055em;
-        margin-bottom: 20px;
       }
 
       h2 {
-        font-size: 35px;
-        line-height: 1.02;
-        letter-spacing: -0.05em;
+        font-size: 34px;
       }
 
-      h3 {
-        font-size: 22px;
+      .hero-text,
+      .section-head p {
+        font-size: 16px;
       }
 
-      .hero-text {
-        font-size: 16.5px;
-        line-height: 1.65;
-        margin-bottom: 24px;
+      .hero-actions,
+      .hero-stats,
+      .solar-services-grid,
+      .process-steps,
+      .mini-services,
+      .form-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
       .hero-actions {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 24px;
       }
 
       .btn {
         width: 100%;
-        min-height: 52px;
-        padding: 0 18px;
-        font-size: 14px;
-      }
-
-      .trust-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .trust-pill {
-        width: 100%;
-        justify-content: flex-start;
-        font-size: 13px;
-        padding: 10px 12px;
-      }
-
-      .hero-side {
-        min-height: 360px;
-        margin-top: 6px;
-      }
-
-      #solar3d {
-        position: absolute;
-        height: 470px;
-        top: auto;
-        bottom: 10px;
-        opacity: 0.92;
-      }
-
-      .energy-widget {
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        padding: 18px;
-        border-radius: 24px;
       }
 
       section {
         padding: 68px 0;
       }
 
-      .section-head {
-        margin-bottom: 30px;
+      .solar-shell {
+        margin-top: 0;
       }
 
-      .section-label {
-        font-size: 11.5px;
-        margin-bottom: 10px;
-      }
-
-      .section-head p {
-        font-size: 16px;
-        line-height: 1.65;
-      }
-
-      .intro-panel {
-        padding-top: 28px;
-      }
-
-      .intro-card {
-        padding: 24px;
-        border-radius: 28px;
-      }
-
-      .intro-card h2 {
-        font-size: 34px;
-      }
-
-      .intro-card p {
-        font-size: 16px;
-        line-height: 1.65;
-      }
-
-      .mini-list {
-        gap: 11px;
-      }
-
-      .mini-item {
-        font-size: 14.5px;
-        line-height: 1.55;
-      }
-
-      .intro-image {
-        min-height: 260px;
-        border-radius: 28px;
-      }
-
-      .solar-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .solar-main,
-      .solar-supply,
-      .solar-design,
-      .solar-install,
-      .solar-storage {
-        grid-column: span 1;
-        min-height: 390px;
-      }
-
-      .solar-card {
-        border-radius: 28px;
-      }
-
-      .solar-content {
-        inset: auto 14px 14px 14px;
-        padding: 18px;
-        border-radius: 22px;
-      }
-
-      .solar-card h3 {
-        font-size: 22px;
-        line-height: 1.08;
-      }
-
-      .solar-card p {
-        font-size: 14.2px;
-        line-height: 1.58;
-      }
-
-      .icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 15px;
-        font-size: 22px;
-        margin-bottom: 14px;
-      }
-
-      .process,
-      .services-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 13px;
-      }
-
-      .step,
-      .service-card {
-        padding: 22px;
-        border-radius: 24px;
-        min-height: auto;
-      }
-
-      .step h3,
-      .service-card h3 {
-        font-size: 21px;
-      }
-
-      .step p,
-      .service-card p {
-        font-size: 14.5px;
-        line-height: 1.6;
-      }
-
-      .quote-box {
-        border-radius: 30px;
-      }
-
-      .quote-info {
-        min-height: 390px;
-        padding: 24px;
-      }
-
-      .quote-info h2 {
-        font-size: 34px;
-      }
-
-      .quote-info p {
-        font-size: 15.8px;
-        line-height: 1.65;
-      }
-
-      .quote-pills {
-        gap: 8px;
-      }
-
-      .quote-pills span {
-        font-size: 12px;
-        padding: 8px 10px;
-      }
-
-      form {
-        padding: 22px;
-      }
-
-      label {
-        font-size: 12.5px;
-      }
-
-      input,
-      select,
-      textarea {
-        min-height: 50px;
-        border-radius: 14px;
-        font-size: 15px;
-      }
-
-      textarea {
-        min-height: 105px;
-      }
-
-      .form-note {
-        font-size: 12.8px;
-        line-height: 1.55;
-      }
-
-      .form-submit {
-        min-height: 56px;
-        font-size: 15px;
-      }
-
-      .banner-section {
-        padding-top: 0;
-      }
-
-      .banner {
-        min-height: 470px;
-        padding: 24px;
-        border-radius: 30px;
-        align-items: flex-end;
-        background:
-          linear-gradient(180deg, rgba(248,251,242,0.12), rgba(248,251,242,0.96) 70%),
-          url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=85") center/cover;
-      }
-
-      .banner h2 {
-        font-size: 35px;
-      }
-
-      .banner p {
-        font-size: 16px;
-        line-height: 1.65;
-      }
-
-      .contact-card {
+      .solar-panel {
         padding: 24px;
         border-radius: 26px;
       }
 
-      .contact-card h3 {
-        font-size: 24px;
+      .ecosystem-card {
+        border-radius: 26px;
+        padding: 24px;
+        overflow: hidden;
       }
 
-      .contact-item {
-        align-items: flex-start;
-        font-size: 14.5px;
+      .model {
+        height: 330px;
+        transform: scale(0.82);
+        transform-origin: center bottom;
+        margin: -20px -60px -30px;
       }
 
-      .contact-item span:first-child {
-        width: 38px;
-        height: 38px;
-        border-radius: 14px;
+      .callout {
+        display: none;
       }
 
-      .footer {
-        padding: 24px 0 90px;
-        font-size: 13px;
+      .extra-services,
+      .cta-card,
+      .quote-info,
+      form {
+        padding: 24px;
       }
 
-      .footer-inner {
+      .quote-info {
+        min-height: 380px;
+      }
+
+      .footer-bottom {
         display: grid;
-        gap: 8px;
       }
 
       .floating-whatsapp {
@@ -1496,574 +1317,451 @@
         right: 16px;
         bottom: 16px;
       }
-
-      .floating-whatsapp svg {
-        width: 32px;
-        height: 32px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      h1 {
-        font-size: 37px;
-      }
-
-      h2 {
-        font-size: 31px;
-      }
-
-      .hero-text,
-      .section-head p,
-      .intro-card p,
-      .banner p {
-        font-size: 15.5px;
-      }
-
-      .hero-side {
-        min-height: 340px;
-      }
-
-      .solar-main,
-      .solar-supply,
-      .solar-design,
-      .solar-install,
-      .solar-storage {
-        min-height: 410px;
-      }
-
-      .solar-content {
-        padding: 16px;
-      }
-
-      .solar-card h3 {
-        font-size: 20px;
-      }
-
-      .solar-card p {
-        font-size: 13.8px;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <nav class="nav">
-      <a href="#" class="logo" aria-label="FLORA Home">
-        <span class="logo-mark"></span>
-        FLORA
-      </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#fotovoltaico">Fotovoltaico</a>
-        <a href="#preventivo">Preventivo</a>
-        <a href="#servizi">Servizi</a>
-        <a href="#contatti">Contatti</a>
-        <a class="nav-cta" href="#preventivo">Richiedi preventivo</a>
-      </div>
-
-      <button class="menu-btn" id="menuBtn" aria-label="Apri menu">☰</button>
-    </nav>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <canvas id="solar3d"></canvas>
-
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="eyebrow"><span></span> Hub energie rinnovabili</div>
-
-          <h1>
-            Energia solare, impianti e tecnologia per costruire un futuro più efficiente con <span>FLORA.</span>
-          </h1>
-
-          <p class="hero-text">
-            Progettiamo, forniamo e installiamo soluzioni fotovoltaiche per abitazioni e aziende:
-            impianti chiavi in mano, batterie di accumulo, colonnine di ricarica, monitoraggio e assistenza.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#preventivo">Richiedi preventivo gratuito</a>
-            <a class="btn btn-secondary" href="#fotovoltaico">Scopri le soluzioni</a>
-          </div>
-
-          <div class="trust-row">
-            <div class="trust-pill"><i></i> Fotovoltaico chiavi in mano</div>
-            <div class="trust-pill"><i></i> Privati e aziende</div>
-            <div class="trust-pill"><i></i> Analisi tecnica</div>
-            <div class="trust-pill"><i></i> Supporto nel tempo</div>
-          </div>
-        </div>
-
-        <div class="hero-side">
-          <div class="energy-widget">
-            <div class="energy-widget-top">
-              <div>
-                <small>Produzione simulata</small>
-                <strong>98%</strong>
-              </div>
-              <div style="text-align:right">
-                <small>Monitoraggio</small>
-                <strong style="font-size:24px;">Live</strong>
-              </div>
-            </div>
-
-            <div class="energy-bars">
-              <i></i><i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i><i></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="intro-panel">
-      <div class="container">
-        <div class="intro-grid">
-          <div class="intro-card">
-            <div class="section-label">Perché FLORA</div>
-            <h2>Un solo partner per energia, impianti e interventi tecnici.</h2>
-            <p>
-              FLORA nasce come punto di incontro tra energie rinnovabili, impiantistica e servizi tecnici.
-              Il fotovoltaico è il cuore dell’offerta: una soluzione concreta per ridurre i consumi,
-              aumentare l’autonomia energetica e rendere più moderno ogni edificio.
-            </p>
-
-            <div class="mini-list">
-              <div class="mini-item"><span>✓</span> Analisi dei consumi e configurazione dell’impianto più adatto.</div>
-              <div class="mini-item"><span>✓</span> Fornitura di componenti: pannelli, inverter, batterie, strutture e colonnine.</div>
-              <div class="mini-item"><span>✓</span> Installazione, collaudo, messa in funzione e assistenza post intervento.</div>
-            </div>
-          </div>
-
-          <div class="intro-image" aria-label="Pannelli fotovoltaici su tetto"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="solar-section" id="fotovoltaico">
-      <div class="container">
-
-        <div class="section-head">
-          <div class="section-label">Il cuore dell’offerta</div>
-          <h2>Fotovoltaico progettato per funzionare davvero.</h2>
-          <p>
-            Ogni impianto viene pensato in base alle esigenze reali del cliente: consumi, edificio,
-            esposizione, obiettivi di risparmio, accumulo e possibilità di integrazione con mobilità elettrica.
-          </p>
-        </div>
-
-        <div class="solar-grid">
-
-          <article class="solar-card solar-main">
-            <div class="solar-content">
-              <div class="icon">☀</div>
-              <span class="card-kicker">Servizio completo</span>
-              <h3>Impianti fotovoltaici chiavi in mano</h3>
-              <p>
-                Studio tecnico, componenti, installazione, collaudo e supporto. Un unico interlocutore
-                per portare l’energia solare dentro casa o in azienda.
-              </p>
-            </div>
-          </article>
-
-          <article class="solar-card solar-supply">
-            <div class="solar-content">
-              <div class="icon">▣</div>
-              <span class="card-kicker">Componenti e materiali</span>
-              <h3>Solo fornitura</h3>
-              <p>
-                Pannelli, inverter, batterie, colonnine, quadri elettrici, sistemi di monitoraggio,
-                strutture e tutto il necessario per rendere l’impianto completo e funzionante.
-              </p>
-            </div>
-          </article>
-
-          <article class="solar-card solar-design">
-            <div class="solar-content">
-              <div class="icon">⌁</div>
-              <span class="card-kicker">Studio tecnico</span>
-              <h3>Progettazione</h3>
-              <p>
-                Analisi consumi, dimensionamento, valutazione tecnica e scelta della configurazione
-                più efficiente per abitazioni e aziende.
-              </p>
-            </div>
-          </article>
-
-          <article class="solar-card solar-install">
-            <div class="solar-content">
-              <div class="icon">⚡</div>
-              <span class="card-kicker">Squadre operative</span>
-              <h3>Installazione e collaudo</h3>
-              <p>
-                Montaggio, collegamenti, configurazione dell’impianto e assistenza nella fase di avvio.
-              </p>
-            </div>
-          </article>
-
-          <article class="solar-card solar-storage">
-            <div class="solar-content">
-              <div class="icon">🔋</div>
-              <span class="card-kicker">Energia intelligente</span>
-              <h3>Accumulo e monitoraggio</h3>
-              <p>
-                Batterie di accumulo, sistemi intelligenti di controllo e lettura delle performance
-                dell’impianto nel tempo.
-              </p>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="process-section">
-      <div class="container">
-
-        <div class="section-head center">
-          <div class="section-label">Metodo operativo</div>
-          <h2>Dal primo contatto all’impianto attivo.</h2>
-          <p>
-            Un percorso semplice, ordinato e professionale per trasformare una richiesta in una soluzione energetica concreta.
-          </p>
-        </div>
-
-        <div class="process">
-          <div class="step">
-            <div class="step-num">1</div>
-            <h3>Analisi iniziale</h3>
-            <p>Raccogliamo dati, consumi, tipologia di edificio e obiettivo energetico del cliente.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">2</div>
-            <h3>Studio tecnico</h3>
-            <p>Valutiamo configurazione, potenza, componenti, esposizione, accumulo e colonnine.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">3</div>
-            <h3>Realizzazione</h3>
-            <p>Organizziamo fornitura, montaggio, collegamenti, configurazione e messa in funzione.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-num">4</div>
-            <h3>Supporto</h3>
-            <p>Seguiamo il cliente anche dopo l’installazione con monitoraggio e assistenza.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="quote-section" id="preventivo">
-      <div class="container">
-
-        <div class="quote-box">
-
-          <div class="quote-info">
-            <div class="section-label">Preventivo gratuito</div>
-            <h2>Raccontaci il tuo progetto energetico.</h2>
-            <p>
-              Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA.
-              È veloce, senza impegno e totalmente gratuito.
-            </p>
-
-            <div class="quote-pills">
-              <span>Risposta rapida</span>
-              <span>Nessun impegno</span>
-              <span>Privati e aziende</span>
-              <span>Fotovoltaico e accumulo</span>
-            </div>
-          </div>
-
-          <form id="quoteForm">
-            <div class="form-grid">
-
-              <div class="field">
-                <label for="tipoCliente">Sei un privato o un’azienda?</label>
-                <select id="tipoCliente" required>
-                  <option value="">Seleziona</option>
-                  <option value="Privato">Privato</option>
-                  <option value="Azienda">Azienda</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="nome">Nome e cognome</label>
-                <input type="text" id="nome" placeholder="Mario Rossi" required />
-              </div>
-
-              <div class="field">
-                <label for="telefono">Contatto telefonico</label>
-                <input type="tel" id="telefono" placeholder="+39 333 000 0000" required />
-              </div>
-
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="nome@email.it" required />
-              </div>
-
-              <div class="field">
-                <label for="edificio">Tipologia edificio</label>
-                <select id="edificio" required>
-                  <option value="">Seleziona</option>
-                  <option value="Casa indipendente">Casa indipendente</option>
-                  <option value="Appartamento">Appartamento</option>
-                  <option value="Azienda / capannone">Azienda / capannone</option>
-                  <option value="Pensilina parcheggio">Pensilina parcheggio</option>
-                  <option value="Altro">Altro</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="consumo">Consumo energetico annuale medio</label>
-                <input type="text" id="consumo" placeholder="Es. 4.500 kWh, opzionale" />
-              </div>
-
-              <div class="field">
-                <label for="batterie">Batterie di accumulo</label>
-                <select id="batterie" required>
-                  <option value="">Seleziona</option>
-                  <option value="Sì, vorrei valutarle">Sì, vorrei valutarle</option>
-                  <option value="No">No</option>
-                  <option value="Non lo so, vorrei un consiglio">Non lo so, vorrei un consiglio</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="servizio">Servizio richiesto</label>
-                <select id="servizio" required>
-                  <option value="">Seleziona</option>
-                  <option value="Impianto fotovoltaico chiavi in mano">Impianto fotovoltaico chiavi in mano</option>
-                  <option value="Solo fornitura componenti">Solo fornitura componenti</option>
-                  <option value="Progettazione">Progettazione</option>
-                  <option value="Installazione, collaudo e messa in funzione">Installazione, collaudo e messa in funzione</option>
-                  <option value="Colonnine di ricarica">Colonnine di ricarica</option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="indirizzo">Indirizzo di installazione</label>
-                <input type="text" id="indirizzo" placeholder="Comune, via, provincia" required />
-              </div>
-
-              <div class="field full">
-                <label for="note">Note aggiuntive</label>
-                <textarea id="note" placeholder="Es. tetto piano, tetto a falda, presenza contatore, richiesta accumulo, colonnina, ecc."></textarea>
-              </div>
-
-            </div>
-
-            <p class="form-note">
-              Cliccando sul pulsante verrà generato un messaggio WhatsApp con i dati inseriti.
-              Potrai controllarlo prima di inviarlo.
-            </p>
-
-            <button type="submit" class="form-submit">Invia richiesta su WhatsApp</button>
-          </form>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="services-section" id="servizi">
-      <div class="container">
-
-        <div class="section-head center">
-          <div class="section-label">Oltre il fotovoltaico</div>
-          <h2>Un ecosistema di servizi per casa, impresa ed energia.</h2>
-          <p>
-            FLORA integra competenze tecniche, operative e impiantistiche per offrire soluzioni complete,
-            concrete e coordinate.
-          </p>
-        </div>
-
-        <div class="services-grid">
-
-          <article class="service-card">
-            <div class="small-icon">🏗️</div>
-            <h3>Edilizia e ristrutturazioni</h3>
-            <p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">💡</div>
-            <h3>Elettrico domestico</h3>
-            <p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">🌡️</div>
-            <h3>Riscaldamento e raffrescamento</h3>
-            <p>Condizionatori, caldaie, solare termico e sistemi per il comfort abitativo.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">🌿</div>
-            <h3>Ripristino e verde</h3>
-            <p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">🌬️</div>
-            <h3>Microeolico</h3>
-            <p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell’offerta.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">🚗</div>
-            <h3>Microcar elettriche</h3>
-            <p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">📊</div>
-            <h3>Monitoraggio e assistenza</h3>
-            <p>Supporto, verifica performance e lettura dell’impianto nel tempo.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="small-icon">🔌</div>
-            <h3>Colonnine di ricarica</h3>
-            <p>Integrazione con impianti fotovoltaici o installazione indipendente.</p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="banner-section">
-      <div class="container">
-        <div class="banner">
-          <div class="banner-content">
-            <div class="section-label">Energia, tecnologia, territorio</div>
-            <h2>Un partner unico per costruire il tuo sistema energetico.</h2>
-            <p>
-              Dal fotovoltaico alle colonnine, dagli impianti elettrici alla manutenzione:
-              FLORA lavora per rendere più efficiente, moderna e sostenibile ogni abitazione o azienda.
-            </p>
-            <a class="btn btn-primary" href="#preventivo">Inizia con un preventivo gratuito</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contacts" id="contatti">
-      <div class="container">
-
-        <div class="section-head">
-          <div class="section-label">Contatti</div>
-          <h2>Parla con FLORA.</h2>
-          <p>
-            Siamo a disposizione per valutare impianti fotovoltaici, forniture, installazioni,
-            colonnine di ricarica e servizi tecnici integrati.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-
-          <div class="contact-card">
-            <h3>Informazioni</h3>
-
-            <div class="contact-list">
-              <a class="contact-item" href="https://wa.me/393249581949" target="_blank">
-                <span>💬</span>
-                <span>WhatsApp: 324 958 1949</span>
-              </a>
-
-              <a class="contact-item" href="mailto:costruzioni@florambiente.it">
-                <span>✉️</span>
-                <span>costruzioni@florambiente.it</span>
-              </a>
-
-              <div class="contact-item">
-                <span>📍</span>
-                <span>Viterbo, Strada Cassia Nord Km 87.700</span>
-              </div>
-
-              <div class="contact-item">
-                <span>🧾</span>
-                <span>Partita IVA 02513380564</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <h3>Richiesta rapida</h3>
-            <p style="color:var(--muted);line-height:1.75;margin-bottom:24px;">
-              Preferisci scriverci subito? Apri WhatsApp e inviaci una richiesta.
-              Ti risponderemo per raccogliere le informazioni principali e valutare la soluzione più adatta.
-            </p>
-
-            <a class="btn btn-primary" href="https://wa.me/393249581949?text=Ciao%20FLORA%2C%20vorrei%20ricevere%20informazioni%20per%20un%20impianto%20fotovoltaico." target="_blank">
-              Contattaci su WhatsApp
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> FLORA. Tutti i diritti riservati.</div>
-      <div>Hub energie rinnovabili | Fotovoltaico, edilizia, impianti e mobilità elettrica.</div>
+<header class="site-header">
+  <nav class="nav">
+    <a href="#" class="logo">
+      <span class="logo-mark"></span>
+      FLORA
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#fotovoltaico">Fotovoltaico</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#contatti">Contatti</a>
+      <a class="nav-cta" href="#preventivo">Richiedi preventivo →</a>
     </div>
-  </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/393249581949" target="_blank" aria-label="Contatta FLORA su WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16.04 3C8.86 3 3.03 8.72 3.03 15.76c0 2.25.61 4.45 1.77 6.39L3 29l7.05-1.79a13.16 13.16 0 0 0 5.99 1.49C23.22 28.7 29.05 22.98 29.05 15.94S23.22 3 16.04 3Zm0 23.55c-1.86 0-3.68-.5-5.27-1.44l-.38-.22-4.18 1.06 1.11-4.02-.25-.41a10.5 10.5 0 0 1-1.65-5.76c0-5.86 4.77-10.62 10.62-10.62 5.86 0 10.62 4.76 10.62 10.62 0 5.86-4.76 10.79-10.62 10.79Zm5.83-7.95c-.32-.16-1.89-.92-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.49-2.57-1.55-.95-.83-1.59-1.86-1.78-2.18-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.69-.98-2.31-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.07-1.11 2.61s1.14 3.03 1.3 3.24c.16.21 2.24 3.36 5.43 4.71.76.32 1.35.51 1.81.65.76.24 1.45.21 2 .13.61-.09 1.89-.76 2.16-1.5.27-.74.27-1.37.19-1.5-.08-.13-.29-.21-.61-.37Z"/>
-    </svg>
-  </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </nav>
+</header>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<main>
 
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content reveal">
+        <div class="eyebrow"><span></span> Energia pulita. Futuro concreto.</div>
 
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+        <h1>Soluzioni fotovoltaiche su misura per abitazioni e aziende.</h1>
+
+        <p class="hero-text">
+          Progettiamo, forniamo e installiamo impianti fotovoltaici chiavi in mano con batterie di accumulo,
+          monitoraggio avanzato e assistenza continua. Più efficienza, più risparmio, meno impatto.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#preventivo">Richiedi preventivo →</a>
+          <a class="btn btn-secondary" href="#fotovoltaico">Scopri le soluzioni</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-icon">⌂</div>
+            <div><strong>500+</strong><span>Impianti realizzati</span></div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-icon">✓</div>
+            <div><strong>98%</strong><span>Clienti soddisfatti</span></div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-icon">✦</div>
+            <div><strong>10+</strong><span>Anni di esperienza</span></div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-icon">＋</div>
+            <div><strong>Assistenza</strong><span>Supporto continuo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="solar-shell" id="fotovoltaico">
+    <div class="container">
+      <div class="solar-panel reveal">
+        <div class="services-title">
+          <div class="section-label">Fotovoltaico</div>
+          <h2>Impianti smart, energia per il domani.</h2>
+          <p>Soluzioni complete e integrate per ogni esigenza energetica.</p>
+        </div>
+
+        <div class="solar-services-grid">
+          <article class="solar-service reveal">
+            <div class="solar-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 11L12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+            </div>
+            <h3>Impianti chiavi in mano</h3>
+            <p>Dalla progettazione alla gestione delle pratiche e installazione.</p>
+          </article>
+
+          <article class="solar-service reveal">
+            <div class="solar-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 16h16"/><path d="M6 16l2-8h8l2 8"/><path d="M9 11h6"/><path d="M12 8v8"/></svg>
+            </div>
+            <h3>Solo fornitura</h3>
+            <p>Materiali e componenti di alta qualità certificati.</p>
+          </article>
+
+          <article class="solar-service reveal">
+            <div class="solar-icon">
+              <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 13h6"/><path d="M9 17h4"/><path d="M15 3v4h4"/></svg>
+            </div>
+            <h3>Progettazione personalizzata</h3>
+            <p>Analisi dei consumi e progettazione su misura per ogni esigenza.</p>
+          </article>
+
+          <article class="solar-service reveal">
+            <div class="solar-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 7l3 3-7 7H7v-3z"/><path d="M16 5l3 3"/><path d="M5 21h14"/></svg>
+            </div>
+            <h3>Installazione e collaudo</h3>
+            <p>Installazione professionale e verifica per sicurezza ed efficienza.</p>
+          </article>
+
+          <article class="solar-service reveal">
+            <div class="solar-icon">
+              <svg viewBox="0 0 24 24"><path d="M7 7h10v14H7z"/><path d="M10 4h4v3"/><path d="M10 17v-4"/><path d="M14 17v-7"/></svg>
+            </div>
+            <h3>Accumulo e monitoraggio</h3>
+            <p>Sistemi di accumulo e monitoraggio smart per il controllo totale.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ecosystem-section">
+    <div class="container">
+      <div class="ecosystem-card reveal">
+        <div class="ecosystem-copy">
+          <div class="section-label">Il tuo ecosistema energetico</div>
+          <h2>Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
+          <p>
+            Un unico sistema intelligente che produce, immagazzina e ottimizza la tua energia,
+            alimentando casa e mobilità elettrica.
+          </p>
+          <a href="#preventivo" class="btn btn-dark">Scopri l’ecosistema</a>
+        </div>
+
+        <div class="model">
+          <div class="callout c1">Pannelli<br>fotovoltaici</div>
+          <div class="callout c2">Inverter<br>e quadri elettrici</div>
+          <div class="callout c3">Colonnina<br>di ricarica</div>
+          <div class="callout c4">Auto<br>elettrica</div>
+
+          <div class="roof"></div>
+          <div class="solar-roof">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+
+          <div class="house">
+            <div class="window"></div>
+            <div class="door"></div>
+            <div class="inverter"></div>
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="battery"></div>
+            <div class="cable"></div>
+          </div>
+
+          <div class="charger"></div>
+          <div class="car">
+            <div class="wheel left"></div>
+            <div class="wheel right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-process" id="chi-siamo">
+    <div class="container">
+      <div class="about-process-grid">
+        <div class="about-card reveal">
+          <div class="about-text">
+            <div class="section-label">Chi siamo</div>
+            <h2>Esperienza, competenza, affidabilità.</h2>
+            <p>
+              FLORA accompagna famiglie e aziende verso l’indipendenza energetica con impianti efficienti,
+              sicuri e progettati per durare nel tempo.
+            </p>
+            <a href="#" class="text-link">Scopri di più →</a>
+          </div>
+          <div class="team-photo"></div>
+        </div>
+
+        <div class="process-block reveal">
+          <div class="section-label">Il nostro processo</div>
+          <h2>Semplice, chiaro, senza pensieri.</h2>
+
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <h3>Analisi e sopralluogo</h3>
+              <p>Valutiamo consumi, edificio ed esigenze specifiche.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <h3>Progettazione</h3>
+              <p>Definiamo la soluzione più efficiente.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <h3>Installazione</h3>
+              <p>Installiamo e verifichiamo ogni componente.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <h3>Assistenza</h3>
+              <p>Ti seguiamo nel tempo con monitoraggio e supporto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="extra-cta" id="servizi">
+    <div class="container">
+      <div class="extra-cta-grid">
+        <div class="extra-services reveal">
+          <div class="section-label">Altri servizi</div>
+          <h2>Oltre il fotovoltaico.</h2>
+          <p>Soluzioni integrate per migliorare efficienza e sostenibilità della tua casa o azienda.</p>
+
+          <div class="mini-services">
+            <div class="mini-service"><span>⚡</span> Ricarica veicoli elettrici</div>
+            <div class="mini-service"><span>⌂</span> Efficientamento energetico</div>
+            <div class="mini-service"><span>🛠</span> Manutenzione impianti</div>
+            <div class="mini-service"><span>☀</span> Accumulo e monitoraggio</div>
+          </div>
+        </div>
+
+        <div class="cta-card reveal">
+          <div class="section-label">Preventivo gratuito</div>
+          <h2>Richiedi una consulenza gratuita e senza impegno.</h2>
+          <p>Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
+
+          <div class="quick-form">
+            <input type="email" placeholder="La tua email">
+            <input type="tel" placeholder="Il tuo numero di telefono">
+            <button onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section" id="preventivo">
+    <div class="container">
+      <div class="quote-box reveal">
+        <div class="quote-info">
+          <div class="section-label">Preventivo gratuito</div>
+          <h2>Raccontaci il tuo progetto energetico.</h2>
+          <p>
+            Compila il questionario: al termine si aprirà WhatsApp con un messaggio già pronto da inviare a FLORA.
+            È veloce, senza impegno e totalmente gratuito.
+          </p>
+
+          <div class="quote-pills">
+            <span>Risposta rapida</span>
+            <span>Nessun impegno</span>
+            <span>Privati e aziende</span>
+            <span>Fotovoltaico e accumulo</span>
+          </div>
+        </div>
+
+        <form id="quoteForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="tipoCliente">Sei un privato o un’azienda?</label>
+              <select id="tipoCliente" required>
+                <option value="">Seleziona</option>
+                <option value="Privato">Privato</option>
+                <option value="Azienda">Azienda</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="nome">Nome e cognome</label>
+              <input type="text" id="nome" placeholder="Mario Rossi" required />
+            </div>
+
+            <div class="field">
+              <label for="telefono">Contatto telefonico</label>
+              <input type="tel" id="telefono" placeholder="+39 333 000 0000" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="nome@email.it" required />
+            </div>
+
+            <div class="field">
+              <label for="edificio">Tipologia edificio</label>
+              <select id="edificio" required>
+                <option value="">Seleziona</option>
+                <option value="Casa indipendente">Casa indipendente</option>
+                <option value="Appartamento">Appartamento</option>
+                <option value="Azienda / capannone">Azienda / capannone</option>
+                <option value="Pensilina parcheggio">Pensilina parcheggio</option>
+                <option value="Altro">Altro</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="consumo">Consumo energetico annuale medio</label>
+              <input type="text" id="consumo" placeholder="Es. 4.500 kWh, opzionale" />
+            </div>
+
+            <div class="field">
+              <label for="batterie">Batterie di accumulo</label>
+              <select id="batterie" required>
+                <option value="">Seleziona</option>
+                <option value="Sì, vorrei valutarle">Sì, vorrei valutarle</option>
+                <option value="No">No</option>
+                <option value="Non lo so, vorrei un consiglio">Non lo so, vorrei un consiglio</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="servizio">Servizio richiesto</label>
+              <select id="servizio" required>
+                <option value="">Seleziona</option>
+                <option value="Impianto fotovoltaico chiavi in mano">Impianto fotovoltaico chiavi in mano</option>
+                <option value="Solo fornitura componenti">Solo fornitura componenti</option>
+                <option value="Progettazione">Progettazione</option>
+                <option value="Installazione, collaudo e messa in funzione">Installazione, collaudo e messa in funzione</option>
+                <option value="Colonnine di ricarica">Colonnine di ricarica</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="indirizzo">Indirizzo di installazione</label>
+              <input type="text" id="indirizzo" placeholder="Comune, via, provincia" required />
+            </div>
+
+            <div class="field full">
+              <label for="note">Note aggiuntive</label>
+              <textarea id="note" placeholder="Es. tetto piano, tetto a falda, presenza contatore, richiesta accumulo, colonnina, ecc."></textarea>
+            </div>
+          </div>
+
+          <p class="form-note">
+            Cliccando sul pulsante verrà generato un messaggio WhatsApp con i dati inseriti.
+            Potrai controllarlo prima di inviarlo.
+          </p>
+
+          <button type="submit" class="form-submit">Invia richiesta su WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contatti">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-mark"></span>FLORA</div>
+        <p>Energia pulita.<br>Futuro sostenibile.</p>
+      </div>
+
+      <div>
+        <h3>Navigazione</h3>
+        <div class="footer-links">
+          <a href="#fotovoltaico">Fotovoltaico</a>
+          <a href="#chi-siamo">Chi siamo</a>
+          <a href="#servizi">Servizi</a>
+          <a href="#contatti">Contatti</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Servizi</h3>
+        <div class="footer-links">
+          <span>Impianti chiavi in mano</span>
+          <span>Solo fornitura</span>
+          <span>Progettazione</span>
+          <span>Installazione e collaudo</span>
+        </div>
+      </div>
+
+      <div>
+        <h3>Contatti</h3>
+        <div class="footer-links">
+          <a href="https://wa.me/393249581949">WhatsApp: 324 958 1949</a>
+          <a href="mailto:costruzioni@florambiente.it">costruzioni@florambiente.it</a>
+          <span>Viterbo, Strada Cassia Nord Km 87.700</span>
+          <span>P.IVA 02513380564</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> FLORA. Tutti i diritti riservati.</span>
+      <span>Privacy Policy · Cookie Policy</span>
+    </div>
+  </div>
+</footer>
+
+<a class="floating-whatsapp" href="https://wa.me/393249581949" target="_blank" aria-label="Contatta FLORA su WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.04 3C8.86 3 3.03 8.72 3.03 15.76c0 2.25.61 4.45 1.77 6.39L3 29l7.05-1.79a13.16 13.16 0 0 0 5.99 1.49C23.22 28.7 29.05 22.98 29.05 15.94S23.22 3 16.04 3Zm0 23.55c-1.86 0-3.68-.5-5.27-1.44l-.38-.22-4.18 1.06 1.11-4.02-.25-.41a10.5 10.5 0 0 1-1.65-5.76c0-5.86 4.77-10.62 10.62-10.62 5.86 0 10.62 4.76 10.62 10.62 0 5.86-4.76 10.79-10.62 10.79Zm5.83-7.95c-.32-.16-1.89-.92-2.18-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.49-2.57-1.55-.95-.83-1.59-1.86-1.78-2.18-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.69-.98-2.31-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.07-1.11 2.61s1.14 3.03 1.3 3.24c.16.21 2.24 3.36 5.43 4.71.76.32 1.35.51 1.81.65.76.24 1.45.21 2 .13.61-.09 1.89-.76 2.16-1.5.27-.74.27-1.37.19-1.5-.08-.13-.29-.21-.61-.37Z"/>
+  </svg>
+</a>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
     });
+  });
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
     });
+  }, { threshold: 0.12 });
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    const quoteForm = document.getElementById("quoteForm");
+  const quoteForm = document.getElementById("quoteForm");
 
-    quoteForm.addEventListener("submit", function(event) {
-      event.preventDefault();
+  quoteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      const tipoCliente = document.getElementById("tipoCliente").value;
-      const nome = document.getElementById("nome").value.trim();
-      const telefono = document.getElementById("telefono").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const edificio = document.getElementById("edificio").value;
-      const consumo = document.getElementById("consumo").value.trim() || "Non indicato";
-      const batterie = document.getElementById("batterie").value;
-      const servizio = document.getElementById("servizio").value;
-      const indirizzo = document.getElementById("indirizzo").value.trim();
-      const note = document.getElementById("note").value.trim() || "Nessuna nota aggiuntiva";
+    const tipoCliente = document.getElementById("tipoCliente").value;
+    const nome = document.getElementById("nome").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const edificio = document.getElementById("edificio").value;
+    const consumo = document.getElementById("consumo").value.trim() || "Non indicato";
+    const batterie = document.getElementById("batterie").value;
+    const servizio = document.getElementById("servizio").value;
+    const indirizzo = document.getElementById("indirizzo").value.trim();
+    const note = document.getElementById("note").value.trim() || "Nessuna nota aggiuntiva";
 
-      const message =
+    const message =
 `Ciao FLORA, vorrei richiedere un preventivo gratuito e senza impegno.
 
 DATI CLIENTE
@@ -2084,308 +1782,12 @@ ${note}
 
 Grazie.`;
 
-      const phoneNumber = "393249581949";
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const phoneNumber = "393249581949";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-      window.open(whatsappUrl, "_blank");
-    });
-
-    function initSolarScene() {
-      const canvas = document.getElementById("solar3d");
-      if (!canvas || !window.THREE) return;
-
-      const scene = new THREE.Scene();
-
-      const renderer = new THREE.WebGLRenderer({
-        canvas,
-        antialias: true,
-        alpha: true
-      });
-
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(window.innerWidth, window.innerHeight);
-
-      const camera = new THREE.PerspectiveCamera(
-        42,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        100
-      );
-
-      camera.position.set(0, 2.2, 9);
-
-      const ambientLight = new THREE.AmbientLight(0xffffff, 1.25);
-      scene.add(ambientLight);
-
-      const sunLight = new THREE.DirectionalLight(0xffffff, 2.2);
-      sunLight.position.set(-4, 6, 5);
-      scene.add(sunLight);
-
-      const greenLight = new THREE.PointLight(0x7cff4d, 1.6, 14);
-      greenLight.position.set(3, 3, 4);
-      scene.add(greenLight);
-
-      const group = new THREE.Group();
-      scene.add(group);
-
-      const panelMaterial = new THREE.MeshStandardMaterial({
-        color: 0x103d55,
-        metalness: 0.35,
-        roughness: 0.22
-      });
-
-      const panelGlass = new THREE.MeshPhysicalMaterial({
-        color: 0x1c6a88,
-        metalness: 0.15,
-        roughness: 0.08,
-        transparent: true,
-        opacity: 0.78,
-        clearcoat: 1,
-        clearcoatRoughness: 0.12
-      });
-
-      const frameMaterial = new THREE.MeshStandardMaterial({
-        color: 0xe9f0e7,
-        metalness: 0.55,
-        roughness: 0.2
-      });
-
-      const lineMaterial = new THREE.MeshBasicMaterial({
-        color: 0xb7ef63,
-        transparent: true,
-        opacity: 0.52
-      });
-
-      function createSolarPanel(x, y, z, scale, rotationY) {
-        const panelGroup = new THREE.Group();
-
-        const base = new THREE.Mesh(
-          new THREE.BoxGeometry(2.4, 0.08, 1.45),
-          frameMaterial
-        );
-        panelGroup.add(base);
-
-        const glass = new THREE.Mesh(
-          new THREE.BoxGeometry(2.22, 0.05, 1.27),
-          panelGlass
-        );
-        glass.position.y = 0.055;
-        panelGroup.add(glass);
-
-        for (let i = -2; i <= 2; i++) {
-          const line = new THREE.Mesh(
-            new THREE.BoxGeometry(0.012, 0.065, 1.22),
-            lineMaterial
-          );
-          line.position.set(i * 0.43, 0.09, 0);
-          panelGroup.add(line);
-        }
-
-        for (let j = -1; j <= 1; j++) {
-          const line = new THREE.Mesh(
-            new THREE.BoxGeometry(2.1, 0.065, 0.012),
-            lineMaterial
-          );
-          line.position.set(0, 0.092, j * 0.36);
-          panelGroup.add(line);
-        }
-
-        const support = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.035, 0.035, 1.2, 16),
-          frameMaterial
-        );
-        support.position.set(0, -0.66, 0.1);
-        support.rotation.x = Math.PI / 10;
-        panelGroup.add(support);
-
-        panelGroup.position.set(x, y, z);
-        panelGroup.rotation.x = -0.42;
-        panelGroup.rotation.y = rotationY;
-        panelGroup.scale.setScalar(scale);
-
-        group.add(panelGroup);
-
-        return panelGroup;
-      }
-
-      const panels = [
-        createSolarPanel(2.7, 1.15, -0.8, 1.25, -0.35),
-        createSolarPanel(4.9, 0.55, -1.15, 1.05, -0.42),
-        createSolarPanel(1.35, -0.2, 0.15, 0.9, -0.26),
-        createSolarPanel(3.5, -1.0, 0.35, 0.82, -0.3)
-      ];
-
-      const sunGroup = new THREE.Group();
-      scene.add(sunGroup);
-
-      const sun = new THREE.Mesh(
-        new THREE.SphereGeometry(0.45, 48, 48),
-        new THREE.MeshStandardMaterial({
-          color: 0xfff4a3,
-          emissive: 0xffd84d,
-          emissiveIntensity: 1.2,
-          roughness: 0.25
-        })
-      );
-      sun.position.set(-3.4, 3.3, -1);
-      sunGroup.add(sun);
-
-      const ringMaterial = new THREE.MeshBasicMaterial({
-        color: 0xffd84d,
-        transparent: true,
-        opacity: 0.28,
-        side: THREE.DoubleSide
-      });
-
-      const ring = new THREE.Mesh(
-        new THREE.RingGeometry(0.66, 0.7, 64),
-        ringMaterial
-      );
-      ring.position.copy(sun.position);
-      ring.lookAt(camera.position);
-      sunGroup.add(ring);
-
-      const particlesGeometry = new THREE.BufferGeometry();
-      const particleCount = 180;
-      const positions = new Float32Array(particleCount * 3);
-      const velocities = [];
-
-      for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = -3.4 + Math.random() * 6.4;
-        positions[i * 3 + 1] = 2.8 - Math.random() * 4.8;
-        positions[i * 3 + 2] = -1 + Math.random() * 2.2;
-
-        velocities.push({
-          x: 0.008 + Math.random() * 0.012,
-          y: -0.004 + Math.random() * 0.008,
-          z: 0
-        });
-      }
-
-      particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-      const particlesMaterial = new THREE.PointsMaterial({
-        color: 0x7cff4d,
-        size: 0.035,
-        transparent: true,
-        opacity: 0.62
-      });
-
-      const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-      scene.add(particles);
-
-      const orbitLines = [];
-      const curveMaterial = new THREE.LineBasicMaterial({
-        color: 0x59d83b,
-        transparent: true,
-        opacity: 0.18
-      });
-
-      for (let i = 0; i < 5; i++) {
-        const points = [];
-        for (let j = 0; j <= 80; j++) {
-          const t = j / 80;
-          points.push(new THREE.Vector3(
-            -3.2 + t * 7.2,
-            2.9 - t * (2.2 + i * 0.34) + Math.sin(t * Math.PI) * (0.38 + i * 0.04),
-            -0.8 + i * 0.22
-          ));
-        }
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.Line(geometry, curveMaterial);
-        scene.add(line);
-        orbitLines.push(line);
-      }
-
-      const mouse = {
-        x: 0,
-        y: 0
-      };
-
-      window.addEventListener("mousemove", (event) => {
-        mouse.x = (event.clientX / window.innerWidth - 0.5) * 2;
-        mouse.y = (event.clientY / window.innerHeight - 0.5) * 2;
-      });
-
-      window.addEventListener("touchmove", (event) => {
-        if (!event.touches.length) return;
-        mouse.x = (event.touches[0].clientX / window.innerWidth - 0.5) * 2;
-        mouse.y = (event.touches[0].clientY / window.innerHeight - 0.5) * 2;
-      }, { passive: true });
-
-      function resizeScene() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-
-        if (width < 640) {
-          camera.position.set(0.2, 1.9, 10.2);
-          group.position.set(-1.6, -0.35, 0);
-          group.scale.setScalar(0.9);
-          sunGroup.position.set(1.2, -0.2, 0);
-        } else if (width < 980) {
-          camera.position.set(0.2, 2.1, 9.7);
-          group.position.set(-0.5, -0.15, 0);
-          group.scale.setScalar(0.95);
-          sunGroup.position.set(0.2, 0, 0);
-        } else {
-          camera.position.set(0, 2.2, 9);
-          group.position.set(0, 0, 0);
-          group.scale.setScalar(1);
-          sunGroup.position.set(0, 0, 0);
-        }
-      }
-
-      window.addEventListener("resize", resizeScene);
-      resizeScene();
-
-      let frame = 0;
-
-      function animate() {
-        requestAnimationFrame(animate);
-        frame += 0.01;
-
-        group.rotation.y += ((mouse.x * 0.12) - group.rotation.y) * 0.035;
-        group.rotation.x += ((-mouse.y * 0.04) - group.rotation.x) * 0.035;
-
-        panels.forEach((panel, index) => {
-          panel.position.y += Math.sin(frame * 1.4 + index) * 0.0017;
-          panel.rotation.z = Math.sin(frame + index) * 0.018;
-        });
-
-        sun.rotation.y += 0.006;
-        ring.rotation.z += 0.006;
-        ring.material.opacity = 0.22 + Math.sin(frame * 2) * 0.05;
-
-        const pos = particlesGeometry.attributes.position.array;
-
-        for (let i = 0; i < particleCount; i++) {
-          pos[i * 3] += velocities[i].x;
-          pos[i * 3 + 1] += velocities[i].y;
-
-          if (pos[i * 3] > 5.6) {
-            pos[i * 3] = -3.8;
-            pos[i * 3 + 1] = 2.8 - Math.random() * 4.8;
-          }
-        }
-
-        particlesGeometry.attributes.position.needsUpdate = true;
-
-        orbitLines.forEach((line, index) => {
-          line.material.opacity = 0.12 + Math.sin(frame * 1.8 + index) * 0.05;
-        });
-
-        renderer.render(scene, camera);
-      }
-
-      animate();
-    }
-
-    window.addEventListener("load", initSolarScene);
-  </script>
+    window.open(whatsappUrl, "_blank");
+  });
+</script>
 
 </body>
 </html>
