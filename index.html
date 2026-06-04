@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -207,7 +206,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.88) 42%, rgba(251, 250, 244, 0.18) 100%),
-        url("impianto.png") center right/cover;
+        url("./impianto.png") center right/cover;
       z-index: -2;
     }
 
@@ -478,6 +477,7 @@
 
     .ecosystem-image-wrap {
       padding: 0 24px 24px;
+      position: relative;
     }
 
     .ecosystem-image-wrap img {
@@ -486,6 +486,164 @@
       border-radius: 24px;
       object-fit: cover;
       box-shadow: 0 28px 80px rgba(0,0,0,0.36);
+    }
+
+    .interactive-plant {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .interactive-plant img {
+      user-select: none;
+    }
+
+    .plant-hotspot {
+      position: absolute;
+      width: 86px;
+      height: 86px;
+      transform: translate(-50%, -50%);
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      cursor: pointer;
+      z-index: 3;
+      outline: none;
+      padding: 0;
+    }
+
+    .plant-hotspot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle, rgba(184, 239, 104, 0.42) 0%, rgba(105, 191, 69, 0.20) 38%, rgba(105, 191, 69, 0) 72%);
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .plant-hotspot::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 13px;
+      height: 13px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(184, 239, 104, 0.95);
+      box-shadow:
+        0 0 0 7px rgba(184, 239, 104, 0.16),
+        0 0 22px rgba(184, 239, 104, 0.65);
+      opacity: 0.9;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .plant-hotspot:hover::before,
+    .plant-hotspot:focus-visible::before,
+    .plant-hotspot.active::before {
+      opacity: 1;
+      transform: scale(1.35);
+      box-shadow:
+        0 0 38px rgba(184, 239, 104, 0.45),
+        0 0 90px rgba(105, 191, 69, 0.24);
+    }
+
+    .plant-hotspot:hover::after,
+    .plant-hotspot:focus-visible::after,
+    .plant-hotspot.active::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.16);
+    }
+
+    .hotspot-grid {
+      width: 120px;
+      height: 170px;
+      border-radius: 42px;
+    }
+
+    .hotspot-panels {
+      width: 290px;
+      height: 120px;
+      border-radius: 34px;
+    }
+
+    .hotspot-inverter {
+      width: 95px;
+      height: 105px;
+      border-radius: 24px;
+    }
+
+    .hotspot-battery {
+      width: 105px;
+      height: 145px;
+      border-radius: 26px;
+    }
+
+    .hotspot-charger {
+      width: 90px;
+      height: 160px;
+      border-radius: 30px;
+    }
+
+    .hotspot-car {
+      width: 270px;
+      height: 140px;
+      border-radius: 65px;
+    }
+
+    .plant-tooltip {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(350px, calc(100% - 32px));
+      padding: 20px 20px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.93);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(18px);
+      z-index: 6;
+      opacity: 0;
+      transform: translate(-50%, -42%) scale(0.94);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .plant-tooltip.visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+
+    .plant-tooltip h3 {
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+    }
+
+    .plant-tooltip p {
+      color: #4f5d52;
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .plant-tooltip-close {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(11, 74, 47, 0.08);
+      color: var(--green-dark);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
     }
 
     .about-process {
@@ -918,7 +1076,7 @@
       .hero::before {
         background:
           linear-gradient(180deg, rgba(251, 250, 244, 0.95) 0%, rgba(251, 250, 244, 0.90) 55%, rgba(251, 250, 244, 0.98) 100%),
-          url("impianto.png") center/cover;
+          url("./impianto.png") center/cover;
       }
 
       .hero-stats,
@@ -1032,6 +1190,54 @@
         object-fit: cover;
       }
 
+      .plant-hotspot::after {
+        width: 11px;
+        height: 11px;
+      }
+
+      .hotspot-grid {
+        width: 80px;
+        height: 120px;
+      }
+
+      .hotspot-panels {
+        width: 180px;
+        height: 80px;
+      }
+
+      .hotspot-inverter {
+        width: 70px;
+        height: 78px;
+      }
+
+      .hotspot-battery {
+        width: 74px;
+        height: 100px;
+      }
+
+      .hotspot-charger {
+        width: 68px;
+        height: 115px;
+      }
+
+      .hotspot-car {
+        width: 170px;
+        height: 95px;
+      }
+
+      .plant-tooltip {
+        position: fixed;
+        left: 50%;
+        top: auto;
+        bottom: 86px;
+        width: calc(100% - 32px);
+        transform: translateX(-50%) scale(0.96);
+      }
+
+      .plant-tooltip.visible {
+        transform: translateX(-50%) scale(1);
+      }
+
       .cta-card,
       .quote-info,
       form {
@@ -1061,7 +1267,7 @@
 <header class="site-header">
   <nav class="nav">
     <a href="#" class="logo" aria-label="FLORA Home">
-      <img src="logo.png" alt="FLORA" class="logo-image">
+      <img src="./logo.png" alt="FLORA" class="logo-image">
     </a>
 
     <div class="nav-links" id="navLinks">
@@ -1168,13 +1374,61 @@
           <div class="section-label">Il tuo ecosistema energetico</div>
           <h2>Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
           <p>
-            Un sistema integrato che unisce pannelli fotovoltaici, inverter, batterie di accumulo,
-            colonnina di ricarica, auto elettrica e rete elettrica in un’unica visione chiara e moderna.
+            Passa con il mouse sui componenti dell’impianto per scoprire come lavorano insieme:
+            produzione solare, conversione, accumulo, ricarica elettrica e collegamento alla rete.
           </p>
         </div>
 
-        <div class="ecosystem-image-wrap">
-          <img src="impianto.png" alt="Sistema energetico FLORA con fotovoltaico, accumulo, colonnina e auto elettrica">
+        <div class="ecosystem-image-wrap interactive-plant" id="interactivePlant">
+          <img src="./impianto.png" alt="Sistema energetico FLORA con fotovoltaico, accumulo, colonnina e auto elettrica">
+
+          <button
+            class="plant-hotspot hotspot-grid"
+            style="left: 8%; top: 50%;"
+            data-title="Traliccio rete elettrica"
+            data-text="Rappresenta il collegamento alla rete elettrica. L’impianto può prelevare energia quando necessario o immettere quella prodotta in eccesso.">
+          </button>
+
+          <button
+            class="plant-hotspot hotspot-panels"
+            style="left: 35%; top: 22%;"
+            data-title="Pannelli fotovoltaici"
+            data-text="I pannelli trasformano la luce del sole in energia elettrica pulita. Sono il cuore dell’impianto fotovoltaico.">
+          </button>
+
+          <button
+            class="plant-hotspot hotspot-inverter"
+            style="left: 34%; top: 56%;"
+            data-title="Inverter"
+            data-text="L’inverter converte l’energia prodotta dai pannelli in corrente utilizzabile per alimentare casa, azienda, batterie e colonnine.">
+          </button>
+
+          <button
+            class="plant-hotspot hotspot-battery"
+            style="left: 19%; top: 72%;"
+            data-title="Batteria di accumulo"
+            data-text="La batteria conserva l’energia prodotta durante il giorno e la rende disponibile quando serve, anche nelle ore serali.">
+          </button>
+
+          <button
+            class="plant-hotspot hotspot-charger"
+            style="left: 69%; top: 66%;"
+            data-title="Colonnina di ricarica"
+            data-text="La colonnina ricarica l’auto elettrica utilizzando l’energia prodotta dall’impianto o, se necessario, quella della rete.">
+          </button>
+
+          <button
+            class="plant-hotspot hotspot-car"
+            style="left: 83%; top: 72%;"
+            data-title="Auto elettrica"
+            data-text="L’auto elettrica può essere alimentata dall’impianto fotovoltaico, integrando energia domestica o aziendale e mobilità sostenibile.">
+          </button>
+
+          <div class="plant-tooltip" id="plantTooltip">
+            <button class="plant-tooltip-close" type="button" aria-label="Chiudi">×</button>
+            <h3 id="plantTooltipTitle"></h3>
+            <p id="plantTooltipText"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -1419,7 +1673,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <img src="logo.png" alt="FLORA" class="logo-image">
+          <img src="./logo.png" alt="FLORA" class="logo-image">
         </div>
         <p>Energia pulita.<br>Futuro sostenibile.</p>
       </div>
@@ -1495,6 +1749,72 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  const plant = document.getElementById("interactivePlant");
+  const plantTooltip = document.getElementById("plantTooltip");
+  const plantTooltipTitle = document.getElementById("plantTooltipTitle");
+  const plantTooltipText = document.getElementById("plantTooltipText");
+  const plantTooltipClose = document.querySelector(".plant-tooltip-close");
+  const plantHotspots = document.querySelectorAll(".plant-hotspot");
+
+  function showPlantTooltip(hotspot) {
+    plantHotspots.forEach(item => item.classList.remove("active"));
+    hotspot.classList.add("active");
+
+    plantTooltipTitle.textContent = hotspot.dataset.title;
+    plantTooltipText.textContent = hotspot.dataset.text;
+    plantTooltip.classList.add("visible");
+
+    if (window.innerWidth > 640) {
+      const plantRect = plant.getBoundingClientRect();
+      const hotRect = hotspot.getBoundingClientRect();
+
+      const x = hotRect.left - plantRect.left + hotRect.width / 2;
+      const y = hotRect.top - plantRect.top + hotRect.height / 2;
+
+      const tooltipWidth = 350;
+      const safeX = Math.min(
+        Math.max(x + 26, tooltipWidth / 2 + 18),
+        plantRect.width - tooltipWidth / 2 - 18
+      );
+
+      const safeY = y > plantRect.height * 0.55 ? y - 120 : y + 120;
+
+      plantTooltip.style.left = safeX + "px";
+      plantTooltip.style.top = safeY + "px";
+    } else {
+      plantTooltip.style.left = "";
+      plantTooltip.style.top = "";
+    }
+  }
+
+  function hidePlantTooltip() {
+    plantHotspots.forEach(item => item.classList.remove("active"));
+    plantTooltip.classList.remove("visible");
+  }
+
+  plantHotspots.forEach((hotspot) => {
+    hotspot.addEventListener("mouseenter", () => {
+      showPlantTooltip(hotspot);
+    });
+
+    hotspot.addEventListener("focus", () => {
+      showPlantTooltip(hotspot);
+    });
+
+    hotspot.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showPlantTooltip(hotspot);
+    });
+  });
+
+  plantTooltipClose.addEventListener("click", hidePlantTooltip);
+
+  document.addEventListener("click", (event) => {
+    if (plant && !plant.contains(event.target)) {
+      hidePlantTooltip();
+    }
+  });
 
   const quoteForm = document.getElementById("quoteForm");
 
