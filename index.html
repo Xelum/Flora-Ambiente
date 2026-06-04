@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>FLORA | Soluzioni fotovoltaiche per abitazioni e aziende</title>
-  <meta name="description" content="FLORA progetta, fornisce e installa impianti fotovoltaici chiavi in mano, batterie di accumulo, colonnine di ricarica e soluzioni energetiche integrate." />
+  <meta name="description" content="FLORA progetta, fornisce e installa impianti fotovoltaici chiavi in mano, batterie di accumulo, colonnine di ricarica e soluzioni integrate per casa e azienda." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +134,7 @@
       padding: 12px 14px 12px 18px;
       border: 1px solid rgba(11, 74, 47, 0.12);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(22px);
       box-shadow: 0 18px 55px rgba(25, 68, 35, 0.12);
     }
@@ -231,8 +231,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.87) 42%, rgba(251, 250, 244, 0.18) 100%),
-        url("https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=1900&q=85") center right/cover;
+        linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.88) 42%, rgba(251, 250, 244, 0.18) 100%),
+        url("https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1900&q=85") center right/cover;
       z-index: -2;
     }
 
@@ -255,7 +255,7 @@
       gap: 10px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.80);
+      background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(11, 74, 47, 0.15);
       color: var(--green-dark);
       font-size: 13px;
@@ -315,7 +315,7 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.80);
       border-color: rgba(25, 52, 30, 0.13);
       color: var(--text);
       box-shadow: 0 14px 34px rgba(31, 80, 42, 0.08);
@@ -400,7 +400,7 @@
     .solar-panel {
       padding: 42px;
       border-radius: 30px;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.90);
       border: 1px solid rgba(11, 74, 47, 0.10);
       box-shadow: var(--shadow-strong);
       backdrop-filter: blur(14px);
@@ -452,14 +452,7 @@
       background: linear-gradient(135deg, #f0fae9, #ffffff);
       color: var(--green-dark);
       border: 1px solid rgba(105, 191, 69, 0.22);
-    }
-
-    .solar-icon svg {
-      width: 30px;
-      height: 30px;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      fill: none;
+      font-size: 25px;
     }
 
     .solar-service h3 {
@@ -798,10 +791,6 @@
       gap: 18px;
     }
 
-    .step {
-      position: relative;
-    }
-
     .step-num {
       width: 34px;
       height: 34px;
@@ -827,65 +816,72 @@
       line-height: 1.6;
     }
 
-    .extra-cta {
+    .all-services {
       background: #fbfaf4;
       padding-top: 42px;
     }
 
-    .extra-cta-grid {
+    .all-services-grid {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .extra-services,
-    .cta-card {
-      border-radius: 28px;
-      padding: 38px;
-      background: white;
-      border: 1px solid rgba(11, 74, 47, 0.10);
-      box-shadow: var(--shadow);
-    }
-
-    .extra-services p {
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    .mini-services {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
-    .mini-service {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      color: #39493d;
-      font-weight: 850;
-      font-size: 14px;
+    .service-card {
+      min-height: 230px;
+      padding: 26px;
+      border-radius: 26px;
+      background: white;
+      border: 1px solid rgba(11, 74, 47, 0.10);
+      box-shadow: 0 18px 45px rgba(18, 68, 38, 0.08);
+      transition: 0.28s ease;
     }
 
-    .mini-service span {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: var(--sage);
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 70px rgba(18, 68, 38, 0.13);
+    }
+
+    .service-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--sage), white);
       color: var(--green-dark);
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
+      font-size: 24px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(105,191,69,0.18);
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+
+    .cta-section {
+      background: #fbfaf4;
+      padding-top: 24px;
     }
 
     .cta-card {
+      border-radius: 30px;
+      padding: 42px;
       background:
         radial-gradient(circle at 100% 50%, rgba(184,239,104,0.28), transparent 30%),
         linear-gradient(135deg, #164e31, #4a8d2b);
       color: white;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-strong);
     }
 
     .cta-card .section-label,
@@ -896,12 +892,14 @@
     .cta-card p {
       color: rgba(255,255,255,0.83);
       margin-bottom: 24px;
+      max-width: 680px;
     }
 
     .quick-form {
       display: grid;
       grid-template-columns: 1fr 1fr auto;
       gap: 10px;
+      max-width: 800px;
     }
 
     .quick-form input {
@@ -1178,19 +1176,19 @@
       .hero::before {
         background:
           linear-gradient(180deg, rgba(251, 250, 244, 0.95) 0%, rgba(251, 250, 244, 0.90) 55%, rgba(251, 250, 244, 0.98) 100%),
-          url("https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=1400&q=85") center/cover;
+          url("https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1400&q=85") center/cover;
       }
 
       .hero-stats,
       .solar-services-grid,
       .process-steps,
-      .footer-grid {
+      .footer-grid,
+      .all-services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .ecosystem-card,
       .about-process-grid,
-      .extra-cta-grid,
       .quote-box {
         grid-template-columns: 1fr;
       }
@@ -1252,9 +1250,9 @@
       .hero-stats,
       .solar-services-grid,
       .process-steps,
-      .mini-services,
       .form-grid,
-      .footer-grid {
+      .footer-grid,
+      .all-services-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1296,7 +1294,6 @@
         display: none;
       }
 
-      .extra-services,
       .cta-card,
       .quote-info,
       form {
@@ -1394,41 +1391,31 @@
 
         <div class="solar-services-grid">
           <article class="solar-service reveal">
-            <div class="solar-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 11L12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
-            </div>
+            <div class="solar-icon">⌂</div>
             <h3>Impianti chiavi in mano</h3>
             <p>Dalla progettazione alla gestione delle pratiche e installazione.</p>
           </article>
 
           <article class="solar-service reveal">
-            <div class="solar-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 16h16"/><path d="M6 16l2-8h8l2 8"/><path d="M9 11h6"/><path d="M12 8v8"/></svg>
-            </div>
+            <div class="solar-icon">▣</div>
             <h3>Solo fornitura</h3>
             <p>Materiali e componenti di alta qualità certificati.</p>
           </article>
 
           <article class="solar-service reveal">
-            <div class="solar-icon">
-              <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 13h6"/><path d="M9 17h4"/><path d="M15 3v4h4"/></svg>
-            </div>
+            <div class="solar-icon">⌁</div>
             <h3>Progettazione personalizzata</h3>
             <p>Analisi dei consumi e progettazione su misura per ogni esigenza.</p>
           </article>
 
           <article class="solar-service reveal">
-            <div class="solar-icon">
-              <svg viewBox="0 0 24 24"><path d="M14 7l3 3-7 7H7v-3z"/><path d="M16 5l3 3"/><path d="M5 21h14"/></svg>
-            </div>
+            <div class="solar-icon">⚙</div>
             <h3>Installazione e collaudo</h3>
             <p>Installazione professionale e verifica per sicurezza ed efficienza.</p>
           </article>
 
           <article class="solar-service reveal">
-            <div class="solar-icon">
-              <svg viewBox="0 0 24 24"><path d="M7 7h10v14H7z"/><path d="M10 4h4v3"/><path d="M10 17v-4"/><path d="M14 17v-7"/></svg>
-            </div>
+            <div class="solar-icon">▥</div>
             <h3>Accumulo e monitoraggio</h3>
             <p>Sistemi di accumulo e monitoraggio smart per il controllo totale.</p>
           </article>
@@ -1528,32 +1515,80 @@
     </div>
   </section>
 
-  <section class="extra-cta" id="servizi">
+  <section class="all-services" id="servizi">
     <div class="container">
-      <div class="extra-cta-grid">
-        <div class="extra-services reveal">
-          <div class="section-label">Altri servizi</div>
-          <h2>Oltre il fotovoltaico.</h2>
-          <p>Soluzioni integrate per migliorare efficienza e sostenibilità della tua casa o azienda.</p>
+      <div class="section-head center reveal">
+        <div class="section-label">Altri servizi</div>
+        <h2>Oltre il fotovoltaico.</h2>
+        <p>
+          FLORA integra competenze tecniche, operative e impiantistiche per offrire soluzioni complete,
+          concrete e coordinate.
+        </p>
+      </div>
 
-          <div class="mini-services">
-            <div class="mini-service"><span>⚡</span> Ricarica veicoli elettrici</div>
-            <div class="mini-service"><span>⌂</span> Efficientamento energetico</div>
-            <div class="mini-service"><span>🛠</span> Manutenzione impianti</div>
-            <div class="mini-service"><span>☀</span> Accumulo e monitoraggio</div>
-          </div>
-        </div>
+      <div class="all-services-grid">
+        <article class="service-card reveal">
+          <div class="service-card-icon">🏗️</div>
+          <h3>Edilizia e ristrutturazioni</h3>
+          <p>Interventi edili, riqualificazioni e lavori su immobili residenziali e aziendali.</p>
+        </article>
 
-        <div class="cta-card reveal">
-          <div class="section-label">Preventivo gratuito</div>
-          <h2>Richiedi una consulenza gratuita e senza impegno.</h2>
-          <p>Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
+        <article class="service-card reveal">
+          <div class="service-card-icon">💡</div>
+          <h3>Elettrico domestico</h3>
+          <p>Realizzazione, adeguamento e manutenzione di impianti elettrici.</p>
+        </article>
 
-          <div class="quick-form">
-            <input type="email" placeholder="La tua email">
-            <input type="tel" placeholder="Il tuo numero di telefono">
-            <button onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
-          </div>
+        <article class="service-card reveal">
+          <div class="service-card-icon">🌡️</div>
+          <h3>Riscaldamento e raffrescamento</h3>
+          <p>Condizionatori, caldaie, solare termico e sistemi per il comfort abitativo.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card-icon">🌿</div>
+          <h3>Ripristino e verde</h3>
+          <p>Ripristino post incidente, sfalcio erba, potatura alberi e manutenzione esterna.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card-icon">🌬️</div>
+          <h3>Microeolico</h3>
+          <p>Soluzioni domestiche e ibride da valutare come ampliamento futuro dell’offerta.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card-icon">🚗</div>
+          <h3>Microcar elettriche</h3>
+          <p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card-icon">📊</div>
+          <h3>Monitoraggio e assistenza</h3>
+          <p>Supporto, verifica performance e lettura dell’impianto nel tempo.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card-icon">🔌</div>
+          <h3>Colonnine di ricarica</h3>
+          <p>Integrazione con impianti fotovoltaici o installazione indipendente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card reveal">
+        <div class="section-label">Preventivo gratuito</div>
+        <h2>Richiedi una consulenza gratuita e senza impegno.</h2>
+        <p>Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
+
+        <div class="quick-form">
+          <input type="email" placeholder="La tua email">
+          <input type="tel" placeholder="Il tuo numero di telefono">
+          <button onclick="document.querySelector('#preventivo').scrollIntoView({behavior:'smooth'})">Richiedi →</button>
         </div>
       </div>
     </div>
@@ -1692,6 +1727,8 @@
           <span>Solo fornitura</span>
           <span>Progettazione</span>
           <span>Installazione e collaudo</span>
+          <span>Edilizia e ristrutturazioni</span>
+          <span>Ripristino e verde</span>
         </div>
       </div>
 
