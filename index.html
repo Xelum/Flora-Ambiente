@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>FLORA | Soluzioni fotovoltaiche per abitazioni e aziende</title>
-  <meta name="description" content="FLORA progetta, fornisce e installa impianti fotovoltaici chiavi in mano, batterie di accumulo, colonnine di ricarica e soluzioni integrate per casa e azienda." />
+  <meta name="description" content="FLORA progetta, fornisce e installa impianti fotovoltaici chiavi in mano, batterie di accumulo, servizi di ripristino post incidente, rendering, progettazione strutturale e soluzioni integrate per casa e azienda." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,7 +230,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(251, 250, 244, 0.98) 0%, rgba(251, 250, 244, 0.88) 42%, rgba(251, 250, 244, 0.18) 100%),
-        url("./impianto.png") center right/cover;
+        url("./sfondo.png") center right/cover;
       z-index: -2;
       transform: scale(1.04);
       animation: heroImageFloat 16s ease-in-out infinite alternate;
@@ -296,6 +296,34 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-bottom: 34px;
+    }
+
+    .toll-free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 26px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(11, 74, 47, 0.14);
+      color: var(--green-dark);
+      font-size: 16px;
+      font-weight: 950;
+      box-shadow: 0 16px 36px rgba(18, 68, 38, 0.10);
+      backdrop-filter: blur(16px);
+    }
+
+    .toll-free-badge span {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: white;
+      font-size: 17px;
+      box-shadow: 0 12px 24px rgba(11, 74, 47, 0.22);
     }
 
     .btn {
@@ -503,6 +531,14 @@
     .ecosystem-image-copy h2 {
       color: white;
       font-size: clamp(34px, 4.2vw, 58px);
+    }
+
+    .ecosystem-image-copy .ecosystem-main-title {
+      max-width: 1040px;
+      font-size: clamp(42px, 5.8vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
     }
 
     .ecosystem-image-copy p {
@@ -1586,7 +1622,7 @@
       .hero::before {
         background:
           linear-gradient(180deg, rgba(251, 250, 244, 0.95) 0%, rgba(251, 250, 244, 0.90) 55%, rgba(251, 250, 244, 0.98) 100%),
-          url("./impianto.png") center/cover;
+          url("./sfondo.png") center/cover;
       }
 
       .hero-stats,
@@ -1681,8 +1717,10 @@
         padding: 26px 24px 18px;
       }
 
-      .ecosystem-image-copy h2 {
-        font-size: 34px;
+      .ecosystem-image-copy h2,
+      .ecosystem-image-copy .ecosystem-main-title {
+        font-size: 36px;
+        line-height: 1.04;
       }
 
       .ecosystem-image-copy p {
@@ -1863,7 +1901,8 @@
         font-size: 38px;
       }
 
-      .ecosystem-image-copy h2 {
+      .ecosystem-image-copy h2,
+      .ecosystem-image-copy .ecosystem-main-title {
         font-size: 31px;
       }
 
@@ -1952,6 +1991,11 @@
           <a class="btn btn-secondary" href="#fotovoltaico">Scopri le soluzioni</a>
         </div>
 
+        <a class="toll-free-badge reveal" href="tel:800125560">
+          <span>☎</span>
+          Numero verde 800-12-55-60
+        </a>
+
         <div class="hero-stats">
           <div class="hero-stat reveal">
             <div class="stat-icon">⌂</div>
@@ -2023,11 +2067,7 @@
       <div class="ecosystem-image-card reveal reveal-zoom">
         <div class="ecosystem-image-copy">
           <div class="section-label reveal">Il tuo ecosistema energetico</div>
-          <h2 class="reveal">Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
-          <p class="reveal">
-            Osserva il ciclo dell’energia: dai pannelli fotovoltaici all’inverter, dalla batteria alla colonnina,
-            fino alla ricarica dell’auto, alla casa e alla rete elettrica.
-          </p>
+          <h2 class="reveal ecosystem-main-title">Scopri come funziona un impianto fotovoltaico osservando il ciclo dell’energia.</h2>
         </div>
 
         <div class="ecosystem-image-wrap">
@@ -2222,9 +2262,9 @@
         </article>
 
         <article class="service-card reveal">
-          <div class="service-card-icon">🚗</div>
-          <h3>Microcar elettriche</h3>
-          <p>Possibile area commerciale dedicata alla mobilità urbana elettrica.</p>
+          <div class="service-card-icon">🚧</div>
+          <h3>Ripristino Post incidente</h3>
+          <p>Pulizia e ripristino delle infrastrutture dopo sinistri stradali, con interventi rapidi e coordinati.</p>
         </article>
 
         <article class="service-card reveal">
@@ -2234,9 +2274,9 @@
         </article>
 
         <article class="service-card reveal">
-          <div class="service-card-icon">🔌</div>
-          <h3>Colonnine di ricarica</h3>
-          <p>Integrazione con impianti fotovoltaici o installazione indipendente.</p>
+          <div class="service-card-icon">🛸</div>
+          <h3>Rendering e progettazione strutturale</h3>
+          <p>Rilievi, rendering e supporto alla progettazione anche tramite drone per una visione tecnica più completa.</p>
         </article>
       </div>
     </div>
@@ -2247,7 +2287,7 @@
       <div class="cta-card reveal reveal-zoom">
         <div class="section-label reveal">Preventivo gratuito</div>
         <h2 class="reveal">Richiedi una consulenza gratuita e senza impegno.</h2>
-        <p class="reveal">Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze.</p>
+        <p class="reveal">Ti aiutiamo a trovare la soluzione perfetta per le tue esigenze. Puoi contattarci anche al numero verde <strong>800-12-55-60</strong>.</p>
 
         <div class="quick-form reveal">
           <input type="email" placeholder="La tua email">
@@ -2338,7 +2378,8 @@
                 <option value="Solo fornitura componenti">Solo fornitura componenti</option>
                 <option value="Progettazione">Progettazione</option>
                 <option value="Installazione, collaudo e messa in funzione">Installazione, collaudo e messa in funzione</option>
-                <option value="Colonnine di ricarica">Colonnine di ricarica</option>
+                <option value="Ripristino Post incidente">Ripristino Post incidente</option>
+                <option value="Rendering e progettazione strutturale">Rendering e progettazione strutturale</option>
               </select>
             </div>
 
@@ -2394,13 +2435,15 @@
           <span>Progettazione</span>
           <span>Installazione e collaudo</span>
           <span>Edilizia e ristrutturazioni</span>
-          <span>Ripristino e verde</span>
+          <span>Ripristino Post incidente</span>
+          <span>Rendering e progettazione strutturale</span>
         </div>
       </div>
 
       <div class="reveal">
         <h3>Contatti</h3>
         <div class="footer-links">
+          <a href="tel:800125560">Numero verde: 800-12-55-60</a>
           <a href="https://wa.me/393249581949">WhatsApp: 324 958 1949</a>
           <a href="mailto:costruzioni@florambiente.it">costruzioni@florambiente.it</a>
           <span>Viterbo, Strada Cassia Nord Km 87.700</span>
