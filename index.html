@@ -506,7 +506,7 @@
       border-radius: 999px;
       background: transparent;
       cursor: pointer;
-      z-index: 3;
+      z-index: 5;
       outline: none;
       padding: 0;
     }
@@ -605,7 +605,7 @@
       border: 1px solid rgba(255, 255, 255, 0.48);
       box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34);
       backdrop-filter: blur(18px);
-      z-index: 6;
+      z-index: 8;
       opacity: 0;
       transform: translate(-50%, -42%) scale(0.94);
       pointer-events: none;
@@ -644,6 +644,340 @@
       font-size: 20px;
       line-height: 1;
       cursor: pointer;
+    }
+
+    .energy-animation-layer {
+      position: absolute;
+      inset: 0 24px 24px 24px;
+      border-radius: 24px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .energy-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .energy-path {
+      fill: none;
+      stroke: rgba(184, 239, 104, 0.95);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 8px rgba(184, 239, 104, 0.72));
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      opacity: 0;
+    }
+
+    .energy-glow {
+      position: absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 239, 104, 0.42) 0%, rgba(105, 191, 69, 0.17) 42%, transparent 72%);
+      filter: blur(2px);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    .glow-panels {
+      left: 35%;
+      top: 22%;
+      width: 280px;
+      height: 110px;
+      border-radius: 34px;
+    }
+
+    .glow-inverter {
+      left: 34%;
+      top: 56%;
+      width: 110px;
+      height: 110px;
+      border-radius: 30px;
+    }
+
+    .glow-battery {
+      left: 19%;
+      top: 72%;
+      width: 120px;
+      height: 150px;
+      border-radius: 30px;
+    }
+
+    .glow-charger {
+      left: 69%;
+      top: 66%;
+      width: 100px;
+      height: 160px;
+      border-radius: 34px;
+    }
+
+    .glow-car {
+      left: 83%;
+      top: 72%;
+      width: 280px;
+      height: 150px;
+      border-radius: 70px;
+    }
+
+    .glow-grid {
+      left: 8%;
+      top: 50%;
+      width: 140px;
+      height: 180px;
+      border-radius: 42px;
+    }
+
+    .glow-home {
+      left: 47%;
+      top: 55%;
+      width: 250px;
+      height: 170px;
+      border-radius: 40px;
+    }
+
+    .sun-pulse {
+      position: absolute;
+      left: 31%;
+      top: 9%;
+      width: 170px;
+      height: 170px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255, 238, 151, 0.42) 0%, rgba(184, 239, 104, 0.20) 36%, transparent 70%);
+      filter: blur(2px);
+      opacity: 0;
+    }
+
+    .battery-charge {
+      position: absolute;
+      left: 17.2%;
+      top: 64%;
+      width: 44px;
+      height: 92px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(184, 239, 104, 0.35);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      background: rgba(5, 20, 14, 0.42);
+      box-shadow: 0 0 18px rgba(184, 239, 104, 0.2);
+    }
+
+    .battery-fill {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(180deg, #b8ef68, #69bf45);
+      box-shadow: 0 0 20px rgba(184, 239, 104, 0.75);
+    }
+
+    .home-light {
+      position: absolute;
+      width: 34px;
+      height: 26px;
+      border-radius: 10px;
+      background: rgba(255, 224, 144, 0.85);
+      box-shadow: 0 0 22px rgba(255, 224, 144, 0.85);
+      opacity: 0;
+    }
+
+    .home-light-1 {
+      left: 43%;
+      top: 54%;
+    }
+
+    .home-light-2 {
+      left: 49%;
+      top: 54%;
+    }
+
+    .home-light-3 {
+      left: 55%;
+      top: 54%;
+    }
+
+    .energy-status {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      max-width: 430px;
+      padding: 12px 15px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.24);
+      backdrop-filter: blur(16px);
+    }
+
+    .interactive-plant.step-solar .sun-pulse {
+      animation: sunPulse 3s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-solar .glow-panels {
+      animation: componentGlow 3s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-panels-inverter .path-panels-inverter {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-panels-inverter .glow-inverter {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-battery .path-inverter-battery {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-battery .glow-battery {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-battery .battery-charge {
+      animation: showBattery 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-battery .battery-fill {
+      animation: batteryFill 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-battery-charger .path-battery-charger {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-battery-charger .glow-charger {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-charger-car .path-charger-car {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-charger-car .glow-car {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-grid .path-inverter-grid {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-inverter-grid .glow-grid {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-home-light .path-inverter-home {
+      animation: drawEnergy 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-home-light .glow-home {
+      animation: componentGlow 2s ease-in-out forwards;
+    }
+
+    .interactive-plant.step-home-light .home-light {
+      animation: homeLightOn 2s ease-in-out forwards;
+    }
+
+    @keyframes drawEnergy {
+      0% {
+        opacity: 0;
+        stroke-dashoffset: 900;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes componentGlow {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.65);
+      }
+
+      45% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+
+      100% {
+        opacity: 0.45;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes sunPulse {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.45);
+      }
+
+      35% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      70% {
+        opacity: 0.86;
+        transform: translate(-50%, -50%) scale(1.25);
+      }
+
+      100% {
+        opacity: 0.25;
+        transform: translate(-50%, -50%) scale(1.45);
+      }
+    }
+
+    @keyframes showBattery {
+      0% {
+        opacity: 0;
+      }
+
+      20%, 100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes batteryFill {
+      0% {
+        height: 0%;
+      }
+
+      100% {
+        height: 100%;
+      }
+    }
+
+    @keyframes homeLightOn {
+      0% {
+        opacity: 0;
+        transform: scale(0.75);
+      }
+
+      45% {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 0.85;
+        transform: scale(1);
+      }
     }
 
     .about-process {
@@ -1190,6 +1524,24 @@
         object-fit: cover;
       }
 
+      .energy-animation-layer {
+        inset: 0 12px 12px 12px;
+        border-radius: 20px;
+      }
+
+      .energy-status {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        max-width: none;
+        font-size: 12px;
+        border-radius: 18px;
+      }
+
+      .energy-path {
+        stroke-width: 4;
+      }
+
       .plant-hotspot::after {
         width: 11px;
         height: 11px;
@@ -1374,13 +1726,46 @@
           <div class="section-label">Il tuo ecosistema energetico</div>
           <h2>Tutto connesso. Tutta l’energia di cui hai bisogno.</h2>
           <p>
-            Passa con il mouse sui componenti dell’impianto per scoprire come lavorano insieme:
-            produzione solare, conversione, accumulo, ricarica elettrica e collegamento alla rete.
+            Osserva il ciclo dell’energia: dai pannelli fotovoltaici all’inverter, dalla batteria alla colonnina,
+            fino alla ricarica dell’auto, alla casa e alla rete elettrica.
           </p>
         </div>
 
         <div class="ecosystem-image-wrap interactive-plant" id="interactivePlant">
           <img src="./impianto.png" alt="Sistema energetico FLORA con fotovoltaico, accumulo, colonnina e auto elettrica">
+
+          <div class="energy-animation-layer" aria-hidden="true">
+            <div class="sun-pulse"></div>
+
+            <div class="energy-glow glow-panels"></div>
+            <div class="energy-glow glow-inverter"></div>
+            <div class="energy-glow glow-battery"></div>
+            <div class="energy-glow glow-charger"></div>
+            <div class="energy-glow glow-car"></div>
+            <div class="energy-glow glow-grid"></div>
+            <div class="energy-glow glow-home"></div>
+
+            <div class="battery-charge">
+              <div class="battery-fill"></div>
+            </div>
+
+            <div class="home-light home-light-1"></div>
+            <div class="home-light home-light-2"></div>
+            <div class="home-light home-light-3"></div>
+
+            <svg class="energy-svg" viewBox="0 0 1000 430" preserveAspectRatio="none">
+              <path class="energy-path path-panels-inverter" d="M360 120 C350 180, 350 205, 340 240" />
+              <path class="energy-path path-inverter-battery" d="M340 250 C300 270, 235 290, 190 310" />
+              <path class="energy-path path-battery-charger" d="M200 325 C350 380, 560 385, 690 320" />
+              <path class="energy-path path-charger-car" d="M700 318 C740 340, 785 345, 830 325" />
+              <path class="energy-path path-inverter-grid" d="M335 245 C260 210, 165 195, 80 205" />
+              <path class="energy-path path-inverter-home" d="M350 250 C410 255, 465 250, 520 230" />
+            </svg>
+
+            <div class="energy-status" id="energyStatus">
+              Avvio animazione energia
+            </div>
+          </div>
 
           <button
             class="plant-hotspot hotspot-grid"
@@ -1808,13 +2193,98 @@
     });
   });
 
-  plantTooltipClose.addEventListener("click", hidePlantTooltip);
+  if (plantTooltipClose) {
+    plantTooltipClose.addEventListener("click", hidePlantTooltip);
+  }
 
   document.addEventListener("click", (event) => {
     if (plant && !plant.contains(event.target)) {
       hidePlantTooltip();
     }
   });
+
+  const energyStatus = document.getElementById("energyStatus");
+
+  const energySteps = [
+    {
+      className: "step-solar",
+      duration: 3000,
+      text: "I pannelli fotovoltaici vengono irradiati dal sole e iniziano a produrre energia."
+    },
+    {
+      className: "step-panels-inverter",
+      duration: 2000,
+      text: "L’energia prodotta dai pannelli viene trasferita all’inverter."
+    },
+    {
+      className: "step-inverter-battery",
+      duration: 2000,
+      text: "L’inverter invia energia alla batteria, che si ricarica progressivamente."
+    },
+    {
+      className: "step-battery-charger",
+      duration: 2000,
+      text: "La batteria alimenta la colonnina attraverso il collegamento energetico."
+    },
+    {
+      className: "step-charger-car",
+      duration: 2000,
+      text: "La colonnina trasferisce energia all’auto elettrica in ricarica."
+    },
+    {
+      className: "step-inverter-grid",
+      duration: 2000,
+      text: "L’energia in eccesso può essere indirizzata verso la rete elettrica."
+    },
+    {
+      className: "step-home-light",
+      duration: 2000,
+      text: "La casa viene alimentata dall’energia autoprodotta e le luci si accendono."
+    }
+  ];
+
+  let currentEnergyStep = 0;
+  let energyTimer = null;
+
+  function clearEnergySteps() {
+    if (!plant) return;
+
+    energySteps.forEach(step => {
+      plant.classList.remove(step.className);
+    });
+  }
+
+  function runEnergyAnimation() {
+    if (!plant || !energyStatus) return;
+
+    clearEnergySteps();
+
+    const step = energySteps[currentEnergyStep];
+
+    plant.classList.add(step.className);
+    energyStatus.textContent = step.text;
+
+    currentEnergyStep = (currentEnergyStep + 1) % energySteps.length;
+
+    clearTimeout(energyTimer);
+    energyTimer = setTimeout(runEnergyAnimation, step.duration);
+  }
+
+  const plantObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runEnergyAnimation();
+      } else {
+        clearTimeout(energyTimer);
+        clearEnergySteps();
+        currentEnergyStep = 0;
+      }
+    });
+  }, { threshold: 0.35 });
+
+  if (plant) {
+    plantObserver.observe(plant);
+  }
 
   const quoteForm = document.getElementById("quoteForm");
 
