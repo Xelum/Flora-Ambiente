@@ -902,15 +902,15 @@
     }
 
     .interactive-plant.step-solar .sun-pulse {
-      animation: sunPulse 4s ease-in-out forwards;
+      animation: sunPulse 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-solar .sun-rays {
-      animation: sunRays 4s ease-in-out forwards;
+      animation: sunRays 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-solar .panel-spark {
-      animation: panelSpark 4s ease-in-out forwards;
+      animation: panelSpark 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-solar .spark-2 {
@@ -922,7 +922,7 @@
     }
 
     .interactive-plant.step-solar .glow-panels {
-      animation: componentGlowStrong 4s ease-in-out forwards;
+      animation: componentGlowStrong 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-panels-inverter .path-panels-inverter,
@@ -931,7 +931,7 @@
     .interactive-plant.step-charger-car .path-charger-car,
     .interactive-plant.step-inverter-grid .path-inverter-grid,
     .interactive-plant.step-home-light .path-inverter-home {
-      animation: drawEnergy 4s ease-in-out forwards;
+      animation: drawEnergy 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-panels-inverter .glow-inverter,
@@ -940,19 +940,19 @@
     .interactive-plant.step-charger-car .glow-car,
     .interactive-plant.step-inverter-grid .glow-grid,
     .interactive-plant.step-home-light .glow-home {
-      animation: componentGlow 4s ease-in-out forwards;
+      animation: componentGlow 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .battery-charge {
-      animation: showBattery 4s ease-in-out forwards;
+      animation: showBattery 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-inverter-battery .battery-fill {
-      animation: batteryFill 4s ease-in-out forwards;
+      animation: batteryFill 6s ease-in-out forwards;
     }
 
     .interactive-plant.step-home-light .home-light {
-      animation: homeLightOn 4s ease-in-out forwards;
+      animation: homeLightOn 6s ease-in-out forwards;
     }
 
     @keyframes drawEnergy {
@@ -1671,6 +1671,10 @@
         border-radius: 20px;
       }
 
+      .energy-path {
+        stroke-width: 1.8;
+      }
+
       .energy-caption {
         margin: 0 12px 14px;
         padding: 22px 20px 24px;
@@ -1685,10 +1689,6 @@
       .energy-caption span {
         font-size: 10px;
         letter-spacing: 0.12em;
-      }
-
-      .energy-path {
-        stroke-width: 1.8;
       }
 
       .plant-hotspot::after {
@@ -1919,7 +1919,6 @@
               <path class="energy-path path-inverter-grid" d="M374 215 C305 175, 185 135, 100 120" />
               <path class="energy-path path-inverter-home" d="M374 215 C455 250, 510 250, 575 215" />
             </svg>
-
           </div>
 
           <button
@@ -2353,28 +2352,28 @@
     plantTooltip.classList.remove("visible");
   }
 
- plantHotspots.forEach((hotspot) => {
-  hotspot.addEventListener("mouseenter", () => {
-    showPlantTooltip(hotspot);
-  });
+  plantHotspots.forEach((hotspot) => {
+    hotspot.addEventListener("mouseenter", () => {
+      showPlantTooltip(hotspot);
+    });
 
-  hotspot.addEventListener("mouseleave", () => {
-    hidePlantTooltip();
-  });
+    hotspot.addEventListener("mouseleave", () => {
+      hidePlantTooltip();
+    });
 
-  hotspot.addEventListener("focus", () => {
-    showPlantTooltip(hotspot);
-  });
+    hotspot.addEventListener("focus", () => {
+      showPlantTooltip(hotspot);
+    });
 
-  hotspot.addEventListener("blur", () => {
-    hidePlantTooltip();
-  });
+    hotspot.addEventListener("blur", () => {
+      hidePlantTooltip();
+    });
 
-  hotspot.addEventListener("click", (event) => {
-    event.stopPropagation();
-    showPlantTooltip(hotspot);
+    hotspot.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showPlantTooltip(hotspot);
+    });
   });
-});
 
   if (plantTooltipClose) {
     plantTooltipClose.addEventListener("click", hidePlantTooltip);
@@ -2391,37 +2390,37 @@
   const energySteps = [
     {
       className: "step-solar",
-      duration: 4000,
+      duration: 6000,
       text: "I pannelli fotovoltaici vengono irradiati dal sole e iniziano a produrre energia."
     },
     {
       className: "step-panels-inverter",
-      duration: 4000,
+      duration: 6000,
       text: "L’energia prodotta dai pannelli viene trasferita all’inverter."
     },
     {
       className: "step-inverter-battery",
-      duration: 4000,
+      duration: 6000,
       text: "L’inverter invia energia alla batteria, che si ricarica progressivamente."
     },
     {
       className: "step-battery-charger",
-      duration: 4000,
+      duration: 6000,
       text: "La batteria alimenta la colonnina attraverso il collegamento energetico."
     },
     {
       className: "step-charger-car",
-      duration: 4000,
+      duration: 6000,
       text: "La colonnina trasferisce energia all’auto elettrica in ricarica."
     },
     {
       className: "step-inverter-grid",
-      duration: 4000,
+      duration: 6000,
       text: "L’energia in eccesso può essere indirizzata verso la rete elettrica."
     },
     {
       className: "step-home-light",
-      duration: 4000,
+      duration: 6000,
       text: "La casa viene alimentata dall’energia autoprodotta e le luci si accendono."
     }
   ];
