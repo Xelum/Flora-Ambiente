@@ -2315,20 +2315,28 @@
     plantTooltip.classList.remove("visible");
   }
 
-  plantHotspots.forEach((hotspot) => {
-    hotspot.addEventListener("mouseenter", () => {
-      showPlantTooltip(hotspot);
-    });
-
-    hotspot.addEventListener("focus", () => {
-      showPlantTooltip(hotspot);
-    });
-
-    hotspot.addEventListener("click", (event) => {
-      event.stopPropagation();
-      showPlantTooltip(hotspot);
-    });
+ plantHotspots.forEach((hotspot) => {
+  hotspot.addEventListener("mouseenter", () => {
+    showPlantTooltip(hotspot);
   });
+
+  hotspot.addEventListener("mouseleave", () => {
+    hidePlantTooltip();
+  });
+
+  hotspot.addEventListener("focus", () => {
+    showPlantTooltip(hotspot);
+  });
+
+  hotspot.addEventListener("blur", () => {
+    hidePlantTooltip();
+  });
+
+  hotspot.addEventListener("click", (event) => {
+    event.stopPropagation();
+    showPlantTooltip(hotspot);
+  });
+});
 
   if (plantTooltipClose) {
     plantTooltipClose.addEventListener("click", hidePlantTooltip);
