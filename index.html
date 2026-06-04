@@ -694,6 +694,33 @@
       cursor: pointer;
     }
 
+    .mobile-component-info {
+      display: none;
+      margin: 16px 12px 0;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(255,255,255,0.42);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.20);
+    }
+
+    .mobile-component-info.visible {
+      display: block;
+    }
+
+    .mobile-component-info h3 {
+      color: var(--green-dark);
+      font-size: 21px;
+      margin-bottom: 8px;
+      letter-spacing: -0.035em;
+    }
+
+    .mobile-component-info p {
+      color: #4f5d52;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
     .energy-svg {
       position: absolute;
       inset: 0;
@@ -1671,12 +1698,24 @@
         border-radius: 20px;
       }
 
+      .plant-tooltip {
+        display: none !important;
+      }
+
+      .mobile-component-info {
+        display: none;
+      }
+
+      .mobile-component-info.visible {
+        display: block;
+      }
+
       .energy-path {
         stroke-width: 1.6;
       }
 
       .energy-caption {
-        margin: 0 12px 14px;
+        margin: 16px 12px 14px;
         padding: 22px 20px 24px;
         border-radius: 22px;
       }
@@ -1795,19 +1834,6 @@
         width: 16px;
         height: 12px;
         border-radius: 6px;
-      }
-
-      .plant-tooltip {
-        position: fixed;
-        left: 50%;
-        top: auto;
-        bottom: 86px;
-        width: calc(100% - 32px);
-        transform: translateX(-50%) scale(0.96);
-      }
-
-      .plant-tooltip.visible {
-        transform: translateX(-50%) scale(1);
       }
 
       .cta-card,
@@ -2088,6 +2114,11 @@
               <h3 id="plantTooltipTitle"></h3>
               <p id="plantTooltipText"></p>
             </div>
+          </div>
+
+          <div class="mobile-component-info" id="mobileComponentInfo">
+            <h3 id="mobileComponentTitle"></h3>
+            <p id="mobileComponentText"></p>
           </div>
         </div>
 
@@ -2437,49 +2468,81 @@
   const plantTooltipClose = document.querySelector(".plant-tooltip-close");
   const plantHotspots = document.querySelectorAll(".plant-hotspot");
 
+  const mobileComponentInfo = document.getElementById("mobileComponentInfo");
+  const mobileComponentTitle = document.getElementById("mobileComponentTitle");
+  const mobileComponentText = document.getElementById("mobileComponentText");
+
+  function isMobilePlantView() {
+    return window.innerWidth <= 640;
+  }
+
+  function showMobileComponentInfo(hotspot) {
+    if (!mobileComponentInfo || !mobileComponentTitle || !mobileComponentText) return;
+
+    mobileComponentTitle.textContent = hotspot.dataset.title;
+    mobileComponentText.textContent = hotspot.dataset.text;
+    mobileComponentInfo.classList.add("visible");
+  }
+
+  function hideMobileComponentInfo() {
+    if (!mobileComponentInfo) return;
+    mobileComponentInfo.classList.remove("visible");
+  }
+
   function showPlantTooltip(hotspot) {
     plantHotspots.forEach(item => item.classList.remove("active"));
     hotspot.classList.add("active");
+
+    if (isMobilePlantView()) {
+      plantTooltip.classList.remove("visible");
+      showMobileComponentInfo(hotspot);
+      return;
+    }
+
+    hideMobileComponentInfo();
 
     plantTooltipTitle.textContent = hotspot.dataset.title;
     plantTooltipText.textContent = hotspot.dataset.text;
     plantTooltip.classList.add("visible");
 
-    if (window.innerWidth > 640) {
-      const plantRect = plant.getBoundingClientRect();
-      const hotRect = hotspot.getBoundingClientRect();
+    const plantRect = plant.getBoundingClientRect();
+    const hotRect = hotspot.getBoundingClientRect();
 
-      const x = hotRect.left - plantRect.left + hotRect.width / 2;
-      const y = hotRect.top - plantRect.top + hotRect.height / 2;
+    const x = hotRect.left - plantRect.left + hotRect.width / 2;
+    const y = hotRect.top - plantRect.top + hotRect.height / 2;
 
-      const tooltipWidth = 350;
-      const safeX = Math.min(
-        Math.max(x + 26, tooltipWidth / 2 + 18),
-        plantRect.width - tooltipWidth / 2 - 18
-      );
+    const tooltipWidth = 350;
+    const safeX = Math.min(
+      Math.max(x + 26, tooltipWidth / 2 + 18),
+      plantRect.width - tooltipWidth / 2 - 18
+    );
 
-      const safeY = y > plantRect.height * 0.55 ? y - 120 : y + 120;
+    const safeY = y > plantRect.height * 0.55 ? y - 120 : y + 120;
 
-      plantTooltip.style.left = safeX + "px";
-      plantTooltip.style.top = safeY + "px";
-    } else {
-      plantTooltip.style.left = "";
-      plantTooltip.style.top = "";
-    }
+    plantTooltip.style.left = safeX + "px";
+    plantTooltip.style.top = safeY + "px";
   }
 
   function hidePlantTooltip() {
     plantHotspots.forEach(item => item.classList.remove("active"));
     plantTooltip.classList.remove("visible");
+
+    if (!isMobilePlantView()) {
+      hideMobileComponentInfo();
+    }
   }
 
   plantHotspots.forEach((hotspot) => {
     hotspot.addEventListener("mouseenter", () => {
-      showPlantTooltip(hotspot);
+      if (!isMobilePlantView()) {
+        showPlantTooltip(hotspot);
+      }
     });
 
     hotspot.addEventListener("mouseleave", () => {
-      hidePlantTooltip();
+      if (!isMobilePlantView()) {
+        hidePlantTooltip();
+      }
     });
 
     hotspot.addEventListener("focus", () => {
@@ -2487,7 +2550,9 @@
     });
 
     hotspot.addEventListener("blur", () => {
-      hidePlantTooltip();
+      if (!isMobilePlantView()) {
+        hidePlantTooltip();
+      }
     });
 
     hotspot.addEventListener("click", (event) => {
@@ -2506,16 +2571,23 @@
   }
 
   document.addEventListener("click", (event) => {
-    if (plant && !plant.contains(event.target)) {
+    if (plant && !plant.contains(event.target) && mobileComponentInfo && !mobileComponentInfo.contains(event.target)) {
       hidePlantTooltip();
+      hideMobileComponentInfo();
     }
   });
 
   document.addEventListener("touchstart", (event) => {
-    if (plant && !plant.contains(event.target)) {
+    if (plant && !plant.contains(event.target) && mobileComponentInfo && !mobileComponentInfo.contains(event.target)) {
       hidePlantTooltip();
+      hideMobileComponentInfo();
     }
   }, { passive: true });
+
+  window.addEventListener("resize", () => {
+    hidePlantTooltip();
+    hideMobileComponentInfo();
+  });
 
   const energyStatus = document.getElementById("energyStatus");
 
